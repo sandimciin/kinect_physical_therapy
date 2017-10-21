@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  20 OCT 2017 12:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  20 OCT 2017 18:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -258,11 +258,22 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.04124> not available
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <11.04124> not available
 
 (Font)              Font shape `OT1/phv/b/sc' tried instead on input line 75.
- (./ProblemStatement.toc)
+ (./ProblemStatement.toc
+LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.53561> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6.6749> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <4.7678> on input line 3.
+)
 \tf@toc=\write3
 \openout3 = `ProblemStatement.toc'.
 
- [1] [2
+ [1]
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 92.
+ [2
 
 ]
 Missing character: There is no ‚ in font pplr7t!
@@ -271,22 +282,14 @@ Missing character: There is no ú in font pplr7t!
 Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ù in font pplr7t!
-LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 101
-.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9.53561> on input line 101.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6.6749> on input line 101.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <4.7678> on input line 101.
  [3] [4] (./ProblemStatement.aux) ) 
 Here is how much of TeX's memory you used:
- 2056 strings out of 493014
- 35133 string characters out of 6122796
+ 2058 strings out of 493014
+ 35172 string characters out of 6122796
  98663 words of memory out of 5000000
- 5628 multiletter control sequences out of 15000+600000
- 28221 words of font info for 70 fonts, out of 8000000 for 9000
+ 5630 multiletter control sequences out of 15000+600000
+ 28757 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 26i,5n,19p,1036b,190s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 26i,5n,19p,958b,207s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ProblemStatement.dvi (5 pages, 12096 bytes).
+Output written on ProblemStatement.dvi (5 pages, 13916 bytes).
