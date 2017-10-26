@@ -1,4 +1,4 @@
-PROJECT=writing1
+PROJECT=Requirements
 TEX=pdflatex
 BIBTEX=bibtex
 BUILDTEX=$(TEX) $(PROJECT).tex
