@@ -1,13 +1,14 @@
 \documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
 \usepackage{graphicx}
+\usepackage{pgfgantt}
 \usepackage{url}
 \usepackage{setspace}
-
+\usepackage{tabu}
 \usepackage{geometry}
-\geometry{textheight=9.5in, textwidth=7in}
+\geometry{textheight=9.5in, textwidth=7in, margin=0.75in}
 
 % 1. Fill in these details
-\def \CapstoneTeamName{     The Cleverly Named Team}
+\def \CapstoneTeamName{     TeamName}
 \def \CapstoneTeamNumber{       24}
 \def \GroupMemberOne{            Ciin S. Dim}
 \def \GroupMemberTwo{           Louis Leon}
@@ -17,8 +18,8 @@
 \def \CapstoneSponsorPerson{        Mehmet Serdar Kilinc}
 
 % 2. Uncomment the appropriate line below so that the document type works
-\def \DocType{      Problem Statement
-                %Requirements Document
+\def \DocType{      %Problem Statement
+                Requirements Document
                 %Technology Review
                 %Design Document
                 %Progress Report
@@ -66,7 +67,8 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract    
-            The purpose of this document is to define and describe a possible solution for physical therapists to utilize when monitoring a patient's prescribed therapeutic movement set. The solution involves the use of a Kinect sensor to track a patient's movements when performing exercises. The data that the sensor records will be stored and sent to their physical therapist to allow them to monitor their patient's progress. The task is to develop software that includes an interface for patients and physical therapists to interact with. Pre-defined exercises will be implemented in the software and compared against a patient's movements to determine the accuracy of the therapy. The project will be completed once a working prototype is prepared and the clients' requirements are satisfied. The document is structured into three sections which provide a high-level description of the problem, solution, and performance metrics.
+            The purpose of this document is to define and describe a possible solution for physical therapists to utilize when monitoring a patient's prescribed therapeutic movement set. The solution involves the use of a Kinect sensor to track a patient's movements when performing exercises. The data that the sensor records will be stored and sent to their physical therapist to allow them to monitor their patient's progress. The task is to develop software that includes an interface for patients and physical therapists to interact with. Pre-defined exercises will be implemented in the software and compared against a patient's movements to determine the accuracy of the therapy. The project will be completed once a working prototype is prepared and the clients' requirements are satisfied. The document is structured into three sections which provide a high-level description of the problem, solution, and performance 
+metrics.
         \end{abstract}     
     \end{singlespace}
 \end{titlepage}
@@ -80,7 +82,171 @@
 
 % 8. now you write!
 \section{Introduction}
+\subsection{Purpose}
+The purpose of this requirements document is to address the specification for our 
+software deliverable. We will be explaining the functional and performance 
+requirements as well as the attributes pertaining to the software we will be 
+developing. The intended audience of this document is our client, development group, 
+and professors who will be assessing our project. This is a way of documenting the 
+mutual understanding of the requirements for this project in detail and outline them 
+at the task level. This will also act as a reference when assessing the final product.
 
+\subsection{Scope}
+Our project will focus on the software implementation for a Kinect-based physical 
+therapy solution. We will dedicate most of our time to allowing customizable data 
+collection and creating a user experience for the patients who will be using this 
+software. The physical therapy exercises implemented will be specifically for 
+Parkinson's Disease patients.
+\subsection{Definitions, acronyms, and abbreviations}
+        \begin{tabu} to \hsize {|X|X[2,l]|}
+        \hline
+        \textbf{Term} & \textbf{Definition}\\
+        \hline
+        .csv File & Stands for "comma-separated values". A file format that is used to store tabular data, such as a spreadsheet or database. They may be imported/exported into different programs that store data in tables\cite{csvFile}.\\
+        \hline
+        Node & In this context, a node represents a point along the body of the user. Typically associated with a joint in the skeletal system\cite{KinectDevelop}.\\
+        \hline
+        PC & Personal Computer\\
+        \hline
+        Kinect SDK & A software development kit used to program the Kinect sensor\cite{KinectDevelop}.\\
+        \hline
+\end{tabu}
+\subsection{References}
+\bibliographystyle{ieeetr}
+\bibliography{Requirements}
+\subsection{Overview}
+This document will provide an overall description of our project and expected final 
+product. This description will include product perspective, product functions, user 
+characteristics, constraints, and assumptions and dependencies. Following the overall 
+description are the specific requirements that outline our product's functionality as 
+well as a project schedule.
 
+\section{Overall Description}
+\subsection{Product Perspective}
+Our product will require a Kinect sensor and a PC. The PC is where the program will 
+live, and it will be able to collect and store data into .csv files on the computer. 
+The PC will also need a monitor output for the user to be able to view themselves, 
+navigate the interface, and follow visual instructions printed to the screen by the 
+program. The Kinect sensor connects to a PC via USB, and it will be used to collect 
+the data from the user\cite{KinectDevelop}.
+
+\subsection{Product Functions}
+The product will allow users to navigate a visual interface to select physical therapy 
+exercises, and the program will guide users through the motions. It will track users' 
+movements with the Kinect nodes and record the node data at specified time intervals. 
+The recorded data will then be exported to a .csv file that can be sent to a physical 
+therapist to analyze.
+
+\subsection{User Characteristics}
+The type of users that will be interacting with this software are physical therapy 
+patients and their physical therapists. The patient will use the Kinect sensor and 
+software to perform pre-defined movements and data about their movements will be 
+stored in a file. The physical therapist can then read this file and analyze how their 
+patients are performing. 
+
+\subsection{Constraints}
+The main constraints we will be limited on are the amount and type of pre-defined 
+movements. Some physical therapy exercises are more complex or physically taxing which 
+require the physical therapist to be with the patient in person. Other constraints 
+include: development environment, development language, tracking capacity, and 
+resource constraints. The Microsoft Kinect SDK currently only supports development in 
+Visual Studio 2012 or 2013 and is supported by Windows 8 or later. Development with 
+the latest SDK only supports the following languages: C$++$, C\# ,Visual Basic, or .NET 
+languages. The tracking capacity of the Kinect v2 allows for 25 joints and up to 6 
+human bodies\cite{KinectConstraints}.
+
+\subsection{Assumptions and Dependencies}
+One assumption for this project is that is being utilized as a tool for the research 
+of our client. Therefore, it can potentially be used in the future for patients who 
+have Parkinson's Disease.As a result of this, a potential dependency is future 
+maintenance. The speed at which the program writes to the .csv file is important 
+because it could affect the responsiveness of the program. If it is too slow, the 
+program will not function correctly and may confuse the user. If the user is confused, 
+the data that is collected for that session may be useless.
+
+\section{Specific Requirements}
+\subsection{Functional Requirements}
+\begin{itemize}
+\item   User (physical therapist) can set time, frequency, and duration of data collection\\
+\textbf{Description:} The physical therapist prescribing an exercise and specify how long and how often to collect data from the patient's nodes.\\
+\textbf{Sequence of Operations:} 1) specify when to start collecting 2) specify when to stop collecting 3) specify how frequent to collect\\
+\textbf{Test:} The data collection has been successfully customized if the data in the output file begins and ends at the specified times, and appears as frequent as specified.\\
+
+\item   User (patient) can export data to a file\\
+\textbf{Description:} The software will collect node data, and the collected data will be formatted into a .csv file with columns as nodes and rows as time stamps.\\
+\textbf{Sequence of Operations:} 1) patient does exercise 2) data from patient's movements during exercise gets saved 3) saved data get exported to .csv file.\\
+\textbf{Test:} When the data gets exported, the rows in the .csv file should have recent time stamps.\\
+
+\item   User (patient) can follow instructions by reading or listening\\
+\textbf{Description:} The software will display which movement is currently selected and a command to perform that movement. For example, "Raise your arm above your head".\\ 
+\textbf{Sequence of Operations:} 1) Select movement 2) Read on-screen instructions to get started with movement\\
+\textbf{Test:} When selecting a movement, the corresponding movement should be displayed as well as the corresponding instructions. These should also be correctly said out loud by the program assuming the user has speakers connected to their computer. \\
+
+\item   User (patient) will receive feedback during exercises to encourage proper movements\\
+\textbf{Description:} The user will see visual cues/text on the display that describe how to properly perform a movement. \\
+\textbf{Sequence of Operations:} 1) Select movement 2) Attempt to perform movement 3) Read feedback on-screen\\
+\textbf{Test:} Using a pre-defined movement, we can have a series of tests where we perform the movement incorrectly and correctly and observe if the software agrees
+
+\end{itemize}
+\subsection{Performance Requirements}
+Since this is a research project, there are no benchmark requirements or basis for performance at this time. We hope that our program will allow patients to read and hear instructions at the appropriate time and pace of the exercise. Feedback should also appear at appropriate times. Ultimately, we would like our program to perform well enough to support a continuous, uninterrupted user experience.
+
+\subsection{Software System Attributes}
+\begin{itemize}
+\item Reliability:
+Since our program doesn't require a network connection, there is no risk of the user being interrupted by network failure. Only requiring a functioning PC, the user will be able to perform any exercise to completion.
+\item Availability:
+Another benefit of not relying on a network connection is the ability of the user to access the program at any time. If the program is downloaded on their PC, they will be able to run it and use it regardless of their access to the internet.
+\item Security:
+The data collected from a user's usage of this program is saved on the user's device, so they are completely in control of what to do with the data. 
+\item Maintainability:
+Since we are using the Kinect SDK to develop this program, modifying the code will be organized and clean. We will also ensure that it is well documented and can be understood without requiring extensive research. It will also be modular so that portions of the code can be revised without breaking the entire program.
+\end{itemize}
+
+\section{Schedule}
+%Gantt Chart Goes HERE
+\begin{ganttchart}{1}{22}
+  \gantttitle{TITLE}{22} \\
+  \gantttitle[]{Fall}{5}
+  \gantttitle[]{Winter}{10}
+  \gantttitle[]{Spring}{7}\\
+  \gantttitle{6}{1}
+  \gantttitle{7}{1}
+  \gantttitle{8}{1}
+  \gantttitle{9}{1}
+  \gantttitle{10}{1} 
+  \gantttitle{1}{1} 
+  \gantttitle{2}{1}
+  \gantttitle{3}{1}
+  \gantttitle{4}{1}
+  \gantttitle{5}{1}    
+  \gantttitle{6}{1}
+  \gantttitle{7}{1}
+  \gantttitle{8}{1}
+  \gantttitle{9}{1}
+  \gantttitle{10}{1} 
+  \gantttitle{1}{1} 
+  \gantttitle{2}{1}
+  \gantttitle{3}{1}
+  \gantttitle{4}{1}
+  \gantttitle{5}{1}    
+  \gantttitle{6}{1}
+  \gantttitle{7}{1}\\
+
+  \ganttbar{Define start and stop rules}{1}{3}\\
+  \ganttbar[inline=false]{Research existing kinect solutions}{4}{5}\\
+
+  \ganttbar{Export formatted data to .csv}{6}{6}\\
+  \ganttbar{Set frequency and duration of data collection}{7}{7}\\
+  \ganttbar{Implement node angle analysis}{8}{9}\\
+  \ganttbar{Define correct movements}{10}{11}\\
+  \ganttbar{Compare user vs. correct movements}{12}{13}\\
+  \ganttbar{Implement feedback to user}{14}{15}\\
+
+  \ganttbar{Landing page}{16}{16}\\
+  \ganttbar{Menu}{17}{17}\\
+  \ganttbar{Written instructions}{18}{19}\\
+  \ganttbar{Testing and preparing for expo}{20}{22}\\
+\end{ganttchart}
 
 \end{document}

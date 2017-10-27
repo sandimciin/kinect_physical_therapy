@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{csvFile}
+``How to create a csv file.''
+  \url{https://www.computerhope.com/issues/ch001356.htm}, September 2017.
+\newblock (Accessed on 10/26/2017).
+
+\bibitem{KinectDevelop}
+``Developing with kinect for windows.''
+  \url{https://developer.microsoft.com/en-us/windows/kinect/develop}.
+\newblock (Accessed on 10/26/2017).
+
+\bibitem{KinectConstraints}
+``Kinect for windows sdk 2.0.''
+  \url{https://www.microsoft.com/en-us/download/developer-tools.aspx}.
+\newblock (Accessed on 10/26/2017).
+
+\end{thebibliography}
