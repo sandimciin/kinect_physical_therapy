@@ -146,7 +146,8 @@ patients are performing.
 
 \subsection{Constraints}
 The main constraints we will be limited on are the amount and type of pre-defined 
-movements. Some physical therapy exercises are more complex or physically taxing which 
+movements. We met with physical therapists at Samaritan Health who work with Parkinson's Disease patients for insight on the types of physical therapy exercises. 
+Some physical therapy exercises are more complex or physically taxing which 
 require the physical therapist to be with the patient in person. Other constraints 
 include: development environment, development language, tracking capacity, and 
 resource constraints. The Microsoft Kinect SDK currently only supports development in 
@@ -158,7 +159,7 @@ human bodies\cite{KinectConstraints}.
 \subsection{Assumptions and Dependencies}
 One assumption for this project is that is being utilized as a tool for the research 
 of our client. Therefore, it can potentially be used in the future for patients who 
-have Parkinson's Disease.As a result of this, a potential dependency is future 
+have Parkinson's Disease. As a result of this, a potential dependency is future 
 maintenance. The speed at which the program writes to the .csv file is important 
 because it could affect the responsiveness of the program. If it is too slow, the 
 program will not function correctly and may confuse the user. If the user is confused, 
@@ -187,9 +188,14 @@ the data that is collected for that session may be useless.
 \textbf{Sequence of Operations:} 1) Select movement 2) Attempt to perform movement 3) Read feedback on-screen\\
 \textbf{Test:} Using a pre-defined movement, we can have a series of tests where we perform the movement incorrectly and correctly and observe if the software agrees
 
+\item   User (physical therapist) can receive a summary/report of the collected data\\
+\textbf{Description:} The data collected from the patient's exercises will be summarized statistically and be represented graphically.\\
+\textbf{Sequence of Operations:} 1) Patient selects previous activity to summarize 2) Patient selects "Report" to export a file with the summary. 3) The file is saved locally to the patient's device, and they can send it to their physical therapist\\
+\textbf{Test:} We can check the accuracy of the summary by comparing it to the data collected.\\
+
 \end{itemize}
 \subsection{Performance Requirements}
-Since this is a research project, there are no benchmark requirements or basis for performance at this time. We hope that our program will allow patients to read and hear instructions at the appropriate time and pace of the exercise. Feedback should also appear at appropriate times. Ultimately, we would like our program to perform well enough to support a continuous, uninterrupted user experience.
+We hope that our program will allow patients to read and hear instructions at the appropriate time and pace of the exercise. Feedback should also appear at appropriate times. Ultimately, we would like our program to perform well enough to support a continuous, uninterrupted user experience.
 
 \subsection{Software System Attributes}
 \begin{itemize}
