@@ -104,6 +104,8 @@ The \textit{Kinect Physical Therapy Solution} uses a Kinect body tracking sensor
         \hline
         Kinect For Windows SDK & A software development kit used to program the Kinect sensor\cite{KinectDevelop}.\\
         \hline
+        Data Visualization & A graphical image representing data with graphs, shapes, colors, lines, etc.\\
+        \hline
 \end{tabu}
 \subsection{References}
 \bibliographystyle{ieeetr}
@@ -216,7 +218,7 @@ The exercise recognition module mainly receives inputs from the sensor data and 
 The collection of node data is used to analyze and evaluate the user's movements. Data collection will occur behind-the-scenes as the user completes exercises. The user will not be responsible for starting and stopping data collection; collection will automatically begin and end based on indication of the beginning and end of an activity.
 
 \subsection{Dependencies}
-Data collection is dependent on the Kinect sensor to obtain node data from the user's body. Node data is made available for collection by the Kinect SDK which provides an interface for the software to use data captured by the sensor.
+Data collection is dependent on the Kinect sensor to obtain node data from the user's body. Node data is made available for collection by the Kinect SDK which provides an interface for the software to use data captured by the sensor\cite{KinectDevelop}.
 
 \subsection{Composition}
 The beginning and end of data collection will be prompted by start and stop rules. The start and stop rules are the node positions or movements that indicate the beginning or end of an activity of interest. These positions and/or movements are to be clearly distinguishable from positions indicating user interface interaction or an idle user. 
