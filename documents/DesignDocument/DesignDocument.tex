@@ -213,16 +213,37 @@ The exercise recognition module mainly receives inputs from the sensor data and 
 
 \section{Data Collection}
 \subsection{Context}
+The collection of node data is used to analyze and evaluate the user's movements. Data collection will occur behind-the-scenes as the user completes exercises. The user will not be responsible for starting and stopping data collection; collection will automatically begin and end based on indication of the beginning and end of an activity.
+
 \subsection{Dependencies}
+Data collection is dependent on the Kinect sensor to obtain node data from the user's body. Node data is made available for collection by the Kinect SDK which provides an interface for the software to use data captured by the sensor.
+
 \subsection{Composition}
+The beginning and end of data collection will be prompted by start and stop rules. The start and stop rules are the node positions or movements that indicate the beginning or end of an activity of interest. These positions and/or movements are to be clearly distinguishable from positions indicating user interface interaction or an idle user. 
+
+When data collection is active, node positions (for all nodes) will be recorded at time intervals. The granularity of the time intervals can be customized. The node data will then be saved to a .csv file in which each column contains data for one of the nodes, and the rows contain data for all nodes at a specific time. Each cell, or data entry, will be the position of a node at a specific time. When data collection ends, the .csv will be exported and saved locally to the device running the program. Each .csv file will be a single session, and several sessions will be saved over time.
+
 \subsection{Interactions}
+Data collection interacts with exercise recognition when the positions or movements defined by start and stop rules are detected. When the nodes indicate the beginning or end of data collection, exercise recognition will signal data collection to start or stop saving node data.
 
 \section{Report Generation}
 \subsection{Context}
+The physical therapist's user interface option will include the ability to view a summary of patients' activity. The summary will show a patient's progress over time, accuracy of movements, duration of exercises, and other various statistics calculated from the collected node data.
+
 \subsection{Dependencies}
+Report generation relies on the output of the data collection component. The data is used to calculate data about several previous sessions. Report generation also relies on data visualization to produce the graphical representations of the calculated data to include in the summary.
+
 \subsection{Composition}
+The main parts of report generation are data analysis and visualization. Node data will be obtained from the .csv files generation in the data collection component. The accuracy of a patient's movements will be calculated by comparing their node data to the expected, or correct, movements' data. Accuracy will be calculated for each session, and it will be plotted on a graph to see the patient's progress over time. Duration of exercises will also be plotted for each session. Various statistics such as average, highest, and lowest accuracy rates and durations will also be calculated. Once these values have been calculated, they will be used by the visualization component to plot the data and represent it in a graphical display. Then, the data visualizations and statistics will be displayed on the data summary page.
+
 \subsection{Interactions}
+Report generation requires interaction from the user interface to display the data summary. This is how the user will demand the output from this component. Report generation also interacts with the data visualization component by providing input for the output needed. The data visualization component then provides the report generation component with the necessary visualizations to deliver the data summary to the user.
 
 \section{Data Visualization}
+\subsection{Context}
+Data visualization will be a part of the data summary/report. It will take in information from the data analysis used to generate the report and use it to generate a graphical display of the results. The visualizations will be included in the data summary.
+
+\subsection{Interactions}
+Data visualization is dependent on the analysis of the collected node data. As part of the report generation component, the visualization component will use the results of data analysis in the report generation component to generate visualizations for the summary.
 
 \end{document}
