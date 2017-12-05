@@ -96,6 +96,10 @@ The \textit{Kinect Physical Therapy Solution} uses a Kinect body tracking sensor
         \hline
         \textbf{Term} & \textbf{Definition}\\
         \hline
+        Patient & A type of user that uses the software to do exercises
+        \hline
+        Physical Therapist & A type of user that uses the software to prescribe exercises to patients, customize data collection settings, and view data reports
+        \hline
         .csv File & Stands for "comma-separated values". A file format that is used to store tabular data, such as a spreadsheet or database. They may be imported/exported into different programs that store data in tables\cite{csvFile}.\\
         \hline
         Node & In this context, a node represents a point along the body of the user. Typically associated with a joint in the skeletal system\cite{KinectDevelop}.\\
@@ -169,16 +173,16 @@ well as a project schedule.
 %Start the viewpoints here
 \section{Body Tracking Sensor}
 \subsection{Context}
-The use of the Microsoft Kinect body tracking sensor will be essential for the tracking of users and their exercises. The sensor will act as the main interface between the user and the software.  
+The use of the Microsoft Kinect body tracking sensor will be essential for the tracking of patients and their exercises. The sensor will act as the main interface between the patient and the software.  
 
 \subsection{Dependencies}
 A Windows 8 or higher operating system is needed to run the program and support our chosen model of the Kinect sensor (v2). The operating system hosts and runs the program at the users request which will then load the starting menu for exercise selection or data capture configuration. The sensor also requires the Microsoft .NET Framework 4.5 for development \cite{KinectDevelop}. 
 
 \subsection{Composition}
-The Kinect sensor connects to a PC though USB 3.0 with the addition of standard power input. Development does not directly require the sensor as it functions mainly for a source of input for the software. A Windows device driver will be controlling the device during operation. The sensor is able to track up to six bodies through the use of 25-point skeletal mapping and supports open-hand or closed-hand gesture recognition. The sensor also has a built-in microphone to detect voice commands which may be implemented as a stretch goal for our project which would let users interact with the useron interface and menu systems \cite{KinectConstraints}. 
+The Kinect sensor connects to a PC though USB 3.0 with the addition of standard power input. Development does not directly require the sensor as it functions mainly for a source of input for the software. A Windows device driver will be controlling the device during operation. The sensor is able to track up to six bodies through the use of 25-point skeletal mapping and supports open-hand or closed-hand gesture recognition. The sensor also has a built-in microphone to detect voice commands which may be implemented as a stretch goal for our project which would let users interact with the user interface and menu systems \cite{KinectConstraints}. 
 
 \subsection{Interactions}
-The sensor interacts with the software via the \textit{Kinect for Windows} SDK. User skeletal data captured by the sensor is handled and processed by the exercise recognition modules in the software. All of the data being captures is collected via the data collection modules which parse the data out into a formatted .csv file. 
+The sensor interacts with the software via the \textit{Kinect for Windows} SDK. Patient skeletal data captured by the sensor is handled and processed by the exercise recognition modules in the software. All of the data being captured is collected via the data collection modules which parse the data out into a formatted .csv file. 
 
 \section{User Interface}
 \subsection{Context}
@@ -188,17 +192,19 @@ The main user interface for this project will be organized in a very simple mann
 Structuring of the elements for the user interface will be done through the use of Windows Presentation Foundation UI Framework (WPF). WPF provides the ability to create a user interface through Microsoft Visual Studio and supports images, 3D graphics, and video/audio \cite{WPFSamples}. 
 
 \subsection{Composition}
-The composition of the UI includes a main menu, exercise selection, settings, report generation, and data exportation. The main menu is where the user will start as they initiate the program. From the main menu, a user will have the option of starting an exercise routine. Once the exercise routine option is selected from the main menu, various exercises will appear for the user to choose from. The exercise starts once selected and on-screen instructions appear to guide the user through the required movements. Once complete, a report of their performance is generated and the exercise routine selection screen appears. The user interface should also include an overlay during the exercise portion which indicates how well the user is doing.  
+The composition of the UI includes a main menu, exercise selection, settings, report generation, and data exportation. The main menu is where the user will start as they initiate the program. From the main menu, a patient will have the option of starting an exercise routine. Once the exercise routine option is selected from the main menu, various exercises will appear for the patient to choose from. The exercise starts once selected and on-screen instructions appear to guide the patient through the required movements. Once complete, a report of their performance is generated and the exercise routine selection screen appears. The user interface should also include an overlay during the exercise portion which indicates how well the patient is doing.
+
+The physical therapist option of the UI will include exercise prescription, data collection settings, and report generation. The physical therapist will have the ability to prescribe the patient with specific exercises that need to be completed a certain number of times each day. The software will then keep track of the patient's activity and both the patient and the therapist will be able to see whether they have completed their prescribed exercises.
 
 \subsection{Interactions}
 The user interface provides the software with specific inputs and configurations for data collection and exercise recognition. The corresponding verification will need to be active with the currently selected exercise such that the user receives correct feedback and reports are properly generated.  
 
 \section{Exercise Recognition}
 \subsection{Context}
-The exercise recognition aspect of the project is what reads the output of the sensor and compares it with a baseline version of an exercise. It serves as a comparison for the user and will be helpful when indicating feedback to the user. The user does not directly interact with this piece of the software but instead follows the on-screen instructions for performing the specific exercise they selected for the current session.  
+The exercise recognition aspect of the project is what reads the output of the sensor and compares it with a baseline version of an exercise. It serves as a comparison for the user and will be helpful when indicating feedback to the user. The patient does not directly interact with this piece of the software but instead follows the on-screen instructions for performing the specific exercise they selected for the current session.  
 
 \subsection{Dependencies}
-Recognition of user exercises heavily depends on the \textit{Kinect for Windows} SDK for API calls. Specifically, the skeletal and node data of the user's body is required as an input in order to begin evaluating their movements. 
+Recognition of patient exercises heavily depends on the \textit{Kinect for Windows} SDK for API calls. Specifically, the skeletal and node data of the patient's body is required as an input in order to begin evaluating their movements. 
 
 \subsection{Composition}
 The elements which make up exercise recognition include the detection of linear gestures or movements that follow a given path. The path is to be defined by the developer and is built into the software. There will be pre-defined movements for each of the available exercises. The following steps describe the method for recognizing linear gestures: 
@@ -211,14 +217,14 @@ The elements which make up exercise recognition include the detection of linear 
 
 
 \subsection{Interactions}
-The exercise recognition module mainly receives inputs from the sensor data and directly accesses the values of the user's skeletal position in order to process and verify it. If the user is performing a movement or gesture incorrectly, a visual cue will be shown on-screen requesting that the user adjust their body while the exercise recognition continues checking until it deems the movement to be correct. User accuracy will be logged and reported in the data visualization and report generation after they finish performing their exercise. 
+The exercise recognition module mainly receives inputs from the sensor data and directly accesses the values of the patient's skeletal position in order to process and verify it. If the patient is performing a movement or gesture incorrectly, a visual cue will be shown on-screen requesting that the patient adjust their body while the exercise recognition continues checking until it deems the movement to be correct. Patient accuracy will be logged and reported in the data visualization and report generation after they finish performing their exercise. 
 
 \section{Data Collection}
 \subsection{Context}
-The collection of node data is used to analyze and evaluate the user's movements. Data collection will occur behind-the-scenes as the user completes exercises. The user will not be responsible for starting and stopping data collection; collection will automatically begin and end based on indication of the beginning and end of an activity.
+The collection of node data is used to analyze and evaluate the patient's movements. Data collection will occur behind-the-scenes as the patient completes exercises. The patient will not be responsible for starting and stopping data collection; collection will automatically begin and end based on indication of the beginning and end of an activity.
 
 \subsection{Dependencies}
-Data collection is dependent on the Kinect sensor to obtain node data from the user's body. Node data is made available for collection by the Kinect SDK which provides an interface for the software to use data captured by the sensor\cite{KinectDevelop}.
+Data collection is dependent on the Kinect sensor to obtain node data from the patient's body. Node data is made available for collection by the Kinect SDK which provides an interface for the software to use data captured by the sensor\cite{KinectDevelop}.
 
 \subsection{Composition}
 The beginning and end of data collection will be prompted by start and stop rules. The start and stop rules are the node positions or movements that indicate the beginning or end of an activity of interest. These positions and/or movements are to be clearly distinguishable from positions indicating user interface interaction or an idle user. 
