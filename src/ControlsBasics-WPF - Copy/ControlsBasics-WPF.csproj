@@ -65,8 +65,8 @@
     </ApplicationDefinition>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
-    <Compile Include="Pages\Exercise.xaml.cs">
-      <DependentUpon>Exercise.xaml</DependentUpon>
+    <Compile Include="Pages\ButtonSampleCopy.xaml.cs">
+      <DependentUpon>ButtonSampleCopy.xaml</DependentUpon>
     </Compile>
     <Compile Include="HandPointers\HandInScreenEngagementModel.cs" />
     <Compile Include="Pages\ButtonSample.xaml.cs">
@@ -83,9 +83,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Exercise.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Pages\ButtonSampleCopy.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="HandPointers\HandPointerStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\CursorSpriteSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Status.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -75,14 +75,14 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         typeof(EngagementSettings)));
             group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-8",
-                        "Exercise",
+                        "Group-1-Item-7",
+                        "Exercises",
                         "",
                         SampleDataSource.darkGrayImage,
-                        "Start exercise activities",
+                        "Enables user to switch between engagement models and cursor visuals.",
                         itemContent,
                         group1,
-                        typeof(Exercise)));
+                        typeof(ButtonSampleCopy)));
             this.AllGroups.Add(group1);
         }
 
