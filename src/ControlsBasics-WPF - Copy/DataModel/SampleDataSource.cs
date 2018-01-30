@@ -83,6 +83,26 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         itemContent,
                         group1,
                         typeof(ButtonSampleCopy)));
+            group1.Items.Add(
+                    new SampleDataItem(
+                        "Group-1-Item-2",
+                        "Color Sample Test",
+                        string.Empty,
+                        SampleDataSource.darkGrayImage,
+                        "Several types of buttons with custom styles",
+                        itemContent,
+                        group1,
+                        typeof(ColorSample)));
+            group1.Items.Add(
+                    new SampleDataItem(
+                        "Group-1-Item-4",
+                        "Color and Nodes Test",
+                        string.Empty,
+                        SampleDataSource.darkGrayImage,
+                        "Several types of buttons with custom styles",
+                        itemContent,
+                        group1,
+                        typeof(ColorAndNodes)));
             this.AllGroups.Add(group1);
         }
 

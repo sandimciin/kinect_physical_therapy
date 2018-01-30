@@ -64,20 +64,18 @@ C:\Users\San Dim\Documents\Classes\CS 461\Kinect Samples\ControlsBasics-WPF - Co
 C:\Users\San Dim\Documents\Classes\CS 461\Kinect Samples\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF.csproj.GenerateResource.Cache
 C:\Users\San Dim\Documents\Classes\CS 461\Kinect Samples\ControlsBasics-WPF - Copy\obj\Debug\Pages\Exercise.g.cs
 C:\Users\San Dim\Documents\Classes\CS 461\Kinect Samples\ControlsBasics-WPF - Copy\obj\Debug\Pages\Exercise.baml
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\ControlsBasics-WPF.exe.config
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\ControlsBasics-WPF.exe
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\ControlsBasics-WPF.pdb
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.dll
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.Wpf.Controls.dll
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.xml
-C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.Wpf.Controls.xml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF.csprojResolveAssemblyReference.cache
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Common\StandardStyles.baml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ColorAndNodes.baml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ColorSample.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ButtonSampleCopy.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\HandPointers\HandPointerStyles.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ButtonSample.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\EngagementSettings.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\SelectionDisplay.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\App.baml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ColorAndNodes.g.cs
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ColorSample.g.cs
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ButtonSampleCopy.g.cs
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\MainWindow.g.cs
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Pages\ButtonSample.g.cs
@@ -86,6 +84,13 @@ C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\SelectionDisplay
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\App.g.cs
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF_MarkupCompile.cache
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF_MarkupCompile.lref
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\ControlsBasics-WPF.exe.config
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\ControlsBasics-WPF.exe
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\ControlsBasics-WPF.pdb
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.dll
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.Wpf.Controls.dll
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.xml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\Microsoft.Kinect.Wpf.Controls.xml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\MainWindow.baml
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF.g.resources
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\Microsoft.Samples.Kinect.ControlsBasics.Properties.Resources.resources
