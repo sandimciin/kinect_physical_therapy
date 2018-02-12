@@ -1,0 +1,120 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{pgfgantt}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{tabu}
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in, margin=0.75in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{     TeamName}
+\def \CapstoneTeamNumber{       24}
+\def \GroupMemberOne{            Ciin S. Dim}
+\def \GroupMemberTwo{           Louis Leon}
+\def \GroupMemberThree{         Karl Popper}
+\def \CapstoneProjectName{      Kinect Based Virtual Therapy Solution}
+\def \CapstoneSponsorCompany{   OSU Healthcare Systems Engineering Lab}
+\def \CapstoneSponsorPerson{        Mehmet Serdar Kilinc}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{      %Problem Statement
+                %Requirements Document
+                %Technology Review
+                %Design Document
+                Progress Report
+                }
+            
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil   \makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill        \makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil        \makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill  \makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+        %\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone\DocType \par
+            {\large Winter Term}\par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract    
+        The purpose of this document is to summarize the progress made towards this project over the first half of Winter Term. The document includes the project purpose, goals, current project state, problems impeding progress and solutions, and remaining tasks.
+    \end{abstract}     
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Purpose}
+The purpose of the Kinect Based Physical Therapy Solution project is to provide a solution for physical therapy patients diagnosed with Parkinson's disease to perform in-home therapy exercises. This solution will not only allow for an interactive way of completing a patient's required home therapy but will provide a way for their physical therapist to track their progress and monitor their exercises.
+
+\section{Goals}
+Our project will have a simple UI that can be easily navigated by a user with Parkinson's Disease. From the UI, the user will be able to select the option that allows them to select and do the available exercises. Our goal is to have two different exercises available to the user to choose from. One of our stretch goals is to be able to have a physical therapist prescribe exercises and specify frequency. The program will guide the user through these exercises using text and verbal instructions. One of our stretch goals is to implement visual (graphical) cues (over-laying their body on the camera feed) to the user to guide them through exercises. As the user performs exercises, their node data will be collected to be sent to their physical therapist as a .csv file, and it will be used for report generation. We will define the exercise's correct movements and compare them to the user's node data. This is how we will analyze the data to determine user accuracy for report generation. Another option the user will be able to select is report generation. This will display the user's performance data in graphs and charts, showing their progress with the exercises over time. 
+
+\section{Current Project State}
+We began looking through the Microsoft Kinect SDK (version 2.0) early Winter term to familiarize ourselves with some of the API calls and data structures. Fortunately, the SDK provides some sample programs and templates which help developers understand Kinect features and the workflow for creating an application. We used the sample programs to our advantage and began merging them into one cohesive solution. Our main user interface is constructed using XAML (Extensible Application Markup Language). Our main landing page in our user interface currently has some of the following pages: Engagement and Cursor Settings, Exercises, and a display test page. The settings page is where the user can specify how to begin engaging with the Kinect Sensor. There are three different settings that the user can choose from: System Default (hold open hand still in front of sensor), raised arms above head, and any hand detected on screen.
+
+The exercise menu option leads the user to a page that shows a Kinect camera feed and tracks their body. It uses node data to draw joints and bones over the user's image on the camera feed. It also visually indicates whether the user has their hands open, closed, or  loop (closed fist with index finger pointed out). Semi-transparent red circles indicate closed fists, green indicates open hands, and blue indicates loops. This page also indicates when the user is out of the Kinect sensor bounds by displaying a semi-transparent, red border line. 
+
+\section{Problems Impeding Progress and Solutions}
+\subsection{Windows Presentation Foundation (WPF)}
+The first problem we encountered in development was displaying video data from the Kinect sensor with the body tracking data. We were able to display one or the other without any issues, but when trying to combine them, our application showed nothing. It took some careful examination of the source code to realize the drawing context for each feed (camera and body tracking) needed to be referenced in the page's .xaml file. This proved to be especially challenging since this project is our first experience with WPF.
+\subsection{Kinect Body Tracking}
+When formatting and adjusting our page layout for the application, the body tracking/camera feed started behaving differently. While we were able to get both data to display, the body tracking nodes were no longer aligned properly with the user's body in the camera. As of now, the submission of this progress report, we have yet to find a solution to recalibrating the body tracking and camera data.
+
+\section{Remaining Tasks}
+\subsection{Separate Exercise Recognition}
+One of the remaining tasks that is needing implementation involves exercise recognition. This feature detects a user and recognizes individual exercises based on which the user chooses at the beginning of the program. We plan on implementing some simple exercises such as sitting down and standing back up again as well as arm stretches and lifts. The Kinect SDK supports discrete gesture building which allows you to create custom gestures and train the software to detect your gesture. This involves the use of a Boolean value and a confidence level. The Boolean value is either 'True' or 'False' when detecting whether the user is currently performing the correct gesture. The confidence level is the value at which the sensor is confident that the specific gesture is being done. The value is higher when the gesture is more closely matched to what the values in the gesture database are.
+
+We see the potential in developing a point system which gives the user an incentive to be more accurate in their exercises. The points accumulate as the user performs an exercise and it will be displayed on screen. The final score can be seen after the exercise session is over.
+
+\subsection{Possible Gesture Recognition}
+
+\subsection{On-screen and Verbal Instructions}
+Another component of the UI is the instructions that guide the user through exercises. Once we are able to properly display body nodes and implement exercise recognition, we need to implement a way for the users to know how to do the exercises. We plan to have written instructions on-screen as well as verbal instructions that the user can hear. We are also considering including a small section of the screen showing an example with a video of a physical therapist doing the exercise properly.
+
+\subsection{Node Data Collection and Export}
+The data collection portion will take the position values of each node throughout each exercise. We will implement a function to allow users to export their node data to a .csv file and send the file to their physical therapist. The purpose of data collection is mainly to provide the physical therapist with their patient's raw node data so they can analyze it.
+
+\subsection{Data Collection Settings}
+Data collection settings will determine the start, duration, and time intervals of data collection. The start will usually be at the start of an exercise, the duration will usually last through the end of the exercise, and the time intervals will vary the most depending on the desired accuracy of the data. If the physical therapist wants to analyze the patient's body position per second, the data collection settings will allow them to configure that. 
+
+\subsection{Report Generation}
+Originally, we assumed that report generation would require analyzing data, but we found that gesture recognition in the Kinect SDK calculates confidence levels of gestures. For report generation, we will analyze the data from gesture confidence levels to display user accuracy. In addition to user accuracy, we will display the duration of the exercises. On the report generation page, there will be graphical visualizations of the data (accuracy and duration of exercises) over time to show the patient's progress.
+
+\end{document}
