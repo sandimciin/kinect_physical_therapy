@@ -159,5 +159,50 @@ Data collection settings will determine the start, duration, and time intervals 
 Originally, we assumed that report generation would require analyzing data, but we found that gesture recognition in the Kinect SDK calculates confidence levels of gestures. For report generation, we will analyze the data from gesture confidence levels to display user accuracy. In addition to user accuracy, we will display the duration of the exercises. On the report generation page, there will be graphical visualizations of the data (accuracy and duration of exercises) over time to show the patient's progress.
 
 \section{Code Examples}
+\begin{figure}[h]
+\begin{lstlisting}[language=C, style=customc]
+if (body.IsTracked)
+                    {
+                        var joints = body.Joints; // Get all of the joints in that body
+                        if (joints[JointType.HandRight].TrackingState == TrackingState.Tracked && joints[JointType.HandLeft].TrackingState == TrackingState.Tracked)
+                        {
+                            txtLeft.Text = joints[JointType.HandLeft].Position.Y.ToString();
+                            txtRight.Text = joints[JointType.HandRight].Position.Y.ToString();
+                        }
+
+                        using (DrawingContext dc = this.drawingGroup.Open())
+                        {
+                            dc.DrawRectangle(Brushes.Black, null, new Rect(0.0, 0.0, this.displayWidth, this.displayHeight));
+
+                            IReadOnlyDictionary<JointType, Joint> jointsD = body.Joints;
+
+                            // convert the joint points to depth (display) space
+                            Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
+
+                            foreach (JointType jointType in jointsD.Keys)
+                            {
+                                // sometimes the depth(Z) of an inferred joint may show as negative
+                                // clamp down to 0.1f to prevent coordinatemapper from returning (-Infinity, -Infinity)
+                                CameraSpacePoint position = jointsD[jointType].Position;
+                                if (position.Z < 0)
+                                {
+                                    position.Z = InferredZPositionClamp;
+                                }
+
+                                DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
+                                jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
+
+                            }
+                            this.DrawBody(joints, jointPoints, dc, drawPen);
+
+                            this.DrawHand(body.HandLeftState, jointPoints[JointType.HandLeft], dc);
+                            this.DrawHand(body.HandRightState, jointPoints[JointType.HandRight], dc);
+                            GameImage.Source = new DrawingImage(drawingGroup);
+                        }
+                    }
+
+\end{lstlisting}
+\caption{Body tracking function}
+\end{figure}
 
 \end{document}
