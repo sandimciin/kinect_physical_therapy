@@ -5,7 +5,33 @@
 \usepackage{setspace}
 \usepackage{tabu}
 \usepackage{geometry}
+\usepackage{listings} % code listings
+\usepackage{color} % colors for code listings
 \geometry{textheight=9.5in, textwidth=7in, margin=0.75in}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{mygreen},
+  commentstyle=\itshape\color{mygreen},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
 
 % 1. Fill in these details
 \def \CapstoneTeamName{     TeamName}
@@ -94,8 +120,18 @@ The exercise menu option leads the user to a page that shows a Kinect camera fee
 \section{Problems Impeding Progress and Solutions}
 \subsection{Windows Presentation Foundation (WPF)}
 The first problem we encountered in development was displaying video data from the Kinect sensor with the body tracking data. We were able to display one or the other without any issues, but when trying to combine them, our application showed nothing. It took some careful examination of the source code to realize the drawing context for each feed (camera and body tracking) needed to be referenced in the page's .xaml file. This proved to be especially challenging since this project is our first experience with WPF.
+
+Our solution for this required the use of two separate bindings for each Kinect class event handler. One for the camera stream or image bitmap and one for the source drawing group representing the bones and joints. After a single frame is acquired for both of the bindings, each frame is sent to be displayed on screen through the XAML interface. Within the XAML window, each frame is displayed inside of a view box or viewing window such that the images scale accordingly. In order to overlay both image bindings on top of each other, they are both displayed inside one grid with their designated view boxes in the same row in the grid.
+
 \subsection{Kinect Body Tracking}
-When formatting and adjusting our page layout for the application, the body tracking/camera feed started behaving differently. While we were able to get both data to display, the body tracking nodes were no longer aligned properly with the user's body in the camera. As of now, the submission of this progress report, we have yet to find a solution to recalibrating the body tracking and camera data.
+When formatting and adjusting our page layout for the application, the body tracking/camera feed started behaving differently. While we were able to get both data to display, the body tracking nodes were no longer aligned properly with the user's body in the camera. As a user, you are able to see your body being tracked, however the skeleton that is being drawn on screen appears misaligned. 
+
+This was occurring because of the perspective of the different sensors on the Kinect device. It contains a separate depth sensor, infrared sensor, and camera. All have different resolutions at which they operate which is why the depth data and camera image are misaligned. 
+
+In order to fix this, we made use of the \texttt{CoordinateMapper} class of the Kinect SDK. This class allows for the translation from one type of point to another. In our case, the camera space points are in a 3D coordinate systems while the image points exist in 2D space. We map the camera space points to the color image points and then draw the bones and joints. The outcome results in an aligned skeleton over the image of the user's body. 
+
+We are currently exploring a library called \textit{Vitruvius} made by Vangos Pterneas which greatly simplifies the task of gathering skeletal data and displaying it over a human body on screen. The library also helps calculate angles between joints and detect gestures. Once we decide if the library works properly with our project, we will consider re-writing the code we already have with the simplified version. This will allow us to implement the remaining functionality of our program and speed up our development process.
+
 \subsection{Gesture Recognition}
 
 \section{Remaining Tasks}
@@ -120,5 +156,7 @@ Data collection settings will determine the start, duration, and time intervals 
 
 \subsection{Report Generation}
 Originally, we assumed that report generation would require analyzing data, but we found that gesture recognition in the Kinect SDK calculates confidence levels of gestures. For report generation, we will analyze the data from gesture confidence levels to display user accuracy. In addition to user accuracy, we will display the duration of the exercises. On the report generation page, there will be graphical visualizations of the data (accuracy and duration of exercises) over time to show the patient's progress.
+
+\section{Code Examples}
 
 \end{document}
