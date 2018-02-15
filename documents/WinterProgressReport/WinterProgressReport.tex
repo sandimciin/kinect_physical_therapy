@@ -7,6 +7,8 @@
 \usepackage{geometry}
 \usepackage{listings} % code listings
 \usepackage{color} % colors for code listings
+\usepackage{float}
+\usepackage{caption}
 \geometry{textheight=9.5in, textwidth=7in, margin=0.75in}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -116,6 +118,7 @@ The purpose of the Kinect Based Physical Therapy Solution project is to provide 
 \section{Goals}
 Our project will have a simple UI that can be easily navigated by a user with Parkinson's Disease. From the UI, the user will be able to select the option that allows them to select and do the available exercises. Our goal is to have two different exercises available to the user to choose from. One of our stretch goals is to be able to have a physical therapist prescribe exercises and specify frequency. The program will guide the user through these exercises using text and verbal instructions. One of our stretch goals is to implement visual (graphical) cues (over-laying their body on the camera feed) to the user to guide them through exercises. As the user performs exercises, their node data will be collected to be sent to their physical therapist as a .csv file, and it will be used for report generation. We will define the exercise's correct movements and compare them to the user's node data. This is how we will analyze the data to determine user accuracy for report generation. Another option the user will be able to select is report generation. This will display the user's performance data in graphs and charts, showing their progress with the exercises over time. 
 
+\section*{Louis Leon}
 \section{Current Project State}
 We began looking through the Microsoft Kinect SDK (version 2.0) early Winter term to familiarize ourselves with some of the API calls and data structures. Fortunately, the SDK provides some sample programs and templates which help developers understand Kinect features and the workflow for creating an application. We used the sample programs to our advantage and began merging them into one cohesive solution. Our main user interface is constructed using XAML (Extensible Application Markup Language). Our main landing page in our user interface currently has some of the following pages: Engagement and Cursor Settings, Exercises, and a display test page. The settings page is where the user can specify how to begin engaging with the Kinect Sensor. There are three different settings that the user can choose from: System Default (hold open hand still in front of sensor), raised arms above head, and any hand detected on screen.
 
@@ -136,20 +139,31 @@ In order to fix this, we made use of the \texttt{CoordinateMapper} class of the 
 
 We are currently exploring a library called \textit{Vitruvius} made by Vangos Pterneas which greatly simplifies the task of gathering skeletal data and displaying it over a human body on screen. The library also helps calculate angles between joints and detect gestures. Once we decide if the library works properly with our project, we will consider re-writing the code we already have with the simplified version. This will allow us to implement the remaining functionality of our program and speed up our development process.
 
-\subsection{Gesture Recognition}
-A major functionality of our project relies heavily on gesture recognition. This is how the application can sense whether the user is doing the exercises properly. The Kinect SDK has classes and functions that allow us to import discrete gestures and use the tracked joints to determine whether the user has completed that gesture. As we were integrating gesture recognition to our project, we were faced with build errors. The Visual Studio solution was not able to recognize the functions in the gesture library, even though the library had already been installed and referenced within the solution. After researching this problem (which turned out to be quite common among Kinect developers), we concluded that the target framework of the solution was not compatible with the gesture library. We have yet to test this theory, but we are confident this is the issue because the gesture example provided by the Kinect SDK Browser was able to build and run; the only (currently known) difference is that the target framework in the gesture example is Win32, and the target framework in our solution is x86. Visual Studio does not allow us to change the target framework to Win32, so we will explore ways to reproduce our project so that we are able to change our target framework to Win32.
-
 \section{Remaining Tasks}
 \subsection{Separate Exercise Recognition}
 One of the remaining tasks that is needing implementation involves exercise recognition. This feature detects a user and recognizes individual exercises based on which the user chooses at the beginning of the program. We plan on implementing some simple exercises such as sitting down and standing back up again as well as arm stretches and lifts. The Kinect SDK supports discrete gesture building which allows you to create custom gestures and train the software to detect your gesture. This involves the use of a Boolean value and a confidence level. The Boolean value is either 'True' or 'False' when detecting whether the user is currently performing the correct gesture. The confidence level is the value at which the sensor is confident that the specific gesture is being done. The value is higher when the gesture is more closely matched to what the values in the gesture database are.
 
 We see the potential in developing a point system which gives the user an incentive to be more accurate in their exercises. The points accumulate as the user performs an exercise and it will be displayed on screen. The final score can be seen after the exercise session is over.
 
+
 \subsection{UI Finalization}
 We currently have a working user interface that is navigable via mouse or hand gestures, however some polishing work needs to occur on some of the graphical elements and design schemes. The tiles in the main navigation page currently do not have any images or indication besides text. We have decided to enlarge the tiles such that they occupy a considerable amount of screen area for ease of use with hand gesture selection. We plan on adding some helpful images to the tile pages that will help visually guide the user to the desired page in the program. We have a couple of options for populating the tile image sources. We can either add high resolution images and fit them inside the tile space or we also have the option of including icons in place of images. We will implement the option that is ultimately more visible for the user as there will be a relatively large amount of distance separating the sensor from the user. 
 
 In addition, the color scheme of graphical user interface remains to be finished. This is not a high priority task, however it will result in a more professional appearance. The pages in the software will all use a common color scheme along with Oregon State University: College of Engineering branding logos. 
 
+\section{Relevant Project Information}
+
+
+\section*{San Dim}
+\section{Current Project State}
+Our program currently allows the user to select menu options. The exercise menu option leads the user to a page that shows a Kinect camera feed and tracks their body. It uses node data to draw joints and bones over the user's image on the camera feed. It also visually indicates whether the user has their hands open, closed, or  loop (closed fist with index finger pointed out). Semi-transparent red circles indicate closed fists, green indicates open hands, and blue indicates loops.
+
+\section{Problems Impeding Progress and Solutions}
+\subsection{Gesture Recognition}
+A major functionality of our project relies heavily on gesture recognition. This is how the application can sense whether the user is doing the exercises properly. The Kinect SDK has classes and functions that allow us to import discrete gestures and use the tracked joints to determine whether the user has completed that gesture. As we were integrating gesture recognition to our project, we were faced with build errors. The Visual Studio solution was not able to recognize the functions in the gesture library, even though the library had already been installed and referenced within the solution. After researching this problem (which turned out to be quite common among Kinect developers), we concluded that the target framework of the solution was not compatible with the gesture library. We have yet to test this theory, but we are confident this is the issue because the gesture example provided by the Kinect SDK Browser was able to build and run; the only (currently known) difference is that the target framework in the gesture example is Win32, and the target framework in our solution is x86. Visual Studio does not allow us to change the target framework to Win32, so we will explore ways to reproduce our project so that we are able to change our target framework to Win32.
+
+
+\section{Remaining Tasks}
 \subsection{On-screen and Verbal Instructions}
 Another component of the UI is the instructions that guide the user through exercises. Once we are able to properly display body nodes and implement exercise recognition, we need to implement a way for the users to know how to do the exercises. We plan to have written instructions on-screen as well as verbal instructions that the user can hear. We are also considering including a small section of the screen showing an example with a video of a physical therapist doing the exercise properly.
 
@@ -162,8 +176,10 @@ Data collection settings will determine the start, duration, and time intervals 
 \subsection{Report Generation}
 Originally, we assumed that report generation would require analyzing data, but we found that gesture recognition in the Kinect SDK calculates confidence levels of gestures. For report generation, we will analyze the data from gesture confidence levels to display user accuracy. In addition to user accuracy, we will display the duration of the exercises. On the report generation page, there will be graphical visualizations of the data (accuracy and duration of exercises) over time to show the patient's progress.
 
-\section{Code Examples}
-\begin{figure}[h]
+\section{Relevant Project Information}
+
+\section{Team Code Examples}
+\begin{figure}[H]
 \begin{lstlisting}[language=C, style=customc]
 if (body.IsTracked)
                     {
@@ -208,5 +224,7 @@ if (body.IsTracked)
 \end{lstlisting}
 \caption{Body tracking function}
 \end{figure}
+
+\section{Conclusion}
 
 \end{document}
