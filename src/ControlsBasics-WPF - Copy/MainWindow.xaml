@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Microsoft.Samples.Kinect.ControlsBasics"
         Name="ControlsBasicsWindow"
-        Title="Controls Basics"
+        Title="Kinect Physical Therapy"
         mc:Ignorable="d"
         d:DesignWidth="1200"
         d:DesignHeight="700"
@@ -33,7 +33,7 @@
 
                 <Image Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Source="Images\Logo.png" Stretch="None" Margin="0 0 0 4"/>
                 <k:KinectUserViewer Grid.Column="1" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" />
-                <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 -1 0" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontSize="18">Controls Basics</TextBlock>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 -1 0" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontSize="18">Kinect Physical Therapy</TextBlock>
             </Grid>
 
             <ContentControl Grid.Row="1" x:Name="navigationRegion">

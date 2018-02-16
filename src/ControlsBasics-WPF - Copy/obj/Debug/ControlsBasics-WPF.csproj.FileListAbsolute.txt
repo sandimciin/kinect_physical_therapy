@@ -98,3 +98,5 @@ C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-W
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF.csproj.CoreCompileInputs.cache
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF.exe
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\Debug\ControlsBasics-WPF.pdb
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\LightBuzz.Vitruvius.dll
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\AnyCPU\Debug\LightBuzz.Vitruvius.xml

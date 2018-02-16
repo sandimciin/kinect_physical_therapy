@@ -40,8 +40,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
         private static Uri mediumGrayImage = new Uri("assets/mediumGray.png", UriKind.Relative);
         private static Uri lightGrayImage = new Uri("assets/lightGray.png", UriKind.Relative);
 
+        private static Uri beachy = new Uri("Images/beach.jpg", UriKind.Relative);
+
         public SampleDataSource()
         {
+            SampleDataSource.beachy = new Uri("Images/beach.jpg", UriKind.Relative);
             string itemContent = string.Format(
                                     CultureInfo.CurrentCulture,
                                     "Item Content: {0}\n\n{0}\n\n{0}\n\n{0}\n\n{0}\n\n{0}\n\n{0}",
@@ -58,14 +61,16 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         "Group-1-Item-1",
                         "Buttons",
                         string.Empty,
-                        SampleDataSource.darkGrayImage,
+                         //SampleDataSource.darkGrayImage,
+                        //new Uri("Images/beach.jpg", UriKind.Relative),
+                        SampleDataSource.beachy,
                         "Several types of buttons with custom styles",
                         itemContent,
                         group1,
                         typeof(ButtonSample)));
             group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-7",
+                        "Group-1-Item-2",
                         "Engagement and Cursor Settings",
                         "",
                         SampleDataSource.darkGrayImage,
@@ -75,7 +80,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         typeof(EngagementSettings)));
             group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-7",
+                        "Group-1-Item-3",
                         "Exercises",
                         "",
                         SampleDataSource.darkGrayImage,
@@ -85,7 +90,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         typeof(ButtonSampleCopy)));
             group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-2",
+                        "Group-1-Item-4",
                         "Color Sample Test",
                         string.Empty,
                         SampleDataSource.darkGrayImage,
@@ -95,7 +100,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         typeof(ColorSample)));
             group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-4",
+                        "Group-1-Item-5",
                         "Color and Nodes Test",
                         string.Empty,
                         SampleDataSource.darkGrayImage,

@@ -179,7 +179,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             this.coordinateMapper = this.kinectSensor.CoordinateMapper;
 
             // get the depth (display) extents
-            FrameDescription frameDescription = this.kinectSensor.DepthFrameSource.FrameDescription;
+            FrameDescription frameDescription = this.kinectSensor.ColorFrameSource.FrameDescription;
+            //CHANGED DepthFrameSource to ColorFrameSource
 
             // get size of joint space
             this.displayWidth = frameDescription.Width;
@@ -408,15 +409,18 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                             foreach (JointType jointType in joints.Keys)
                             {
                                 // sometimes the depth(Z) of an inferred joint may show as negative
-                                // clamp down to 0.1f to prevent coordinatemapper from returning (-Infinity, -Infinity)
+                                // clamp down to 0.1f to prevent coordinatemappercoord from returning (-Infinity, -Infinity)
                                 CameraSpacePoint position = joints[jointType].Position;
                                 if (position.Z < 0)
                                 {
                                     position.Z = InferredZPositionClamp;
                                 }
 
-                                DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
-                                jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
+                                //DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
+                                //jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
+
+                                ColorSpacePoint colorSpacePoint = this.coordinateMapper.MapCameraPointToColorSpace(position);
+                                jointPoints[jointType] = new Point(colorSpacePoint.X, colorSpacePoint.Y); 
                             }
 
                             this.DrawBody(joints, jointPoints, dc, drawPen);
