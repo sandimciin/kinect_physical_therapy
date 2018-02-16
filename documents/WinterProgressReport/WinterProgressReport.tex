@@ -9,6 +9,7 @@
 \usepackage{color} % colors for code listings
 \usepackage{float}
 \usepackage{caption}
+\graphicspath{{images/}}
 \geometry{textheight=9.5in, textwidth=7in, margin=0.75in}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -107,7 +108,7 @@
 \pagenumbering{arabic}
 \tableofcontents
 % 7. uncomment this (if applicable). Consider adding a page break.
-%\listoffigures
+\listoffigures
 %\listoftables
 \clearpage
 
@@ -120,13 +121,13 @@ Our project will have a simple UI that can be easily navigated by a user with Pa
 
 \section{Louis Leon}
 \subsection{Current Project State}
-We began looking through the Microsoft Kinect SDK (version 2.0) early Winter term to familiarize ourselves with some of the API calls and data structures. Fortunately, the SDK provides some sample programs and templates which help developers understand Kinect features and the workflow for creating an application. We used the sample programs to our advantage and began merging them into one cohesive solution. Our main user interface is constructed using XAML (Extensible Application Markup Language). Our main landing page in our user interface currently has some of the following pages: Engagement and Cursor Settings, Exercises, and a display test page. The settings page is where the user can specify how to begin engaging with the Kinect Sensor. There are three different settings that the user can choose from: System Default (hold open hand still in front of sensor), raised arms above head, and any hand detected on screen.
+We began looking through the Microsoft Kinect SDK (version 2.0) early Winter term to familiarize ourselves with some of the API calls and data structures. Fortunately, the SDK provides some sample programs and templates which help developers understand Kinect features and the workflow for creating an application. We used the sample programs to our advantage and began merging them into one cohesive solution. Our main user interface is constructed using XAML (Extensible Application Markup Language). Our main landing page in our user interface currently has some of the following pages: Engagement and Cursor Settings, Exercises, and a display test page. The settings page is where the user can specify how to begin engaging with the Kinect Sensor. There are three different settings that the user can choose from: System Default (hold open hand still in front of sensor), raised arms above head, and any hand detected on screen \cite{KinectDevelop}.
 
 The exercise menu option leads the user to a page that shows a Kinect camera feed and tracks their body. It uses node data to draw joints and bones over the user's image on the camera feed. It also visually indicates whether the user has their hands open, closed, or  loop (closed fist with index finger pointed out). Semi-transparent red circles indicate closed fists, green indicates open hands, and blue indicates loops. This page also indicates when the user is out of the Kinect sensor bounds by displaying a semi-transparent, red border line. 
 
 \subsection{Problems Impeding Progress and Solutions}
 \subsubsection{Windows Presentation Foundation (WPF)}
-The first problem we encountered in development was displaying video data from the Kinect sensor with the body tracking data. We were able to display one or the other without any issues, but when trying to combine them, our application showed nothing. It took some careful examination of the source code to realize the drawing context for each feed (camera and body tracking) needed to be referenced in the page's .xaml file. This proved to be especially challenging since this project is our first experience with WPF.
+The first problem we encountered in development was displaying video data from the Kinect sensor with the body tracking data. We were able to display one or the other without any issues, but when trying to combine them, our application showed nothing. It took some careful examination of the source code to realize the drawing context for each feed (camera and body tracking) needed to be referenced in the page's .xaml file. This proved to be especially challenging since this project is our first experience with WPF \cite{KinectDevelop}.
 
 Our solution for this required the use of two separate bindings for each Kinect class event handler. One for the camera stream or image bitmap and one for the source drawing group representing the bones and joints. After a single frame is acquired for both of the bindings, each frame is sent to be displayed on screen through the XAML interface. Within the XAML window, each frame is displayed inside of a view box or viewing window such that the images scale accordingly. In order to overlay both image bindings on top of each other, they are both displayed inside one grid with their designated view boxes in the same row in the grid.
 
@@ -135,15 +136,17 @@ When formatting and adjusting our page layout for the application, the body trac
 
 This was occurring because of the perspective of the different sensors on the Kinect device. It contains a separate depth sensor, infrared sensor, and camera. All have different resolutions at which they operate which is why the depth data and camera image are misaligned. 
 
-In order to fix this, we made use of the \texttt{CoordinateMapper} class of the Kinect SDK. This class allows for the translation from one type of point to another. In our case, the camera space points are in a 3D coordinate systems while the image points exist in 2D space. We map the camera space points to the color image points and then draw the bones and joints. The outcome results in an aligned skeleton over the image of the user's body. 
+In order to fix this, we made use of the \texttt{CoordinateMapper} class of the Kinect SDK. This class allows for the translation from one type of point to another. In our case, the camera space points are in a 3D coordinate systems while the image points exist in 2D space. We map the camera space points to the color image points and then draw the bones and joints. The outcome results in an aligned skeleton over the image of the user's body \cite{KinectDevelop}. 
 
-We are currently exploring a library called \textit{Vitruvius} made by Vangos Pterneas which greatly simplifies the task of gathering skeletal data and displaying it over a human body on screen. The library also helps calculate angles between joints and detect gestures. Once we decide if the library works properly with our project, we will consider re-writing the code we already have with the simplified version. This will allow us to implement the remaining functionality of our program and speed up our development process.
+We are currently exploring a library called \textit{Vitruvius} made by Vangos Pterneas which greatly simplifies the task of gathering skeletal data and displaying it over a human body on screen. The library also helps calculate angles between joints and detect gestures. Once we decide if the library works properly with our project, we will consider re-writing the code we already have with the simplified version. This will allow us to implement the remaining functionality of our program and speed up our development process \cite{Vitruvius}.
 
 \subsection{Remaining Tasks}
-\subsubsection{Separate Exercise Recognition}
+\subsubsection{Exercise Recognition}
 One of the remaining tasks that is needing implementation involves exercise recognition. This feature detects a user and recognizes individual exercises based on which the user chooses at the beginning of the program. We plan on implementing some simple exercises such as sitting down and standing back up again as well as arm stretches and lifts. The Kinect SDK supports discrete gesture building which allows you to create custom gestures and train the software to detect your gesture. This involves the use of a Boolean value and a confidence level. The Boolean value is either 'True' or 'False' when detecting whether the user is currently performing the correct gesture. The confidence level is the value at which the sensor is confident that the specific gesture is being done. The value is higher when the gesture is more closely matched to what the values in the gesture database are.
 
 We see the potential in developing a point system which gives the user an incentive to be more accurate in their exercises. The points accumulate as the user performs an exercise and it will be displayed on screen. The final score can be seen after the exercise session is over.
+
+As mentioned above, the Kinect library \textit{Vitruvius} supports gesture recognition as well as angle calculations between joints. This will be very helpful in detecting distinct gestures since we are able to customize gestures to our liking and add finer accuracy controls using the angle measurements. An example of this would be defining the minimum angle at which the program recognizes when a user extends his or her arm outwards \cite{Vitruvius}.
 
 
 \subsubsection{UI Finalization}
@@ -151,8 +154,23 @@ We currently have a working user interface that is navigable via mouse or hand g
 
 In addition, the color scheme of graphical user interface remains to be finished. This is not a high priority task, however it will result in a more professional appearance. The pages in the software will all use a common color scheme along with Oregon State University: College of Engineering branding logos. 
 
-\subsection{Relevant Project Information}
+\subsubsection{Physical Therapist Module}
+We intend to include a separate area within our program that directs the user to a page meant for the physical therapist. Its purpose is to allow the physical therapist to specify some of the collection settings as well as select which exercises may be available for the patient. The physical therapist will also have to option to view a summary for the patient and view any reports that have been generated by the program.
 
+Our design choice for this includes adding a button near the top-right corner of the main landing page that navigates the physical therapist to the pages described above. The button should be non-obtrusive but also visible for clarity. This feature is something we plan on implementing near the final stages of development since it is not a high priority or essential element of the project.
+
+\subsection{Relevant Project Information}
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{UI.eps}
+  \caption{Our current user interface layout}
+    \label{fig:UI}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{BodyTrack.eps}
+  \caption{Body Tracking Functionality}
+    \label{fig:BodyTrack}
+\end{figure}
 
 \section{San Dim}
 \subsection{Current Project State}
@@ -234,5 +252,8 @@ if (body.IsTracked)
 \section{Conclusion}
 At this point, we are putting all of our efforts into implementing gesture recognition for the exercises. Until we are able to successfully implement this, the rest of the project will have nothing to be built on. Luckily, the Kinect SDK and Vitruvius makes it trivial to analyze the accuracy of the user's movements, so we are expecting report generation to take much less effort than we had initially thought it would. Based on our schedule, we are on track to having a beta product by the end of this term.
 
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{WinterProgressReport.bib}
 
 \end{document}

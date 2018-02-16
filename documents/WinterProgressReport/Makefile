@@ -15,8 +15,9 @@ pdf: $(PDF)
 
 ps: $(PSF)
 
-$(TRG): %.dvi: %.tex  $(EXAMPLES)
+$(TRG): %.dvi: %.tex *.bib $(EXAMPLES)
 	$(LATEX) $<
+	$(BIBTEX) $(<:%.tex=%)
 	$(LATEX) $<
 	$(LATEX) $<
 
@@ -36,6 +37,6 @@ showps: $(PSF)
 all: pdf
 
 clean:
-	rm -f *.pdf *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg *.toc
+	rm -f *.pdf *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg *.hst *.ver *.bcf *.lof *.toc
 
 .PHONY: all show clean ps pdf showps
