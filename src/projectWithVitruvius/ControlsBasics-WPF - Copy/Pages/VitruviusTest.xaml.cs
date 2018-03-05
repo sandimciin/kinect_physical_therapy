@@ -25,7 +25,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         KinectSensor _sensor;
         MultiSourceFrameReader _reader;
         PlayersController _userReporter;
-        ArmRaise _gesture;
+        RightArmRaise _gesture;
+
+        int counter;
 
         JointType _start = JointType.ShoulderRight;
         JointType _center = JointType.ElbowRight;
@@ -49,7 +51,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 _userReporter.BodyLeft += UserReporter_BodyLeft;
                 _userReporter.Start();
 
-                _gesture = new ArmRaise();
+                _gesture = new RightArmRaise();
                 _gesture.GestureRecognized += Gesture_GestureRecognized;
             }
         }
@@ -103,11 +105,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
                     if (body != null)
                     {
-                        viewer.DrawBody(body, 15,Brushes.Red ,8, Brushes.Red);
+                        viewer.DrawBody(body, 15,Brushes.White ,8, Brushes.Red);
                         angle.Update(body.Joints[_start], body.Joints[_center], body.Joints[_end], 100);
 
                         tblAngle.Text = ((int)angle.Angle).ToString();
                         _gesture.Update(body);
+
+                        ArmRaiseCount.Text = counter.ToString();
                     }
                 }
             }
@@ -127,7 +131,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
         void Gesture_GestureRecognized(object sender, EventArgs e)
         {
-            tblGesture.Text = "ArmRaise Detected!";
+            tblGesture.Text = "RightArmRaise Detected!";
+            counter++;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -6,7 +6,7 @@
       xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900"
-      Unloaded="Page_Unloaded">
+      Loaded="UserControl_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,17 +18,28 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="350" />
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
             <TextBlock x:Name="pageTitle" Text="Angle" Grid.Column="1" 
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
-            <TextBlock Grid.Column="1" TextAlignment="Right"
+            
+            <TextBlock Grid.Column="4" TextAlignment="Right"
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="0,0,20,0">
                 <Run x:Name="tblAngle" Text="-" />°
             </TextBlock>
-            <TextBlock x:Name="tblGesture" Text="Gesture:" Grid.Column="1"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
+            
+            <TextBlock Text="Gesture:" Grid.Column="2"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
+                   <Run x:Name="tblGesture" Text="-"/>
+            </TextBlock>
+            
+            <TextBlock Text="Count: "  Grid.Column="3"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
+                    <Run x:Name="ArmRaiseCount" Text="0"/>
+            </TextBlock>
         </Grid>
 
         <Grid Grid.Row="1">
