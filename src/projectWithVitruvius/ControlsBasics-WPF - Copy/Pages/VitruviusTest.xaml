@@ -27,6 +27,8 @@
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="0,0,20,0">
                 <Run x:Name="tblAngle" Text="-" />°
             </TextBlock>
+            <TextBlock x:Name="tblGesture" Text="Gesture:" Grid.Column="1"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
         </Grid>
 
         <Grid Grid.Row="1">

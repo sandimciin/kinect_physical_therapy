@@ -84,6 +84,8 @@
     </ApplicationDefinition>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
+    <Compile Include="Gestures\ArmRaise.cs" />
+    <Compile Include="Gestures\ArmRaiseSegments.cs" />
     <Compile Include="Pages\VitruviusTest.xaml.cs">
       <DependentUpon>VitruviusTest.xaml</DependentUpon>
     </Compile>
