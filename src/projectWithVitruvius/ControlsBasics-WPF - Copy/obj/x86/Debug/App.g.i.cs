@@ -73,6 +73,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
+            SplashScreen splashScreen = new SplashScreen("splashscreen1.png");
+            splashScreen.Show(true);
             Microsoft.Samples.Kinect.ControlsBasics.App app = new Microsoft.Samples.Kinect.ControlsBasics.App();
             app.InitializeComponent();
             app.Run();

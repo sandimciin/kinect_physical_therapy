@@ -88,6 +88,12 @@
     <Compile Include="Gestures\RightArmRaise.cs" />
     <Compile Include="Gestures\LeftArmRaiseSegments.cs" />
     <Compile Include="Gestures\RightArmRaiseSegments.cs" />
+    <Compile Include="Pages\ExerciseOptions.xaml.cs">
+      <DependentUpon>ExerciseOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SecondExercise.xaml.cs">
+      <DependentUpon>SecondExercise.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\VitruviusTest.xaml.cs">
       <DependentUpon>VitruviusTest.xaml</DependentUpon>
     </Compile>
@@ -114,6 +120,14 @@
     <Page Include="Common\StandardStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExerciseOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SecondExercise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\VitruviusTest.xaml">
       <Generator>MSBuild:Compile</Generator>

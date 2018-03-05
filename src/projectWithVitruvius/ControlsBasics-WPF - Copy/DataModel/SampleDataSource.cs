@@ -56,7 +56,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                     "Group Subtitle: 3",
                     SampleDataSource.mediumGrayImage,
                     "Group Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor scelerisque lorem in vehicula. Aliquam tincidunt, lacus ut sagittis tristique, turpis massa volutpat augue, eu rutrum ligula ante a ante");
-            group1.Items.Add(
+          /*  group1.Items.Add(
                     new SampleDataItem(
                         "Group-1-Item-1",
                         "Buttons",
@@ -67,7 +67,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         "Several types of buttons with custom styles",
                         itemContent,
                         group1,
-                        typeof(ButtonSample)));
+                        typeof(ButtonSample)));*/
             group1.Items.Add(
                     new SampleDataItem(
                         "Group-1-Item-2",
@@ -78,7 +78,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         itemContent,
                         group1,
                         typeof(EngagementSettings)));
-            group1.Items.Add(
+         /*   group1.Items.Add(
                     new SampleDataItem(
                         "Group-1-Item-3",
                         "Exercises",
@@ -117,7 +117,17 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         "Several types of buttons with custom styles",
                         itemContent,
                         group1,
-                        typeof(AnglePage)));
+                        typeof(AnglePage)));*/
+            group1.Items.Add(
+                    new SampleDataItem(
+                        "Group-1-Item-7",
+                        "Exercises",
+                        string.Empty,
+                        SampleDataSource.darkGrayImage,
+                        "Several types of buttons with custom styles",
+                        itemContent,
+                        group1,
+                        typeof(ExerciseOptions)));
             this.AllGroups.Add(group1);
         }
 
