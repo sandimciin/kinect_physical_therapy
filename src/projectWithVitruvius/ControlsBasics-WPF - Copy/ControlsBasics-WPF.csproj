@@ -54,6 +54,9 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LightBuzz.Kinect2CSV">
+      <HintPath>Libraries\LightBuzz.Kinect2CSV.dll</HintPath>
+    </Reference>
     <Reference Include="LightBuzz.Vitruvius, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <HintPath>packages\lightbuzz-vitruvius.2.0.0\lib\net45\LightBuzz.Vitruvius.dll</HintPath>
     </Reference>
@@ -88,12 +91,6 @@
     <Compile Include="Gestures\RightArmRaise.cs" />
     <Compile Include="Gestures\LeftArmRaiseSegments.cs" />
     <Compile Include="Gestures\RightArmRaiseSegments.cs" />
-    <Compile Include="Pages\ExerciseOptions.xaml.cs">
-      <DependentUpon>ExerciseOptions.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SecondExercise.xaml.cs">
-      <DependentUpon>SecondExercise.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\VitruviusTest.xaml.cs">
       <DependentUpon>VitruviusTest.xaml</DependentUpon>
     </Compile>
@@ -120,14 +117,6 @@
     <Page Include="Common\StandardStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ExerciseOptions.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\SecondExercise.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\VitruviusTest.xaml">
       <Generator>MSBuild:Compile</Generator>

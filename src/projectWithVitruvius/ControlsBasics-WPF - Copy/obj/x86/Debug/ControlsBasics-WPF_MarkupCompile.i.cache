@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-Z:\cs461\kinect_physical_therapy\src\projectWithVitruvius\ControlsBasics-WPF - Copy\obj\x86\Debug\
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x86\Debug\
 Microsoft.Samples.Kinect.ControlsBasics
 none
 false
 
-Z:\cs461\kinect_physical_therapy\src\projectWithVitruvius\ControlsBasics-WPF - Copy\App.xaml
-12185292893
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\App.xaml
+9-565091389
 
-261653498453
-15-2119529057
-Common\StandardStyles.xaml;Pages\ExerciseOptions.xaml;Pages\SecondExercise.xaml;Pages\VitruviusTest.xaml;Pages\ColorAndNodes.xaml;Pages\ColorSample.xaml;Pages\InitialTest_ignore.xaml;HandPointers\HandPointerStyles.xaml;MainWindow.xaml;Pages\ButtonSample.xaml;Pages\EngagementSettings.xaml;SelectionDisplay.xaml;
-splashscreen1.png
-False
+192033070456
+15-1315632760
+Common\StandardStyles.xaml;Pages\ColorAndNodes.xaml;Pages\ColorSample.xaml;Pages\ButtonSampleCopy.xaml;HandPointers\HandPointerStyles.xaml;MainWindow.xaml;Pages\ButtonSample.xaml;Pages\EngagementSettings.xaml;SelectionDisplay.xaml;
+
+True
 

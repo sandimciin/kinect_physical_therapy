@@ -1,4 +1,5 @@
 ﻿using LightBuzz.Vitruvius;
+using LightBuzz.Kinect2CSV;
 using Microsoft.Kinect;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         MultiSourceFrameReader _reader;
         PlayersController _userReporter;
         RightArmRaise _gesture;
+        
 
         int counter;
 

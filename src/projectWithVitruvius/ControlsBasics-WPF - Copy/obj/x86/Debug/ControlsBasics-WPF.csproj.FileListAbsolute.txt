@@ -34,6 +34,3 @@ C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x86\Debug\ControlsBasi
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x86\Debug\ControlsBasics-WPF.csproj.CoreCompileInputs.cache
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x86\Debug\ControlsBasics-WPF.exe
 C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x86\Debug\ControlsBasics-WPF.pdb
-Z:\cs461\kinect_physical_therapy\src\projectWithVitruvius\ControlsBasics-WPF - Copy\bin\x86\Debug\ControlsBasics-WPF.exe.config
-Z:\cs461\kinect_physical_therapy\src\projectWithVitruvius\ControlsBasics-WPF - Copy\obj\x86\Debug\ControlsBasics-WPF.exe
-Z:\cs461\kinect_physical_therapy\src\projectWithVitruvius\ControlsBasics-WPF - Copy\obj\x86\Debug\ControlsBasics-WPF.pdb
