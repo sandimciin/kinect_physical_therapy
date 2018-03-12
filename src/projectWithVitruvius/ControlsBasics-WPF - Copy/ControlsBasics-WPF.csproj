@@ -54,6 +54,10 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LightBuzz.Kinect2CSV, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\LightBuzz.Kinect2CSV.dll</HintPath>
+    </Reference>
     <Reference Include="LightBuzz.Vitruvius, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <HintPath>packages\lightbuzz-vitruvius.2.0.0\lib\net45\LightBuzz.Vitruvius.dll</HintPath>
     </Reference>

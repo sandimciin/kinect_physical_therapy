@@ -1,5 +1,7 @@
 ﻿using LightBuzz.Vitruvius;
+using LightBuzz.Kinect2CSV;
 using Microsoft.Kinect;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
     /// <summary>
@@ -27,6 +30,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         PlayersController _userReporter;
         RightArmRaise _gesture;
         LeftArmRaise _gesture2;
+        KinectCSVManager _recorder = null;
 
         bool onRightArmRaise = true;
         int rcounter=10;
@@ -59,6 +63,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
                 _gesture2 = new LeftArmRaise();
                 _gesture2.GestureRecognized += Gesture2_GestureRecognized;
+
+                _recorder = new KinectCSVManager();
             }
         }
 
@@ -117,7 +123,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                         tblAngle.Text = ((int)angle.Angle).ToString();
                         _gesture.Update(body);
                         _gesture2.Update(body);
-                        
+
+                        _recorder.Update(body);
 
                         if (onRightArmRaise)
                         {
@@ -132,6 +139,23 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                         if (lcounter == 0)
                         {
                             Instructions.Text = "You have completed this exercise!";
+                            if (_recorder.IsRecording)
+                            {
+                                _recorder.Stop();
+
+
+                                SaveFileDialog dialog = new SaveFileDialog
+                                {
+                                    Filter = "Excel files|*.csv"
+                                };
+
+                                dialog.ShowDialog();
+
+                                if (!string.IsNullOrWhiteSpace(dialog.FileName))
+                                {
+                                    System.IO.File.Copy(_recorder.Result, dialog.FileName);
+                                }
+                            }
                         }
                     }
                 }
@@ -170,7 +194,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            _recorder.Start();
         }
     }
 }

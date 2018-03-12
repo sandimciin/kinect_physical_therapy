@@ -118,3 +118,8 @@ C:\Users\San Dim\Documents\Classes\CS 461\withVitruvius\ControlsBasics-WPF - Cop
 C:\Users\San Dim\Documents\Classes\CS 461\withVitruvius\ControlsBasics-WPF - Copy\obj\x64\Debug\ControlsBasics-WPF.g.resources
 C:\Users\San Dim\Documents\Classes\CS 461\withVitruvius\ControlsBasics-WPF - Copy\obj\x64\Debug\Microsoft.Samples.Kinect.ControlsBasics.Properties.Resources.resources
 C:\Users\San Dim\Documents\Classes\CS 461\withVitruvius\ControlsBasics-WPF - Copy\obj\x64\Debug\ControlsBasics-WPF.csproj.GenerateResource.Cache
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\bin\x64\Debug\LightBuzz.Kinect2CSV.dll
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x64\Debug\Pages\ExerciseOptions.baml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x64\Debug\Pages\SecondExercise.baml
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x64\Debug\Pages\ExerciseOptions.g.cs
+C:\Users\Louis\source\repos\ControlsBasics-WPF - Copy\obj\x64\Debug\Pages\SecondExercise.g.cs
