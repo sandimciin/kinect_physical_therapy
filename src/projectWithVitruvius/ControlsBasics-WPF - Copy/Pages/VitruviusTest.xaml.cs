@@ -26,8 +26,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         MultiSourceFrameReader _reader;
         PlayersController _userReporter;
         RightArmRaise _gesture;
+        LeftArmRaise _gesture2;
 
-        int counter;
+        bool onRightArmRaise = true;
+        int rcounter=10;
+        int lcounter = 10;
 
         JointType _start = JointType.ShoulderRight;
         JointType _center = JointType.ElbowRight;
@@ -53,6 +56,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
                 _gesture = new RightArmRaise();
                 _gesture.GestureRecognized += Gesture_GestureRecognized;
+
+                _gesture2 = new LeftArmRaise();
+                _gesture2.GestureRecognized += Gesture2_GestureRecognized;
             }
         }
 
@@ -110,8 +116,23 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
                         tblAngle.Text = ((int)angle.Angle).ToString();
                         _gesture.Update(body);
+                        _gesture2.Update(body);
+                        
 
-                        ArmRaiseCount.Text = counter.ToString();
+                        if (onRightArmRaise)
+                        {
+                            Instructions.Text = "Raise your right arm above your head";
+                            ArmRaiseCount.Text = rcounter.ToString();
+                        }
+                        else
+                        {
+                            Instructions.Text = "Raise your left arm above your head";
+                            ArmRaiseCount.Text = lcounter.ToString();
+                        }
+                        if (lcounter == 0)
+                        {
+                            Instructions.Text = "You have completed this exercise!";
+                        }
                     }
                 }
             }
@@ -132,7 +153,19 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         void Gesture_GestureRecognized(object sender, EventArgs e)
         {
             tblGesture.Text = "RightArmRaise Detected!";
-            counter++;
+            Instructions.Text = "Lower your right arm";
+            rcounter--;
+            if (rcounter == 0)
+            {
+                onRightArmRaise = false;
+            }
+        }
+
+        void Gesture2_GestureRecognized(object sender, EventArgs e)
+        {
+            tblGesture.Text = "LeftArmRaise Detected!";
+            Instructions.Text = "Lower your left arm";
+            lcounter--;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

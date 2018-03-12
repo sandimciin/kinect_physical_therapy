@@ -20,14 +20,8 @@
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock x:Name="pageTitle" Text="Second Exercise" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
-            <TextBlock Grid.Column="1" TextAlignment="Right"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="0,0,20,0">
-                <Run x:Name="tblAngle" Text="-" />°
-            </TextBlock>
-            <TextBlock x:Name="tblGesture" Text="Gesture:" Grid.Column="1"
+
+            <TextBlock x:Name="pageTitle" Text="Walking Exercise" Grid.Column="1" 
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
         </Grid>
 
@@ -36,6 +30,8 @@
             <Viewbox>
                 <Canvas Width="1920" Height="1080">
                     <controls:KinectAngle x:Name="angle" Opacity="0.5" />
+                    <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
+                    </TextBlock>
                 </Canvas>
             </Viewbox>
         </Grid>

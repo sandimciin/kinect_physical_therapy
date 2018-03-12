@@ -36,10 +36,12 @@
                    <Run x:Name="tblGesture" Text="-"/>
             </TextBlock>
             
-            <TextBlock Text="Count: "  Grid.Column="3"
+            <TextBlock Text="Repetitions Remaining: "  Grid.Column="3"
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
-                    <Run x:Name="ArmRaiseCount" Text="0"/>
+                    <Run x:Name="ArmRaiseCount" Text="-"/>
             </TextBlock>
+
+
         </Grid>
 
         <Grid Grid.Row="1">
@@ -47,8 +49,12 @@
             <Viewbox>
                 <Canvas Width="1920" Height="1080">
                     <controls:KinectAngle x:Name="angle" Opacity="0.5" />
+                    <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
+                    </TextBlock>
                 </Canvas>
             </Viewbox>
+
+            
         </Grid>
 
         <Grid Grid.Row="1">
@@ -67,5 +73,7 @@
 
             </Popup>
         </Grid>
+        
+
     </Grid>
 </UserControl>

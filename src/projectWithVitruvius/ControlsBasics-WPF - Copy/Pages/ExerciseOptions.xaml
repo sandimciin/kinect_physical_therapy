@@ -27,7 +27,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
-                <Button Content="Sitting to Standing" Style="{StaticResource SingleButtonStyle}" Click="Click_SecondExercise" />
+                <Button Content="Walking" Style="{StaticResource SingleButtonStyle}" Click="Click_SecondExercise" />
             </StackPanel>
 
 

@@ -105,9 +105,17 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                     {
                         viewer.DrawBody(body, 15,Brushes.Red ,8, Brushes.Red);
                         angle.Update(body.Joints[_start], body.Joints[_center], body.Joints[_end], 100);
-
-                        tblAngle.Text = ((int)angle.Angle).ToString();
+                        
                         _gesture.Update(body);
+
+                        if (body.Joints[JointType.Head].Position.Z > 2)
+                        {
+                            Instructions.Text = "Walk forward toward the sensor";
+                        }
+                        else
+                        {
+                            Instructions.Text = "Stop";
+                        }
                     }
                 }
             }
@@ -121,13 +129,10 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         {
             viewer.Clear();
             angle.Clear();
-
-            tblAngle.Text = "-";
         }
 
         void Gesture_GestureRecognized(object sender, EventArgs e)
         {
-            tblGesture.Text = "ArmRaise Detected!";
         }
     }
 }

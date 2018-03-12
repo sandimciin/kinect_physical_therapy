@@ -24,7 +24,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         {
 
             // left hand in front of left elbow
-            if (body.Joints[JointType.HandLeft].Position.Z < body.Joints[JointType.ElbowRight].Position.Z)
+            if (body.Joints[JointType.HandLeft].Position.Z < body.Joints[JointType.ElbowLeft].Position.Z)
             {
                 // left hand below shoulder height but above hip height
                 if (body.Joints[JointType.HandLeft].Position.Y < body.Joints[JointType.Head].Position.Y && body.Joints[JointType.HandLeft].Position.Y > body.Joints[JointType.SpineBase].Position.Y)
