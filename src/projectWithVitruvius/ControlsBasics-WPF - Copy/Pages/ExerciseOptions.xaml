@@ -18,8 +18,9 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10 0 0 0">
@@ -30,6 +31,9 @@
                 <Button Content="Walking" Style="{StaticResource SingleButtonStyle}" Click="Click_SecondExercise" />
             </StackPanel>
 
+            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 0 0 0">
+                <Button Content="Sitting and Standing" Style="{StaticResource SingleButtonStyle}" Click="Click_ThirdExercise" />
+            </StackPanel>
 
         </Grid>
     </Grid>

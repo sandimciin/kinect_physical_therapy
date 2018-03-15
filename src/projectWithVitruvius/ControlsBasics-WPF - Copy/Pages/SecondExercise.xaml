@@ -6,7 +6,7 @@
       xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900"
-      Unloaded="Page_Unloaded">
+      Loaded="UserControl_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
             <controls:KinectViewer x:Name="viewer" />
             <Viewbox>
                 <Canvas Width="1920" Height="1080">
-                    <controls:KinectAngle x:Name="angle" Opacity="0.5" />
+                    <!--<controls:KinectAngle x:Name="angle" Opacity="0.5" />-->
                     <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
                     </TextBlock>
                 </Canvas>

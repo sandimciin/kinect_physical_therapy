@@ -1,7 +1,7 @@
 ﻿using LightBuzz.Vitruvius;
 using LightBuzz.Kinect2CSV;
-using Microsoft.Kinect;
 using Microsoft.Win32;
+using Microsoft.Kinect;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
@@ -125,6 +124,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                         _gesture2.Update(body);
 
                         _recorder.Update(body);
+
 
                         if (onRightArmRaise)
                         {

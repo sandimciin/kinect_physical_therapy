@@ -28,6 +28,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
     {
         AnglePage ArmRaisesPage = new AnglePage();
         SecondExercise secondExercisePage = new SecondExercise();
+        ThirdExercise thirdExercisePage = new ThirdExercise();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExerciseOptions" /> class.
@@ -49,6 +50,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             //AnglePage armRaisePage = new AnglePage();
             // this.NavigationService.Navigate(armRaisePage);
             Content = secondExercisePage;
+        }
+
+        private void Click_ThirdExercise(object sender, RoutedEventArgs e)
+        {
+            //AnglePage armRaisePage = new AnglePage();
+            // this.NavigationService.Navigate(armRaisePage);
+            Content = thirdExercisePage;
         }
     }
 }

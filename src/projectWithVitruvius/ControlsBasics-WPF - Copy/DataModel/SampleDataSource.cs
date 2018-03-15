@@ -41,10 +41,12 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
         private static Uri lightGrayImage = new Uri("assets/lightGray.png", UriKind.Relative);
 
         private static Uri beachy = new Uri("Images/beach.jpg", UriKind.Relative);
+        private static Uri settings = new Uri("Images/settings.jpg", UriKind.Relative);
 
         public SampleDataSource()
         {
             SampleDataSource.beachy = new Uri("Images/beach.jpg", UriKind.Relative);
+            SampleDataSource.settings = new Uri("Images/settings.jpg", UriKind.Relative);
             string itemContent = string.Format(
                                     CultureInfo.CurrentCulture,
                                     "Item Content: {0}\n\n{0}\n\n{0}\n\n{0}\n\n{0}\n\n{0}\n\n{0}",
@@ -56,18 +58,28 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                     "Group Subtitle: 3",
                     SampleDataSource.mediumGrayImage,
                     "Group Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor scelerisque lorem in vehicula. Aliquam tincidunt, lacus ut sagittis tristique, turpis massa volutpat augue, eu rutrum ligula ante a ante");
-          /*  group1.Items.Add(
+            group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-1",
-                        "Buttons",
+                        "Group-1-Item-7",
+                        "Exercises",
                         string.Empty,
-                         //SampleDataSource.darkGrayImage,
-                        //new Uri("Images/beach.jpg", UriKind.Relative),
-                        SampleDataSource.beachy,
+                        SampleDataSource.darkGrayImage,
                         "Several types of buttons with custom styles",
                         itemContent,
                         group1,
-                        typeof(ButtonSample)));*/
+                        typeof(ExerciseOptions)));
+            group1.Items.Add(
+                    new SampleDataItem(
+                        "Group-1-Item-1",
+                        "Data Collection Settings",
+                        string.Empty,
+                         //SampleDataSource.darkGrayImage,
+                        //new Uri("Images/beach.jpg", UriKind.Relative),
+                        SampleDataSource.settings,
+                        "Several types of buttons with custom styles",
+                        itemContent,
+                        group1,
+                        typeof(ButtonSample)));
             group1.Items.Add(
                     new SampleDataItem(
                         "Group-1-Item-2",
@@ -118,16 +130,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         itemContent,
                         group1,
                         typeof(AnglePage)));*/
-            group1.Items.Add(
-                    new SampleDataItem(
-                        "Group-1-Item-7",
-                        "Exercises",
-                        string.Empty,
-                        SampleDataSource.darkGrayImage,
-                        "Several types of buttons with custom styles",
-                        itemContent,
-                        group1,
-                        typeof(ExerciseOptions)));
+            
             this.AllGroups.Add(group1);
         }
 
