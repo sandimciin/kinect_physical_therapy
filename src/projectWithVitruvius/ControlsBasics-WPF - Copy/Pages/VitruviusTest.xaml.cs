@@ -1,8 +1,10 @@
 ﻿using LightBuzz.Vitruvius;
 using LightBuzz.Kinect2CSV;
-using Microsoft.Win32;
 using Microsoft.Kinect;
+using Microsoft.Win32;
 using System;
+using System.IO;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
     /// <summary>
@@ -30,10 +33,14 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         RightArmRaise _gesture;
         LeftArmRaise _gesture2;
         KinectCSVManager _recorder = null;
+        Stopwatch _timer;
 
         bool onRightArmRaise = true;
-        int rcounter=10;
+        int rcounter = 10;
         int lcounter = 10;
+        int maxAngle = 0;
+        double userHeight;
+        string sessionData = "Hello!";
 
         JointType _start = JointType.ShoulderRight;
         JointType _center = JointType.ElbowRight;
@@ -64,6 +71,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 _gesture2.GestureRecognized += Gesture2_GestureRecognized;
 
                 _recorder = new KinectCSVManager();
+
+                _timer = new Stopwatch();
             }
         }
 
@@ -116,15 +125,25 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
                     if (body != null)
                     {
-                        viewer.DrawBody(body, 15,Brushes.White ,8, Brushes.Red);
+                        viewer.DrawBody(body, 15, Brushes.White, 8, Brushes.Red);
                         angle.Update(body.Joints[_start], body.Joints[_center], body.Joints[_end], 100);
 
                         tblAngle.Text = ((int)angle.Angle).ToString();
+
+                        if (rcounter < 10 && onRightArmRaise)
+                        {
+                            if (maxAngle < (int)angle.Angle)
+                            {
+                                maxAngle = (int)angle.Angle;
+                                sessionData += "Max Angle on Right Arm Raise: " + maxAngle.ToString() + Environment.NewLine;
+                                sessionData += "User Height: " + body.Height().ToString() + Environment.NewLine;
+                            }
+                        }
+
                         _gesture.Update(body);
                         _gesture2.Update(body);
 
                         _recorder.Update(body);
-
 
                         if (onRightArmRaise)
                         {
@@ -142,6 +161,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                             if (_recorder.IsRecording)
                             {
                                 _recorder.Stop();
+                                _timer.Stop();
 
 
                                 SaveFileDialog dialog = new SaveFileDialog
@@ -154,6 +174,10 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                                 if (!string.IsNullOrWhiteSpace(dialog.FileName))
                                 {
                                     System.IO.File.Copy(_recorder.Result, dialog.FileName);
+                                    string sessionPath = dialog.FileName.Replace(".csv", ".txt");
+                                    sessionData += "Date of Exercise: " + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + Environment.NewLine;
+                                    sessionData += "Total Time: " + _timer.Elapsed.ToString() + Environment.NewLine;
+                                    File.WriteAllText(sessionPath, sessionData);
                                 }
                             }
                         }
@@ -195,6 +219,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             _recorder.Start();
+            _timer.Start();
         }
     }
 }
