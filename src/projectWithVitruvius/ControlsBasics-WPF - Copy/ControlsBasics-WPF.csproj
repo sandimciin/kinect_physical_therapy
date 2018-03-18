@@ -93,6 +93,9 @@
     <Compile Include="Gestures\RightArmRaise.cs" />
     <Compile Include="Gestures\LeftArmRaiseSegments.cs" />
     <Compile Include="Gestures\RightArmRaiseSegments.cs" />
+    <Compile Include="Pages\ReportGeneration.xaml.cs">
+      <DependentUpon>ReportGeneration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ExerciseOptions.xaml.cs">
       <DependentUpon>ExerciseOptions.xaml</DependentUpon>
     </Compile>
@@ -102,8 +105,8 @@
     <Compile Include="Pages\ThirdExercise.xaml.cs">
       <DependentUpon>ThirdExercise.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\VitruviusTest.xaml.cs">
-      <DependentUpon>VitruviusTest.xaml</DependentUpon>
+    <Compile Include="Pages\FirstExercise.xaml.cs">
+      <DependentUpon>FirstExercise.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ColorAndNodes.xaml.cs">
       <DependentUpon>ColorAndNodes.xaml</DependentUpon>
@@ -129,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ReportGeneration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ExerciseOptions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,7 +148,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\VitruviusTest.xaml">
+    <Page Include="Pages\FirstExercise.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -247,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\sitting.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\test1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

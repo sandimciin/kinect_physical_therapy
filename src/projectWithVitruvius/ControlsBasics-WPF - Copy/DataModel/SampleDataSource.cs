@@ -90,47 +90,57 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                         itemContent,
                         group1,
                         typeof(EngagementSettings)));
-         /*   group1.Items.Add(
+            group1.Items.Add(
                     new SampleDataItem(
-                        "Group-1-Item-3",
-                        "Exercises",
+                        "Group-1-Item-Reports",
+                        "Reports",
                         "",
                         SampleDataSource.darkGrayImage,
-                        "Enables user to switch between engagement models and cursor visuals.",
+                        "Enables user to see generated reports.",
                         itemContent,
                         group1,
-                        typeof(ButtonSampleCopy)));
-            group1.Items.Add(
-                    new SampleDataItem(
-                        "Group-1-Item-4",
-                        "Color Sample Test",
-                        string.Empty,
-                        SampleDataSource.darkGrayImage,
-                        "Several types of buttons with custom styles",
-                        itemContent,
-                        group1,
-                        typeof(ColorSample)));
-            group1.Items.Add(
-                    new SampleDataItem(
-                        "Group-1-Item-5",
-                        "Color and Nodes Test",
-                        string.Empty,
-                        SampleDataSource.darkGrayImage,
-                        "Several types of buttons with custom styles",
-                        itemContent,
-                        group1,
-                        typeof(ColorAndNodes)));
-            group1.Items.Add(
-                    new SampleDataItem(
-                        "Group-1-Item-6",
-                        "Vitruvius",
-                        string.Empty,
-                        SampleDataSource.darkGrayImage,
-                        "Several types of buttons with custom styles",
-                        itemContent,
-                        group1,
-                        typeof(AnglePage)));*/
-            
+                        typeof(ReportGeneration)));
+            /*   group1.Items.Add(
+                       new SampleDataItem(
+                           "Group-1-Item-3",
+                           "Exercises",
+                           "",
+                           SampleDataSource.darkGrayImage,
+                           "Enables user to switch between engagement models and cursor visuals.",
+                           itemContent,
+                           group1,
+                           typeof(ButtonSampleCopy)));
+               group1.Items.Add(
+                       new SampleDataItem(
+                           "Group-1-Item-4",
+                           "Color Sample Test",
+                           string.Empty,
+                           SampleDataSource.darkGrayImage,
+                           "Several types of buttons with custom styles",
+                           itemContent,
+                           group1,
+                           typeof(ColorSample)));
+               group1.Items.Add(
+                       new SampleDataItem(
+                           "Group-1-Item-5",
+                           "Color and Nodes Test",
+                           string.Empty,
+                           SampleDataSource.darkGrayImage,
+                           "Several types of buttons with custom styles",
+                           itemContent,
+                           group1,
+                           typeof(ColorAndNodes)));
+               group1.Items.Add(
+                       new SampleDataItem(
+                           "Group-1-Item-6",
+                           "Vitruvius",
+                           string.Empty,
+                           SampleDataSource.darkGrayImage,
+                           "Several types of buttons with custom styles",
+                           itemContent,
+                           group1,
+                           typeof(AnglePage)));*/
+
             this.AllGroups.Add(group1);
         }
 

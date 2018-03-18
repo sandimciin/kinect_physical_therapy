@@ -43,6 +43,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             //AnglePage armRaisePage = new AnglePage();
             // this.NavigationService.Navigate(armRaisePage);
             Content = ArmRaisesPage;
+
         }
 
         private void Click_SecondExercise(object sender, RoutedEventArgs e)

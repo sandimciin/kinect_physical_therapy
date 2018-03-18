@@ -1,0 +1,4 @@
+Max Angle on Right Arm Raise	130
+User Height	1.98343883333
+Date of Exercise	03_17_2018_15_24_40
+Total Time	00:01:21.4823256
