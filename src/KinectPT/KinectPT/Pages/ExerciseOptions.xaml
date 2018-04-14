@@ -1,0 +1,49 @@
+﻿<Page x:Class="KinectPT.ExerciseOptions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KinectPT"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="ExerciseOptions">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Button Content="Back button" Height="200" Width="200" HorizontalAlignment="Left" Click="Click_Back"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <!-- Page title -->
+            <TextBlock x:Name="pageTitle" Text="Exercise Options" Margin="0 10 0 10"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10 0 0 0">
+                <Button Content="Arm Raises" Click="Click_ArmRaises"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
+                <Button Content="Walking" Click="Click_Walking" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 0 0 0">
+                <Button Content="Sitting and Standing" Click="Click_SittingStanding" />
+            </StackPanel>
+
+        </Grid>
+        
+    </Grid>
+</Page>
