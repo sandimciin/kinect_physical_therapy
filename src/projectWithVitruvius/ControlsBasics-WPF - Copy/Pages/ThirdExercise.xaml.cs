@@ -1,4 +1,5 @@
-﻿using LightBuzz.Vitruvius;
+﻿/* Third Exercise - Sitting Down and Standing Up */
+using LightBuzz.Vitruvius;
 using LightBuzz.Kinect2CSV;
 using Microsoft.Win32;
 using Microsoft.Kinect;

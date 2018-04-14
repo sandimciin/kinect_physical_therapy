@@ -1,4 +1,5 @@
-﻿using LightBuzz.Vitruvius;
+﻿/* Arm raises - First Exercise */
+using LightBuzz.Vitruvius;
 using LightBuzz.Kinect2CSV;
 using Microsoft.Kinect;
 using Microsoft.Win32;
@@ -38,13 +39,21 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         bool onRightArmRaise = true;
         int rcounter = 10;
         int lcounter = 10;
-        int maxAngle = 0;
-        double userHeight;
-        string sessionData = "Hello!";
+        double userHeight = 0;
+        int maxRightArmAngle = 0;
+        int maxLeftArmAngle = 0;
+        string sessionData = "";
 
-        JointType _start = JointType.ShoulderRight;
-        JointType _center = JointType.ElbowRight;
-        JointType _end = JointType.WristRight;
+        /* Angle Calculation for the right arm */
+        JointType _startRight = JointType.ShoulderRight;
+        JointType _centerRight = JointType.ElbowRight;
+        JointType _endRight = JointType.WristRight;
+
+        /* Angle Calculation for the left arm */
+        JointType _startLeft = JointType.ShoulderLeft;
+        JointType _centerLeft = JointType.ElbowLeft;
+        JointType _endLeft = JointType.WristLeft;
+
 
         public AnglePage()
         {
@@ -126,17 +135,40 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                     if (body != null)
                     {
                         viewer.DrawBody(body, 15, Brushes.White, 8, Brushes.Red);
-                        angle.Update(body.Joints[_start], body.Joints[_center], body.Joints[_end], 100);
+                        // Gather the uesr's height at the beginning of the exercise
+                        userHeight = body.Height();
+                        // Draw the Arm Angles
+                        rightArmAngle.Update(body.Joints[_startRight], body.Joints[_centerRight], body.Joints[_endRight], 100);
+                        leftArmAngle.Update(body.Joints[_startLeft], body.Joints[_centerLeft], body.Joints[_endLeft], 100);
 
-                        tblAngle.Text = ((int)angle.Angle).ToString();
+
+                        // Update the corresponding armAngle value to the screen
+                        if (onRightArmRaise)
+                        {
+                            tblAngle.Text = ((int)rightArmAngle.Angle).ToString();
+                        }
+                        else
+                        {
+                            tblAngle.Text = ((int)leftArmAngle.Angle).ToString();
+                        }
+                            
+
 
                         if (rcounter < 10 && onRightArmRaise)
                         {
-                            if (maxAngle < (int)angle.Angle)
+                            if (maxRightArmAngle < (int)rightArmAngle.Angle)
                             {
-                                maxAngle = (int)angle.Angle;
-                                sessionData += "Max Angle on Right Arm Raise: " + maxAngle.ToString() + Environment.NewLine;
-                                sessionData += "User Height: " + body.Height().ToString() + Environment.NewLine;
+                                maxRightArmAngle = (int)rightArmAngle.Angle;
+                               // sessionData += "Max Angle on Right Arm Raise: " + maxRightArmAngle.ToString() + Environment.NewLine;
+                               // sessionData += "User Height: " + body.Height().ToString() + Environment.NewLine;
+                            }
+                        }
+                        else if (lcounter < 10 && !onRightArmRaise)
+                        {
+                            if (maxLeftArmAngle < (int)leftArmAngle.Angle)
+                            {
+                                maxLeftArmAngle = (int)leftArmAngle.Angle;
+                               // sessionData += "Max Angle on Left Arm Raise: " + maxLeftArmAngle.ToString() + Environment.NewLine;
                             }
                         }
 
@@ -153,6 +185,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                         else
                         {
                             Instructions.Text = "Raise your left arm above your head";
+                            pageTitle.Text = "Left Arm Angle:";
                             ArmRaiseCount.Text = lcounter.ToString();
                         }
                         if (lcounter == 0)
@@ -174,9 +207,16 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                                 if (!string.IsNullOrWhiteSpace(dialog.FileName))
                                 {
                                     System.IO.File.Copy(_recorder.Result, dialog.FileName);
+
+                                    // Report file uses the path used for writing to the CSV location and replaces .csv with .txt
                                     string sessionPath = dialog.FileName.Replace(".csv", ".txt");
+
+                                    // Write all report data at once in this order:
                                     sessionData += "Date of Exercise: " + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + Environment.NewLine;
                                     sessionData += "Total Time: " + _timer.Elapsed.ToString() + Environment.NewLine;
+                                    sessionData += "Height of User: " + userHeight.ToString() + Environment.NewLine;
+                                    sessionData += "Max Angle on Right Arm Raise: " + maxRightArmAngle.ToString() + Environment.NewLine;
+                                    sessionData += "Max Angle on Left Arm Raise: " + maxLeftArmAngle.ToString() + Environment.NewLine;
                                     File.WriteAllText(sessionPath, sessionData);
                                 }
                             }
@@ -193,7 +233,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         void UserReporter_BodyLeft(object sender, UsersControllerEventArgs e)
         {
             viewer.Clear();
-            angle.Clear();
+            leftArmAngle.Clear();
+            rightArmAngle.Clear();
 
             tblAngle.Text = "-";
         }

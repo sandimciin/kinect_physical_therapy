@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Loaded="UserControl_Loaded">
 
     <Grid>
@@ -22,39 +22,39 @@
                 <ColumnDefinition Width="350" />
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock x:Name="pageTitle" Text="Angle" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
-            
-            <TextBlock Grid.Column="4" TextAlignment="Right"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="0,0,20,0">
+
+            <TextBlock x:Name="pageTitle" Text="Right Arm Angle:" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="20,35,325,23" />
+
+            <TextBlock Grid.Column="2" TextAlignment="Right"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="30,41,225,17">
                 <Run x:Name="tblAngle" Text="-" />°
             </TextBlock>
-            
-            <TextBlock Text="Gesture:" Grid.Column="2"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
+
+            <TextBlock Text="Gesture:" Grid.Column="3"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="45,35,790,23" >
                    <Run x:Name="tblGesture" Text="-"/>
             </TextBlock>
-            
+
             <TextBlock Text="Repetitions Remaining: "  Grid.Column="3"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="665,35,0,23" >
                     <Run x:Name="ArmRaiseCount" Text="-"/>
             </TextBlock>
-
-
         </Grid>
 
         <Grid Grid.Row="1">
             <controls:KinectViewer x:Name="viewer" />
             <Viewbox>
                 <Canvas Width="1920" Height="1080">
-                    <controls:KinectAngle x:Name="angle" Opacity="0.5" />
+                    <controls:KinectAngle x:Name="leftArmAngle" Opacity="0.5" />
+                    <controls:KinectAngle x:Name="rightArmAngle" Opacity="0.5" />
+
                     <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
                     </TextBlock>
                 </Canvas>
             </Viewbox>
 
-            
+
         </Grid>
 
         <!--<Grid Grid.Row="1">
@@ -73,7 +73,7 @@
 
             </Popup>
         </Grid>-->
-        
+
 
     </Grid>
 </UserControl>

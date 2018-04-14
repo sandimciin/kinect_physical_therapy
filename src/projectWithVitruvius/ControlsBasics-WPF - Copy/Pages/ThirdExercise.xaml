@@ -57,7 +57,7 @@
             
         </Grid>
 
-        <Grid Grid.Row="1">
+        <!--<Grid Grid.Row="1">
             <CheckBox Name = "PCheckBox" Margin = "198,92,460,342" Content = "Checked Me" />
             <Popup IsOpen = "{Binding ElementName = PCheckBox,Path = IsChecked}"    
          PlacementTarget = "{Binding ElementName = PCheckBox}"
@@ -72,7 +72,7 @@
                 </Canvas>
 
             </Popup>
-        </Grid>
+        </Grid>-->
         
 
     </Grid>

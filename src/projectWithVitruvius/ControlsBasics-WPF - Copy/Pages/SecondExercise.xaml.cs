@@ -1,4 +1,5 @@
-﻿using LightBuzz.Vitruvius;
+﻿/* Second Exercise - Walking Back and Forth */
+using LightBuzz.Vitruvius;
 using Microsoft.Kinect;
 using LightBuzz.Kinect2CSV;
 using Microsoft.Win32;
