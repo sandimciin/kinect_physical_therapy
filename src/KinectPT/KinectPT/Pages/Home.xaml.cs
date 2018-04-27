@@ -26,20 +26,19 @@ namespace KinectPT
         }
         private void Click_Exercises(object sender, RoutedEventArgs e)
         {
-            //ExerciseOptions exerciseOptionsPage = new ExerciseOptions();
-            //NavigationService.Navigate(exerciseOptionsPage);
-            //System.Uri uri = new Uri("//Pages/ExerciseOptions.xaml", UriKind.Relative);
-            //NavigationService.Navigate(uri);
-
-            //NavigationService nav = NavigationService.GetNavigationService(this);
-            //nav.Navigate(new Uri("/Pages/ExerciseOptions.xaml", UriKind.Relative));
-            //nav.Navigate(exerciseOptionsPage);
-
-
-            //ExerciseOptions exerciseOptionsPage = new ExerciseOptions();
-            //this.Content = exerciseOptionsPage;
-
             NavigationService.Navigate(new ExerciseOptions());
+
+        }
+
+        private void Click_Reports(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ReportsPage());
+
+        }
+
+        private void Click_Data(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DataSettingsPage());
 
         }
     }

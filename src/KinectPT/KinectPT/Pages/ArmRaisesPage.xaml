@@ -6,57 +6,79 @@
       xmlns:local="clr-namespace:KinectPT"
       xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ArmRaisesPage"
-      Loaded="Page_Loaded">
+      Loaded="Page_Loaded"
+      Unloaded="Page_Unloaded">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!-- Back button and page title -->
-        <Grid Grid.Row="0">
+        <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="350" />
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="pageTitle" Text="Angle" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
+            <Grid Grid.Column="0">
+                <Button Height="1080" Width="40" Foreground="White" Background="SlateGray" VerticalAlignment="Center" HorizontalAlignment="Left" Click="Click_Back">
+                    <Button.Content>
+                        <TextBlock Text="Back" FontSize="30">
+                            <TextBlock.LayoutTransform>
+                                <RotateTransform Angle="-90"/>
+                            </TextBlock.LayoutTransform>
+                        </TextBlock>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="4" TextAlignment="Right"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="0,0,20,0">
-                <Run x:Name="tblAngle" Text="-" />°
-            </TextBlock>
-
-            <TextBlock Text="Gesture:" Grid.Column="2"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
-                   <Run x:Name="tblGesture" Text="-"/>
-            </TextBlock>
-
-            <TextBlock Text="Repetitions Remaining: "  Grid.Column="3"
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" >
-                    <Run x:Name="ArmRaiseCount" Text="-"/>
-            </TextBlock>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Page title -->
+                    <TextBlock Text="Arm Raises" Margin="0 10 0 10" FontSize="30" VerticalAlignment="Center" Grid.Column="0"/>
 
 
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <controls:KinectViewer x:Name="viewer" />
-            <Viewbox>
-                <Canvas Width="1920" Height="1080">
-                    <controls:KinectAngle x:Name="angle" Opacity="0.5" />
-                    <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
+                    <TextBlock x:Name="pageTitle" Text="Right Arm Angle:" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="155.333,41,189.333,33" Grid.Column="1">
+                        <Run x:Name="tblAngle" Text="-" />°
                     </TextBlock>
-                </Canvas>
-            </Viewbox>
+
+                    <!--
+                    <TextBlock Text="Gesture:" Grid.Column="3"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="45,35,790,23" >
+                   <Run x:Name="tblGesture" Text="-"/>
+                    </TextBlock>
+                    -->
+
+                    <TextBlock Text="Repetitions Remaining: "  
+                       IsHitTestVisible="false" TextWrapping="NoWrap" Margin="9.667,33,0,25" Grid.Column="2" VerticalAlignment="Center">
+                    <Run x:Name="ArmRaiseCount" Text="-"/>
+                    </TextBlock>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <controls:KinectViewer x:Name="viewer" />
+                    <Viewbox>
+                        <Canvas Width="1920" Height="1080">
+                            <controls:KinectAngle x:Name="leftArmAngle" Opacity="0.5" />
+                            <controls:KinectAngle x:Name="rightArmAngle" Opacity="0.5" />
+
+                            <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
+                            </TextBlock>
+                        </Canvas>
+                    </Viewbox>
 
 
+                </Grid>
+            </Grid>
         </Grid>
 
     </Grid>

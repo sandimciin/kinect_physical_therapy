@@ -76,10 +76,12 @@ namespace KinectPT
                 _reader.Dispose();
             }
 
+            /*
             if (_sensor != null)
             {
                 _sensor.Close();
             }
+            */
         }
 
 
@@ -113,7 +115,7 @@ namespace KinectPT
 
                     if (body != null)
                     {
-                        viewer.DrawBody(body, 15, Brushes.White, 8, Brushes.Red);
+                        viewer.DrawBody(body, 15, Brushes.White, 8, Brushes.Aqua);
                         //angle.Update(body.Joints[_start], body.Joints[_center], body.Joints[_end], 100);
 
                         //  tblAngle.Text = ((int)angle.Angle).ToString();
@@ -134,7 +136,7 @@ namespace KinectPT
                             // knee height close to hip height
                             if (body.Joints[JointType.HipLeft].Position.Y <= body.Joints[JointType.KneeLeft].Position.Y + .2)
                             {
-                                tblGesture.Text = "Sitting";
+                                //tblGesture.Text = "Sitting";
                                 Instructions.Text = "Stand up with your arms forward";
                                 if (current == 1)
                                 {
@@ -144,7 +146,7 @@ namespace KinectPT
                             }
                             else
                             {
-                                tblGesture.Text = "Standing";
+                                //tblGesture.Text = "Standing";
                                 Instructions.Text = "Sit down with your arms forward";
 
                                 current = 1;
@@ -195,7 +197,7 @@ namespace KinectPT
 
         void Gesture_GestureRecognized(object sender, EventArgs e)
         {
-            tblGesture.Text = "Sitting Gesture Detected!";
+            //tblGesture.Text = "Sitting Gesture Detected!";
 
         }
 
@@ -205,6 +207,11 @@ namespace KinectPT
         {
             _recorder.Start();
             Instructions.Text = "Make sure your entire body is in frame";
+        }
+
+        private void Click_Back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

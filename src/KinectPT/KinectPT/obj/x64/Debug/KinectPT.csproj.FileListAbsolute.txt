@@ -31,3 +31,11 @@ C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\WalkingPage.baml
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.g.cs
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ReportsPage.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ReportsPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.xml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.xml

@@ -67,10 +67,12 @@ namespace KinectPT
                 _reader.Dispose();
             }
 
+            /*
             if (_sensor != null)
             {
                 _sensor.Close();
             }
+            */
         }
 
 
@@ -108,7 +110,7 @@ namespace KinectPT
                     {
                         FrameEdges clippedEdges = body.ClippedEdges;
 
-                        viewer.DrawBody(body, 15, Brushes.Red, 8, Brushes.Red);
+                        viewer.DrawBody(body, 15, Brushes.Red, 8, Brushes.Aqua);
 
                         _recorder.Update(body);
 
@@ -173,6 +175,11 @@ namespace KinectPT
         {
             _recorder.Start();
             Instructions.Text = "Make sure your whole body is visible, then turn right and walk";
+        }
+
+        private void Click_Back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

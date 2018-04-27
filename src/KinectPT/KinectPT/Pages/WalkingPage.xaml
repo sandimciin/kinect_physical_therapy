@@ -6,36 +6,51 @@
       xmlns:local="clr-namespace:KinectPT" 
       xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="WalkingPage"
-      Loaded="Page_Loaded">
+      Loaded="Page_Loaded"
+      Unloaded="Page_Unloaded">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!-- Back button and page title -->
-        <Grid Grid.Row="0">
+        <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="pageTitle" Text="Walking Exercise" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
-        </Grid>
+            <Grid Grid.Column="0">
+                <Button Height="1080" Width="40" Foreground="White" Background="SlateGray" VerticalAlignment="Center" HorizontalAlignment="Left" Click="Click_Back">
+                    <Button.Content>
+                        <TextBlock Text="Back" FontSize="30">
+                            <TextBlock.LayoutTransform>
+                                <RotateTransform Angle="-90"/>
+                            </TextBlock.LayoutTransform>
+                        </TextBlock>
+                    </Button.Content>
+                </Button>
+            </Grid>
 
-        <Grid Grid.Row="1">
-            <controls:KinectViewer x:Name="viewer" />
-            <Viewbox>
-                <Canvas Width="1920" Height="1080">
-                    <!--<controls:KinectAngle x:Name="angle" Opacity="0.5" />-->
-                    <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="80" Foreground="Red">
-                    </TextBlock>
-                </Canvas>
-            </Viewbox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock x:Name="pageTitle" Text="Walking Exercise" FontSize="30"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <controls:KinectViewer x:Name="viewer" />
+                    <Viewbox>
+                        <Canvas Width="1920" Height="1080">
+                            <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="70" Foreground="Red" TextWrapping="Wrap">
+                            </TextBlock>
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
