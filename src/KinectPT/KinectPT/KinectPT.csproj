@@ -100,6 +100,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CsvDocument.cs" />
     <Compile Include="Gestures\LeftArmRaise.cs" />
     <Compile Include="Gestures\LeftArmRaiseSegments.cs" />
     <Compile Include="Gestures\RightArmRaise.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Gestures\Sitting.cs" />
     <Compile Include="Gestures\SittingSegments.cs" />
     <Compile Include="HandPointer\HandInScreenEngagementModel.cs" />
+    <Compile Include="Kinect2CSV.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -114,6 +116,10 @@
     <Page Include="Pages\ArmRaisesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DataSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ExerciseOptions.xaml">
       <SubType>Designer</SubType>
@@ -139,6 +145,9 @@
   <ItemGroup>
     <Compile Include="Pages\ArmRaisesPage.xaml.cs">
       <DependentUpon>ArmRaisesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DataSettingsPage.xaml.cs">
+      <DependentUpon>DataSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ExerciseOptions.xaml.cs">
       <DependentUpon>ExerciseOptions.xaml</DependentUpon>
@@ -178,10 +187,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="UserData\ExerciseTime.csv" />
+    <None Include="UserData\ReportData.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

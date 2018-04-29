@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System.Globalization;
+
 
 namespace KinectPT
 {
@@ -27,69 +29,131 @@ namespace KinectPT
         public ReportsPage()
         {
             this.InitializeComponent();
-            this.Model = CreateNormalDistributionModel();
+            //this.Model = CreateNormalDistributionModel();
+            //string userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ReportData.csv");
+            string userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ExerciseTime.csv");
+            this.Model = OpenTimes(userDataFile);
+            //this.Model = OpenDoubles(userDataFile);
+
             this.DataContext = this;
         }
 
-        /// <summary>
-        /// Gets or sets the model.
-        /// </summary>
-        /// <value>The model.</value>
+
         public PlotModel Model { get; set; }
 
-        /// <summary>
-        /// Creates a model showing normal distributions.
-        /// </summary>
-        /// <returns>A PlotModel.</returns>
-        private static PlotModel CreateNormalDistributionModel()
-        {
-            // http://en.wikipedia.org/wiki/Normal_distribution
-            var plot = new PlotModel
-            {
-                Title = "Normal distribution",
-                Subtitle = "Probability density function"
-            };
+        //private void OpenCsv_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var dlg = new OpenFileDialog();
+        //    dlg.Filter = ".csv files|*.csv";
+        //    dlg.DefaultExt = ".csv";
+        //    if (dlg.ShowDialog().Value)
+        //    {
+        //        vm.Open(dlg.FileName);
+        //    }
+        //}
 
-            plot.Axes.Add(new LinearAxis
+        public PlotModel OpenDoubles(string file)
+        {
+            var doc = new CsvDocument();
+            doc.Load(file);
+            var tmp = new PlotModel { Title = "Generated User Report" /*Path.GetFileNameWithoutExtension(file)*/ };
+            //tmp.LegendPosition = LegendPosition.RightTop;
+            //tmp.LegendPlacement = LegendPlacement.Outside;
+            tmp.IsLegendVisible = false;
+            tmp.PlotMargins = new OxyThickness(50, 0, 0, 40);
+            for (int i = 1; i < doc.Headers.Length; i++)
             {
-                Position = AxisPosition.Left,
-                Minimum = -0.05,
-                Maximum = 1.05,
-                MajorStep = 0.2,
-                MinorStep = 0.05,
-                TickStyle = TickStyle.Inside
-            });
-            plot.Axes.Add(new LinearAxis
+                var ls = new LineSeries { Title = doc.Headers[i] };
+                foreach (var item in doc.Items)
+                {
+                    double x = ParseDouble(item[0]);
+                    double y = ParseDouble(item[i]);
+                    ls.Points.Add(new DataPoint(x, y));
+                }
+                tmp.Series.Add(ls);
+            }
+            tmp.Axes.Add(new LinearAxis
             {
                 Position = AxisPosition.Bottom,
-                Minimum = -5.25,
-                Maximum = 5.25,
-                MajorStep = 1,
-                MinorStep = 0.25,
+                Title = doc.Headers[0],
                 TickStyle = TickStyle.Inside
             });
-            plot.Series.Add(CreateNormalDistributionSeries(-5, 5, 0, 0.2));
-            plot.Series.Add(CreateNormalDistributionSeries(-5, 5, 0, 1));
-            plot.Series.Add(CreateNormalDistributionSeries(-5, 5, 0, 5));
-            plot.Series.Add(CreateNormalDistributionSeries(-5, 5, -2, 0.5));
-            return plot;
+            tmp.Axes.Add(new LinearAxis
+            {
+                Position = AxisPosition.Left,
+                Title = doc.Headers[1],
+                TickStyle = TickStyle.Inside
+            });
+            return tmp;
         }
 
-        private static LineSeries CreateNormalDistributionSeries(double x0, double x1, double mean, double variance, int n = 1000)
+        public PlotModel OpenTimes(string file)
         {
-            var ls = new LineSeries
+            var doc = new CsvDocument();
+            doc.Load(file);
+            var tmp = new PlotModel { Title = "Exercise Duration Over Time" /*Path.GetFileNameWithoutExtension(file)*/ };
+            //tmp.LegendPosition = LegendPosition.RightTop;
+            //tmp.LegendPlacement = LegendPlacement.Outside;
+            tmp.IsLegendVisible = false;
+            tmp.PlotMargins = new OxyThickness(50, 0, 0, 40);
+            for (int i = 1; i < doc.Headers.Length; i++)
             {
-                Title = string.Format("μ={0}, σ²={1}", mean, variance)
-            };
+                var ls = new ScatterSeries { Title = doc.Headers[i] };
+                foreach (var item in doc.Items)
+                {
+                    var t1 = DateTime.Parse(item[0]);
+                    var t2 = DateTime.Parse(item[i]);
 
-            for (int i = 0; i < n; i++)
+                    double x = DateTimeAxis.ToDouble(t2);
+                    double y = DateTimeAxis.ToDouble(t1.Minute);
+
+                    ls.Points.Add(new ScatterPoint(x, y));
+                }
+                tmp.Series.Add(ls);
+            }
+            for (int i = 1; i < doc.Headers.Length; i++)
             {
-                double x = x0 + ((x1 - x0) * i / (n - 1));
-                double f = 1.0 / Math.Sqrt(2 * Math.PI * variance) * Math.Exp(-(x - mean) * (x - mean) / 2 / variance);
-                ls.Points.Add(new DataPoint(x, f));
+                var ls = new LineSeries { Title = doc.Headers[i] };
+                foreach (var item in doc.Items)
+                {
+                    var t1 = DateTime.Parse(item[0]);
+                    var t2 = DateTime.Parse(item[i]);
+
+                    double x = DateTimeAxis.ToDouble(t2);
+                    double y = DateTimeAxis.ToDouble(t1.Minute);
+
+                    ls.Points.Add(new DataPoint(x, y));
+                }
+                tmp.Series.Add(ls);
             }
 
-            return ls;
+            tmp.Axes.Add(new LinearAxis
+            {
+                Position = AxisPosition.Left,
+                Title = doc.Headers[0],
+                TickStyle = TickStyle.Inside,
+                
+            });
+            tmp.Axes.Add(new DateTimeAxis
+            {
+                Position = AxisPosition.Bottom,
+                Title = doc.Headers[1],
+                TickStyle = TickStyle.Inside,
+                StringFormat = "MM/dd/yyyy"
+            });
+            return tmp;
+        }
+
+
+        private double ParseDouble(string s)
+        {
+            if (s == null)
+                return double.NaN;
+            s = s.Replace(',', '.');
+            double result;
+            if (double.TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out result))
+                return result;
+            return double.NaN;
         }
 
         private void Click_Back(object sender, RoutedEventArgs e)
