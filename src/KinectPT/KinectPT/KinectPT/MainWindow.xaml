@@ -1,0 +1,45 @@
+﻿<Window x:Class="KinectPT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:k="http://schemas.microsoft.com/kinect/2014"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KinectPT"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+
+    <k:KinectRegion x:Name="kinectRegion">
+        <Frame x:Name="_NavigationFrame" NavigationUIVisibility="Hidden" />
+       <!-- <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="pageTitle" Text="Kinect Physical Therapy" Margin="0 10 0 10" FontSize="40"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.25*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10 0 0 0">
+                    <Button Content="Exercises" Click="Click_Exercises"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
+                    <Button Content="Reports" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 0 0 0">
+                    <Button Content="Data Collection Settings" />
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>-->
+    </k:KinectRegion>
+</Window>

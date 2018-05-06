@@ -1,0 +1,91 @@
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe.config
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\KinectPT.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Kinect2CSV.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Vitruvius.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Tools.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Wpf.Controls.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Vitruvius.xml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.xml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Tools.xml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Wpf.Controls.xml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT.csprojResolveAssemblyReference.cache
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\MainWindow.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ArmRaisesPage.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ExerciseOptions.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\App.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT_MarkupCompile.cache
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT_MarkupCompile.lref
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\MainWindow.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ArmRaisesPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ExerciseOptions.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT.g.resources
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT.Properties.Resources.resources
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT.csproj.GenerateResource.Cache
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT.exe
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\KinectPT.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\Home.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\Home.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\WalkingPage.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\WalkingPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ReportsPage.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\ReportsPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.dll
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.xml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.csprojResolveAssemblyReference.cache
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\MainWindow.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\ArmRaisesPage.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\ExerciseOptions.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\Home.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\ReportsPage.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\WalkingPage.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\App.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT_MarkupCompile.cache
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT_MarkupCompile.lref
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.exe
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.pdb
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\DataSettingsPage.g.cs
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe.config
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\KinectPT.pdb
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Kinect2CSV.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Vitruvius.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Tools.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Wpf.Controls.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.dll
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Vitruvius.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Tools.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Wpf.Controls.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.pdb
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.pdb
+C:\Users\Louis\source\repos\KinectPT\KinectPT\bin\x64\Debug\OxyPlot.Wpf.xml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\MainWindow.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\ArmRaisesPage.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\ExerciseOptions.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\Home.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\ReportsPage.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\WalkingPage.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\Pages\DataSettingsPage.baml
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.g.resources
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.Properties.Resources.resources
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.csproj.GenerateResource.Cache
+C:\Users\Louis\source\repos\KinectPT\KinectPT\obj\x64\Debug\KinectPT.csproj.CoreCompileInputs.cache
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe.config
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.exe
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.pdb
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\DataSettingsPage.g.cs
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\DataSettingsPage.baml
+C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
