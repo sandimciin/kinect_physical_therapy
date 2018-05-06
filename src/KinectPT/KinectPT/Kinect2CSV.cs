@@ -20,10 +20,13 @@ namespace KinectPT
 
         public string Result { get; protected set; }
 
+        DateTime start;
+
         public void Start()
         {
             IsRecording = true;
             Folder = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
+            start = DateTime.Now;
 
             Directory.CreateDirectory(Folder);
         }
@@ -33,6 +36,8 @@ namespace KinectPT
             if (!IsRecording) return;
             if (body == null || !body.IsTracked) return;
 
+            //For every x seconds, do the following
+
             string path = Path.Combine(Folder, _current.ToString() + ".line");
 
             using (StreamWriter writer = new StreamWriter(path))
@@ -41,12 +46,15 @@ namespace KinectPT
 
                 if (!_hasEnumeratedJoints)
                 {
+                    line.Append("Timestamp;"); //first column header: timestamp
+
                     foreach (var joint in body.Joints.Values)
                     {
                         line.Append(string.Format("{0};;;", joint.JointType.ToString()));
                     }
                     line.AppendLine();
 
+                    line.Append(";"); //extra column for time stamp
                     foreach (var joint in body.Joints.Values)
                     {
                         line.Append("X;Y;Z;");
@@ -58,6 +66,9 @@ namespace KinectPT
 
                 foreach (var joint in body.Joints.Values)
                 {
+                    DateTime current = DateTime.Now;
+                    TimeSpan timestamp = current - start;
+                    line.Append(string.Format("{0};", timestamp.ToString()));
                     line.Append(string.Format("{0};{1};{2};", joint.Position.X, joint.Position.Y, joint.Position.Z));
                 }
 

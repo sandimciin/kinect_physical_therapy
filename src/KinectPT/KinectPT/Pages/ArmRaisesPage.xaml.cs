@@ -31,7 +31,8 @@ namespace KinectPT
         PlayersController _userReporter;
         RightArmRaise _gesture;
         LeftArmRaise _gesture2;
-        KinectCSVManager _recorder = null;
+        //KinectCSVManager _recorder = null;
+        Kinect2CSV _recorder = null;
         Stopwatch _timer;
 
         bool onRightArmRaise = true;
@@ -77,7 +78,8 @@ namespace KinectPT
                 _gesture2 = new LeftArmRaise();
                 _gesture2.GestureRecognized += Gesture2_GestureRecognized;
 
-                _recorder = new KinectCSVManager();
+                //_recorder = new KinectCSVManager();
+                _recorder = new Kinect2CSV();
 
                 _timer = new Stopwatch();
             }

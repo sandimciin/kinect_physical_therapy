@@ -34,6 +34,13 @@ namespace KinectPT
 
             // Use the default sensor
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
+            
+            Application.Current.Properties["beginAtExerciseStart"] = false;  //if true, recording starts at exercise starts. if false, recording starts when window opens
+            Application.Current.Properties["customDuration"] = false;  //if true, set Duration. if false, recording ends at exercise end
+            Application.Current.Properties["durationUnit"] = "seconds";
+            Application.Current.Properties["duration"] = 0.0;
+            Application.Current.Properties["customFrequency"] = false;
+            Application.Current.Properties["frequency"] = 0.0;  //frequency of recording
 
             _NavigationFrame.Navigate(new Home());
         }

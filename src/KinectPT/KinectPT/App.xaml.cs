@@ -16,6 +16,10 @@ namespace KinectPT
     /// </summary>
     public partial class App : Application
     {
+        public Globals GlobalInfo { get; set; }
+
         internal KinectRegion KinectRegion { get; set; }
+        
+        
     }
 }
