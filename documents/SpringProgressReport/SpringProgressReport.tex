@@ -128,7 +128,7 @@ The exercise menu option leads the user to a page that shows a Kinect camera fee
 \subsection{Body Tracking Latency}
 \subsection{Data Collection Customization}
 \subsection{User Interface}
-After our initial testing and design of the user interface, our client requested that we change some of the user interface structure and looks. Some issues with the user interface involved some of the graphical elements of the program blocking the viewing window of the user. We were using a template layout that came pre-packaged with the Kinect SDK which allowed for a main navigation screen with tiles that acted as links to other pages within the program.
+After our initial testing and design of the user interface, our client requested that we change some of the user interface structure and looks. Some issues with the user interface involved some of the graphical elements of the program blocking the viewing window of the user. We were using a template layout that came pre-packaged with the Kinect SDK which allowed for a main navigation screen with tiles that acted as links to other pages within the program\cite{KinectDevelop}.
 
 Each page contained a navigation section and title near the upper-half of the screen. It allowed the user to press a \textit{back} button to go to the main screen. This element of the software was rather large which limited the viewing space for the main activities of our application. The user interface template itself was slightly bulky and bland looking so we decided to revamp the structure and looks of the entire interface. Due to the target audience of our software, we needed to make the navigation more accessible and easy to use. We previously had a square \textit{back} button which occupied a smaller area of the top-left corner of the screen. It was not as easy to navigate back and forth between pages this way so we made a change to the button and made it less-obtrusive by having it be the shape of a long vertical bar that spanned from the top of the page all the way to the bottom. By placing this new \textit{back} button to the far left of the user's view, it made navigating far more intuitive and allowed for the main program to fill in more of the previous blank space.
 
@@ -139,7 +139,7 @@ Some of the difficulties we faced while developing the report generation portion
 
 We were also unsure of which data would be useful to the user and how to present it in an easily digestible format. Our solution was to change the manner in which the user and report data was collected during the exercise session by switching the format to a .csv file or comma separated values. This allows us to continually write to a file that corresponds with the current exercise. This continuous record can be dynamically plotted within the program's view using a library called \textit{OxyPlot}\cite{OxyPlot}. 
 
-Within our code, we made some plot model classes and .csv reading classes that read in the user exercise data and restructure it to match the required format for the plotting library. This also allows a user to choose which exercise they wish to see their generated reports with. The reports draw graphs that display data such as the date of their exercise and the time it took to complete a specific exercise. A patient or their physical therapist can monitor performance over time or see the limb angles achieved during a session.
+Within our code, we made some plot model classes and .csv reading classes that read in the user exercise data and restructure it to match the required format for the plotting library. This also allows a user to choose which exercise they wish to see their generated reports with. The reports draw graphs that display data such as the date of their exercise and the time it took to complete a specific exercise. A patient or their physical therapist can monitor performance over time or see the limb angles achieved during a session\cite{csvFile}.
 
 \section{Remaining Tasks}
 \subsection{Node Clipping}
@@ -147,7 +147,7 @@ One of our remaining tasks for this project is to fix an issue with our visual s
 
 There may be some times where the Kinect Sensor is pointed at an angle such that it does not see the user's lower body within its visual scope. This leads to the associated lower body lines and joint shapes to be clipped and appear non-connecting. This issue disappears once the user's entire body enters the frame and is recognized by the sensor. 
 
-Unfortunately, this behavior is caused by the library we are using to help us draw all of the main shapes needed as well as some angle visualizations. It makes the process lighter and simpler than using the built-in Kinect methods which requires more setup in the code portions. One solution is to resort back to the built-in methods only to draw the overlaid body lines and joints while using the installed Vitruvius library to do the rest.
+Unfortunately, this behavior is caused by the library we are using to help us draw all of the main shapes needed as well as some angle visualizations. It makes the process lighter and simpler than using the built-in Kinect methods which requires more setup in the code portions. One solution is to resort back to the built-in methods only to draw the overlaid body lines and joints while using the installed Vitruvius library to do the rest\cite{Vitruvius}.
 \section{Relevant Project Information}
 
 
@@ -156,6 +156,6 @@ At this point, we are putting all of our efforts into implementing gesture recog
 
 \newpage
 \bibliographystyle{ieeetr}
-\bibliography{WinterProgressReport.bib}
+\bibliography{SpringProgressReport}
 
 \end{document}
