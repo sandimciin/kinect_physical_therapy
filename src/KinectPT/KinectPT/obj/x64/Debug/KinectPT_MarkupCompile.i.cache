@@ -16,5 +16,5 @@ Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\App.xaml
 71-1029043671
 MainWindow.xaml;Pages\ArmRaisesPage.xaml;Pages\DataSettingsPage.xaml;Pages\ExerciseOptions.xaml;Pages\Home.xaml;Pages\ReportsPage.xaml;Pages\SittingStandingPage.xaml;Pages\WalkingPage.xaml;
 
-True
+False
 

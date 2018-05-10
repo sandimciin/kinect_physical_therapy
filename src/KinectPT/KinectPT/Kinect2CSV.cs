@@ -14,7 +14,7 @@ namespace KinectPT
 
         bool _hasEnumeratedJoints = false;
 
-        public bool IsRecording { get; protected set; }
+        public bool IsRecording { get; set; }
 
         public string Folder { get; protected set; }
 

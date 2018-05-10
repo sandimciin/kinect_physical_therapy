@@ -29,7 +29,7 @@
                     </Button.Content>
                 </Button>
             </Grid>
-            
+
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90"/>
@@ -43,12 +43,12 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <!-- Page title -->
-                    <TextBlock Text="Arm Raises" Margin="0 10 0 10" FontSize="30" VerticalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock Text="Arm Raises" Margin="0 10 0 10" FontSize="50" VerticalAlignment="Center" Grid.Column="0"/>
 
 
-                    <TextBlock x:Name="pageTitle" Text="Right Arm Angle:" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="155.333,41,189.333,33" Grid.Column="1">
-                        <Run x:Name="tblAngle" Text="-" />°
+                    <TextBlock x:Name="pageTitle" Text="Right Arm Angle:" FontSize="20" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" Margin="155.333,36,189.333,10" Grid.Column="1" Height="44">
+                        <Run x:Name="tblAngle" Text="-" FontSize="20"/>°
                     </TextBlock>
 
                     <!--
@@ -58,9 +58,9 @@
                     </TextBlock>
                     -->
 
-                    <TextBlock Text="Repetitions Remaining: "  
-                       IsHitTestVisible="false" TextWrapping="NoWrap" Margin="9.667,33,0,25" Grid.Column="2" VerticalAlignment="Center">
-                    <Run x:Name="ArmRaiseCount" Text="-"/>
+                    <TextBlock Text="Repetitions Remaining: "  FontSize="20"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" Margin="10,36,-0.333,10" Grid.Column="2" VerticalAlignment="Center" Height="44">
+                    <Run x:Name="ArmRaiseCount" Text="-" FontSize="30"/>
                     </TextBlock>
                 </Grid>
 

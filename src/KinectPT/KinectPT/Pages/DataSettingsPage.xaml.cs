@@ -25,7 +25,7 @@ namespace KinectPT
         {
             InitializeComponent();
 
-            exerciseStart.Text = Application.Current.Properties["beginAtExerciseStart"].ToString();
+            //exerciseStart.Text = Application.Current.Properties["beginAtExerciseStart"].ToString();
         }
 
         private void Click_Back(object sender, RoutedEventArgs e)
@@ -37,6 +37,7 @@ namespace KinectPT
         {
             string selected = durationBox.SelectedValue.ToString();
             Application.Current.Properties["durationUnit"] = selected.Substring(38, 7);
+            
         }
 
         

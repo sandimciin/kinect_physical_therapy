@@ -28,7 +28,10 @@ namespace KinectPT
         MultiSourceFrameReader _reader;
         PlayersController _userReporter;
         Sitting _gesture;
-        KinectCSVManager _recorder = null;
+        //KinectCSVManager _recorder = null;
+        Kinect2CSV _recorder = null;
+        DateTime startTime = new DateTime();
+        TimeSpan duration;
 
         bool begin = false;
         int sittingCounter = 10;
@@ -59,7 +62,7 @@ namespace KinectPT
                 _gesture = new Sitting();
                 _gesture.GestureRecognized += Gesture_GestureRecognized;
 
-                _recorder = new KinectCSVManager();
+                _recorder = new Kinect2CSV();
 
             }
         }
@@ -122,6 +125,16 @@ namespace KinectPT
                         _gesture.Update(body);
 
                         _recorder.Update(body);
+                        DateTime currentT = DateTime.Now;
+                        TimeSpan elapsed = currentT - startTime;
+
+                        if (Convert.ToInt32(Application.Current.Properties["duration"].ToString()) > 0)
+                        {
+                            if (elapsed >= duration)
+                            {
+                                _recorder.IsRecording = false;
+                            }
+                        }
 
                         SittingCount.Text = sittingCounter.ToString();
 
@@ -156,8 +169,7 @@ namespace KinectPT
                             if (sittingCounter == 0)
                             {
                                 Instructions.Text = "You have completed this exercise!";
-                                if (_recorder.IsRecording)
-                                {
+                                
                                     _recorder.Stop();
 
 
@@ -172,7 +184,7 @@ namespace KinectPT
                                     {
                                         System.IO.File.Copy(_recorder.Result, dialog.FileName);
                                     }
-                                }
+                                
                             }
                         }
 
@@ -207,6 +219,11 @@ namespace KinectPT
         {
             _recorder.Start();
             Instructions.Text = "Make sure your entire body is in frame";
+            startTime = DateTime.Now;
+            if (Application.Current.Properties["durationUnit"].ToString() == "seconds")
+            {
+                duration = new TimeSpan(0, 0, Convert.ToInt32(Application.Current.Properties["duration"].ToString()));
+            }
         }
 
         private void Click_Back(object sender, RoutedEventArgs e)

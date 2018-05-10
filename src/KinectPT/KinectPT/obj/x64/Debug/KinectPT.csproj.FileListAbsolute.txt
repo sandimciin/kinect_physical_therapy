@@ -130,3 +130,10 @@ Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\Pages\Walki
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.g.resources
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.Properties.Resources.resources
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.csproj.GenerateResource.Cache
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\ArmRaisesPage.baml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\DataSettingsPage.baml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\ExerciseOptions.baml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\Home.baml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\ReportsPage.baml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\SittingStandingPage.baml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\WalkingPage.baml

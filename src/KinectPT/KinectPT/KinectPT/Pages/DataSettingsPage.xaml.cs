@@ -25,7 +25,7 @@ namespace KinectPT
         {
             InitializeComponent();
 
-            exerciseStart.Text = Application.Current.Properties["beginAtExerciseStart"].ToString();
+            //exerciseStart.Text = Application.Current.Properties["beginAtExerciseStart"].ToString();
         }
 
         private void Click_Back(object sender, RoutedEventArgs e)

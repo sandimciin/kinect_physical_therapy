@@ -37,7 +37,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <TextBlock x:Name="pageTitle" Text="Walking Exercise" FontSize="30"
+                    <TextBlock x:Name="pageTitle" Text="Walking Exercise" FontSize="50"
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
                 </Grid>
 

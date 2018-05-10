@@ -43,14 +43,14 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                    <TextBlock x:Name="pageTitle" Text="Sitting and Standing Exercise" FontSize="30"
+                    <TextBlock x:Name="pageTitle" Text="Sitting and Standing Exercise" FontSize="50"
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
                     </Grid>
 
                     <Grid Grid.Column="1" Margin="102.333,0,-101.667,0">
-                        <TextBlock Text="Repetitions Remaining: " 
+                        <TextBlock Text="Repetitions Remaining: " FontSize="20"
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="1,14,0,10">
-                    <Run x:Name="SittingCount" Text="-"/>
+                    <Run x:Name="SittingCount" Text="-" FontSize="30"/>
                         </TextBlock>
                     </Grid>
 
