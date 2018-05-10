@@ -160,5 +160,20 @@ namespace KinectPT
         {
             NavigationService.GoBack();
         }
+
+        private void Click_Arm(object sender, RoutedEventArgs e)
+        {
+            //load arm raises exercise data
+        }
+
+        private void Click_Walk(object sender, RoutedEventArgs e)
+        {
+            //load walking exercise data
+        }
+
+        private void Click_Sit(object sender, RoutedEventArgs e)
+        {
+            //load sitting and standing exercise data
+        }
     }
 }

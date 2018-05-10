@@ -32,11 +32,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height=".08*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Page title -->
                 <Grid Grid.Row="0">
-                    <TextBlock x:Name="pageTitle" Text="Report Generation" HorizontalAlignment="Center" Margin="0 10 0 10"/>
+                    <TextBlock x:Name="pageTitle" Text="Reports" FontSize="60" HorizontalAlignment="Center" Margin="0 10 0 10"/>
                 </Grid>
 
                 <!--<Grid Grid.Row="1">
@@ -62,6 +63,14 @@
         </Grid>-->
                 <Grid Grid.Row="1">
                     <oxy:PlotView Model="{Binding Model}"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Arm Raises" Click="Click_Arm" FontSize="20" Width="400" HorizontalAlignment="Left" Background="Orange" Foreground="White"/>
+                        <Button Content="Walking" Click="Click_Walk" FontSize="20" Width="400" HorizontalAlignment="Center" Background="Orange" Foreground="White"/>
+                        <Button Content="Sitting and Standing" Click="Click_Sit" FontSize="20" Width="400" HorizontalAlignment="Right" Background="Orange" Foreground="White"/>
+                    </StackPanel>
                 </Grid>
 
             </Grid>

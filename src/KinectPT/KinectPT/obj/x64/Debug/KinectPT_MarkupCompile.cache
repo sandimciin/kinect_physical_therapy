@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\
 KinectPT
 none
 false
 DEBUG;TRACE
-C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\App.xaml
+Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\App.xaml
 81949961572
 
 22-871641414
-71-1164369919
+71-1029043671
 MainWindow.xaml;Pages\ArmRaisesPage.xaml;Pages\DataSettingsPage.xaml;Pages\ExerciseOptions.xaml;Pages\Home.xaml;Pages\ReportsPage.xaml;Pages\SittingStandingPage.xaml;Pages\WalkingPage.xaml;
 
 False
