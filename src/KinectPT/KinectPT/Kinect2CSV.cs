@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace KinectPT
 {
@@ -22,11 +23,14 @@ namespace KinectPT
 
         DateTime start;
 
+        DateTime current;
+
         public void Start()
         {
             IsRecording = true;
             Folder = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
             start = DateTime.Now;
+            current = start;
 
             Directory.CreateDirectory(Folder);
         }
@@ -36,45 +40,52 @@ namespace KinectPT
             if (!IsRecording) return;
             if (body == null || !body.IsTracked) return;
 
+            TimeSpan elapsed = DateTime.Now - current;
+            TimeSpan frequency = new TimeSpan(0,0, Convert.ToInt32(Application.Current.Properties["frequency"].ToString()));
+
             //For every x seconds, do the following
-
-            string path = Path.Combine(Folder, _current.ToString() + ".line");
-
-            using (StreamWriter writer = new StreamWriter(path))
+            if (elapsed >= frequency)
             {
-                StringBuilder line = new StringBuilder();
+                current = DateTime.Now;
+                string path = Path.Combine(Folder, _current.ToString() + ".line");
 
-                if (!_hasEnumeratedJoints)
+                using (StreamWriter writer = new StreamWriter(path))
                 {
-                    line.Append("Timestamp;"); //first column header: timestamp
+                    StringBuilder line = new StringBuilder();
+
+                    if (!_hasEnumeratedJoints)
+                    {
+                        line.Append("Timestamp;"); //first column header: timestamp
+
+                        foreach (var joint in body.Joints.Values)
+                        {
+                            line.Append(string.Format("{0};;;", joint.JointType.ToString()));
+                        }
+                        line.AppendLine();
+
+                        line.Append(";"); //extra column for time stamp
+                        foreach (var joint in body.Joints.Values)
+                        {
+                            line.Append("X;Y;Z;");
+                        }
+                        line.AppendLine();
+
+                        _hasEnumeratedJoints = true;
+                    }
 
                     foreach (var joint in body.Joints.Values)
                     {
-                        line.Append(string.Format("{0};;;", joint.JointType.ToString()));
+                        DateTime current = DateTime.Now;
+                        TimeSpan timestamp = current - start;
+                        line.Append(string.Format("{0};", timestamp.ToString()));
+                        line.Append(string.Format("{0};{1};{2};", joint.Position.X, joint.Position.Y, joint.Position.Z));
                     }
-                    line.AppendLine();
 
-                    line.Append(";"); //extra column for time stamp
-                    foreach (var joint in body.Joints.Values)
-                    {
-                        line.Append("X;Y;Z;");
-                    }
-                    line.AppendLine();
+                    writer.Write(line);
 
-                    _hasEnumeratedJoints = true;
+                    _current++;
                 }
 
-                foreach (var joint in body.Joints.Values)
-                {
-                    DateTime current = DateTime.Now;
-                    TimeSpan timestamp = current - start;
-                    line.Append(string.Format("{0};", timestamp.ToString()));
-                    line.Append(string.Format("{0};{1};{2};", joint.Position.X, joint.Position.Y, joint.Position.Z));
-                }
-
-                writer.Write(line);
-
-                _current++;
             }
         }
 

@@ -68,14 +68,18 @@
                         </Grid>
 
                         <Grid Grid.Row="2">
-                        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <!--
                             <RadioButton Content="Begin at Window open" FontSize="30"
                                          IsChecked="{Binding Source={x:Static Application.Current}, Path=Properties[beginAtExerciseStart], 
                                 Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter={StaticResource False}}"/>
                             <RadioButton Content="Begin at Exercise Start" FontSize="30"
                                          IsChecked="{Binding Source={x:Static Application.Current}, Path=Properties[beginAtExerciseStart], 
                                 Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter={StaticResource True}}"/>
-                        </StackPanel>
+                            -->
+                                <RadioButton Content="Begin recording when window opens" FontSize="20" Checked="RadioButton1_Checked" />
+                                <RadioButton Content="Begin recording when patient starts exercise" FontSize="20" Checked="RadioButton2_Checked" />
+                            </StackPanel>
                         </Grid>
                         <!--
                         <TextBlock Text="beginAtExerciseStart: "  VerticalAlignment="Bottom">
@@ -124,9 +128,21 @@
                         </Grid>
 
                         <Grid Grid.Row="2">
-                        <TextBox Text="{Binding Source={x:Static Application.Current}, Path=Properties[frequency]}" FontSize="30" Height="40" Width="50" VerticalAlignment="Top"/>
-                        <TextBlock FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Right">seconds</TextBlock>
+                            <TextBox Text="{Binding Source={x:Static Application.Current}, Path=Properties[frequency]}" FontSize="30" Height="40" Width="50" VerticalAlignment="Top"/>
+                            <TextBlock FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Right">seconds</TextBlock>
+
+                            <StackPanel VerticalAlignment="Bottom">
+                            <Border CornerRadius="4" BorderBrush="MediumSeaGreen" BorderThickness="5" Width="250">
+                                    <Button FontSize="50" Height="80" Width="250" Background="MediumSeaGreen" Foreground="White" Click="Click_Back">
+                                        <Button.Content>
+                                            <TextBlock Text="Submit" FontSize="50" />
+                                        </Button.Content>
+                                    </Button>
+                                </Border>
+                            </StackPanel>
                         </Grid>
+
+                        
                     </Grid>
 
                 </Grid>

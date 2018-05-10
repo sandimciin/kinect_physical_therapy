@@ -40,7 +40,16 @@ namespace KinectPT
             
         }
 
-        
+        private void RadioButton1_Checked(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Properties["beginAtExerciseStart"] = false;
+
+        }
+
+        private void RadioButton2_Checked(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Properties["beginAtExerciseStart"] = true;
+        }
     }
 
     public class EnumMatchToBooleanConverter : IValueConverter

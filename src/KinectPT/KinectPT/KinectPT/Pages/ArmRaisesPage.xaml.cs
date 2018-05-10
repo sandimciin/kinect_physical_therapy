@@ -161,6 +161,11 @@ namespace KinectPT
 
                         if (rcounter < 10 && onRightArmRaise)
                         {
+                            if(rcounter==9 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
+                            {
+                                _recorder.Start();
+                            }
+
                             if (maxRightArmAngle < (int)rightArmAngle.Angle)
                             {
                                 maxRightArmAngle = (int)rightArmAngle.Angle;
@@ -277,7 +282,10 @@ namespace KinectPT
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            _recorder.Start();
+            if (Application.Current.Properties["beginAtExerciseStart"].ToString() == "False")
+            {
+                _recorder.Start();
+            }
             _timer.Start();
             recording = true;
 

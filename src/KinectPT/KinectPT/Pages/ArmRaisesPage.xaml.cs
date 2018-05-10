@@ -34,6 +34,8 @@ namespace KinectPT
         //KinectCSVManager _recorder = null;
         Kinect2CSV _recorder = null;
         Stopwatch _timer;
+        DateTime startTime = new DateTime();
+        TimeSpan duration;
 
         bool onRightArmRaise = true;
         int rcounter = 10;
@@ -42,6 +44,7 @@ namespace KinectPT
         int maxRightArmAngle = 0;
         int maxLeftArmAngle = 0;
         string sessionData = "";
+        bool recording = false;
 
         /* Angle Calculation for the right arm */
         JointType _startRight = JointType.ShoulderRight;
@@ -158,6 +161,11 @@ namespace KinectPT
 
                         if (rcounter < 10 && onRightArmRaise)
                         {
+                            if(rcounter==9 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
+                            {
+                                _recorder.Start();
+                            }
+
                             if (maxRightArmAngle < (int)rightArmAngle.Angle)
                             {
                                 maxRightArmAngle = (int)rightArmAngle.Angle;
@@ -177,7 +185,24 @@ namespace KinectPT
                         _gesture.Update(body);
                         _gesture2.Update(body);
 
-                        _recorder.Update(body);
+                        if (_recorder.IsRecording)
+                        {
+                            _recorder.Update(body);
+
+                            DateTime current = DateTime.Now;
+                            TimeSpan elapsed = current - startTime;
+
+                            if (Convert.ToInt32(Application.Current.Properties["duration"].ToString()) > 0)
+                            {
+                                if (elapsed >= duration)
+                                {
+                                    //_recorder.Stop();
+                                    _recorder.IsRecording = false;
+                                    recording = false;
+                                }
+                            }
+                        }
+
 
                         if (onRightArmRaise)
                         {
@@ -193,9 +218,9 @@ namespace KinectPT
                         if (lcounter == 0)
                         {
                             Instructions.Text = "You have completed this exercise!";
-                            if (_recorder.IsRecording)
-                            {
+                            
                                 _recorder.Stop();
+
                                 _timer.Stop();
 
 
@@ -221,7 +246,7 @@ namespace KinectPT
                                     sessionData += "Max Angle on Left Arm Raise: " + maxLeftArmAngle.ToString() + Environment.NewLine;
                                     File.WriteAllText(sessionPath, sessionData);
                                 }
-                            }
+                            
                         }
                     }
                 }
@@ -261,8 +286,18 @@ namespace KinectPT
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            _recorder.Start();
+            if (Application.Current.Properties["beginAtExerciseStart"].ToString() == "False")
+            {
+                _recorder.Start();
+            }
             _timer.Start();
+            recording = true;
+
+            startTime = DateTime.Now;
+            if (Application.Current.Properties["durationUnit"].ToString() == "seconds")
+            {
+                duration = new TimeSpan(0, 0, Convert.ToInt32(Application.Current.Properties["duration"].ToString()));
+            }
         }
 
         private void Click_Back(object sender, RoutedEventArgs e)
