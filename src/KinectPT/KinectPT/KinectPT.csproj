@@ -188,8 +188,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="UserData\ExerciseTime.csv" />
-    <None Include="UserData\ReportData.csv" />
+    <None Include="UserData\SittingReportData.csv" />
+    <None Include="UserData\WalkingReportData.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

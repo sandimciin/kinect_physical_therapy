@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+//using System.Windows.Shapes;
 using LightBuzz.Vitruvius;
 using LightBuzz.Kinect2CSV;
 using Microsoft.Kinect;
@@ -38,8 +38,8 @@ namespace KinectPT
         TimeSpan duration;
 
         bool onRightArmRaise = true;
-        int rcounter = 10;
-        int lcounter = 10;
+        int rcounter = 1;
+        int lcounter = 1;
         double userHeight = 0;
         int maxRightArmAngle = 0;
         int maxLeftArmAngle = 0;
@@ -234,19 +234,29 @@ namespace KinectPT
                                 if (!string.IsNullOrWhiteSpace(dialog.FileName))
                                 {
                                     System.IO.File.Copy(_recorder.Result, dialog.FileName);
-
-                                    // Report file uses the path used for writing to the CSV location and replaces .csv with .txt
-                                    string sessionPath = dialog.FileName.Replace(".csv", ".txt");
-
-                                    // Write all report data at once in this order:
-                                    sessionData += "Date of Exercise: " + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + Environment.NewLine;
-                                    sessionData += "Total Time: " + _timer.Elapsed.ToString() + Environment.NewLine;
-                                    sessionData += "Height of User: " + userHeight.ToString() + Environment.NewLine;
-                                    sessionData += "Max Angle on Right Arm Raise: " + maxRightArmAngle.ToString() + Environment.NewLine;
-                                    sessionData += "Max Angle on Left Arm Raise: " + maxLeftArmAngle.ToString() + Environment.NewLine;
-                                    File.WriteAllText(sessionPath, sessionData);
                                 }
-                            
+
+                                string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
+                            // This text is added only once to the file.
+                            if (!File.Exists(path))
+                            {
+                                // Create a file to write to.
+                                using (StreamWriter sw = File.CreateText(path))
+                                {
+                                    sw.WriteLine("ExerciseDuration,Date");
+                                    sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
+                                }
+                            }
+
+                            // This text is always added, making the file longer over time
+                            // if it is not deleted.
+                            else
+                            {
+                                using (StreamWriter sw = File.AppendText(path))
+                                {
+                                    sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
+                                }
+                            }
                         }
                     }
                 }

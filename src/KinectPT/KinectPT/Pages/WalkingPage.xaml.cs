@@ -16,6 +16,8 @@ using LightBuzz.Vitruvius;
 using Microsoft.Kinect;
 using LightBuzz.Kinect2CSV;
 using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 
 namespace KinectPT
 {
@@ -30,7 +32,7 @@ namespace KinectPT
         Kinect2CSV _recorder = null;
         DateTime startTime = new DateTime();
         TimeSpan duration;
-
+        Stopwatch _timer;
         int current = 0; //1=left, 2=right
         int laps = 0;
 
@@ -54,6 +56,7 @@ namespace KinectPT
                 
 
                 _recorder = new Kinect2CSV();
+                _timer = new Stopwatch();
             }
         }
 
@@ -147,22 +150,43 @@ namespace KinectPT
                         if (laps == 3)
                         {
                             Instructions.Text = "You have completed this exercise!";
-                           
-                                _recorder.Stop();
+
+                            _recorder.Stop();
+                            _timer.Stop();
 
 
-                                SaveFileDialog dialog = new SaveFileDialog
+                            SaveFileDialog dialog = new SaveFileDialog
+                            {
+                                Filter = "Excel files|*.csv"
+                            };
+
+                            dialog.ShowDialog();
+
+                            if (!string.IsNullOrWhiteSpace(dialog.FileName))
+                            {
+                                System.IO.File.Copy(_recorder.Result, dialog.FileName);
+                            }
+
+                            string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\WalkingReportData.csv");
+                            // This text is added only once to the file.
+                            if (!File.Exists(path))
+                            {
+                                // Create a file to write to.
+                                using (StreamWriter sw = File.CreateText(path))
                                 {
-                                    Filter = "Excel files|*.csv"
-                                };
-
-                                dialog.ShowDialog();
-
-                                if (!string.IsNullOrWhiteSpace(dialog.FileName))
-                                {
-                                    System.IO.File.Copy(_recorder.Result, dialog.FileName);
+                                    sw.WriteLine("ExerciseDuration,Date");
+                                    sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
                                 }
-                            
+                            }
+                            else
+                                { 
+                                // This text is always added, making the file longer over time
+                                // if it is not deleted.
+                                using (StreamWriter sw = File.AppendText(path))
+                                {
+                                    sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
+                                }
+                            }
                         }
                     }
                 }
@@ -186,6 +210,7 @@ namespace KinectPT
         {
             _recorder.Start();
             Instructions.Text = "Make sure your whole body is visible, then turn right and walk";
+            _timer.Start();
             startTime = DateTime.Now;
             if (Application.Current.Properties["durationUnit"].ToString() == "seconds")
             {

@@ -31,8 +31,12 @@ namespace KinectPT
             this.InitializeComponent();
             //this.Model = CreateNormalDistributionModel();
             //string userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ReportData.csv");
-            string userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ExerciseTime.csv");
-            this.Model = OpenTimes(userDataFile);
+            userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
+            if(File.Exists(userDataFile))
+            {
+                this.Model = OpenTimes(userDataFile);
+            }
+            
             //this.Model = OpenDoubles(userDataFile);
 
             this.DataContext = this;
@@ -40,6 +44,7 @@ namespace KinectPT
 
 
         public PlotModel Model { get; set; }
+        public string userDataFile { get; set; }
 
         //private void OpenCsv_Click(object sender, RoutedEventArgs e)
         //{
@@ -101,11 +106,11 @@ namespace KinectPT
                 var ls = new ScatterSeries { Title = doc.Headers[i] };
                 foreach (var item in doc.Items)
                 {
-                    var t1 = DateTime.Parse(item[0]);
+                    var t1 = TimeSpan.Parse(item[0]);
                     var t2 = DateTime.Parse(item[i]);
 
                     double x = DateTimeAxis.ToDouble(t2);
-                    double y = DateTimeAxis.ToDouble(t1.Minute);
+                    double y = TimeSpanAxis.ToDouble(t1);
 
                     ls.Points.Add(new ScatterPoint(x, y));
                 }
@@ -116,22 +121,23 @@ namespace KinectPT
                 var ls = new LineSeries { Title = doc.Headers[i] };
                 foreach (var item in doc.Items)
                 {
-                    var t1 = DateTime.Parse(item[0]);
+                    var t1 = TimeSpan.Parse(item[0]);
                     var t2 = DateTime.Parse(item[i]);
 
                     double x = DateTimeAxis.ToDouble(t2);
-                    double y = DateTimeAxis.ToDouble(t1.Minute);
+                    double y = TimeSpanAxis.ToDouble(t1);
 
                     ls.Points.Add(new DataPoint(x, y));
                 }
                 tmp.Series.Add(ls);
             }
 
-            tmp.Axes.Add(new LinearAxis
+            tmp.Axes.Add(new TimeSpanAxis
             {
                 Position = AxisPosition.Left,
                 Title = doc.Headers[0],
                 TickStyle = TickStyle.Inside,
+              
                 
             });
             tmp.Axes.Add(new DateTimeAxis
@@ -164,16 +170,58 @@ namespace KinectPT
         private void Click_Arm(object sender, RoutedEventArgs e)
         {
             //load arm raises exercise data
+            this.DataContext = null;
+            //load walking exercise data
+            userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
+            if (File.Exists(userDataFile))
+            {
+                this.Model = OpenTimes(userDataFile);
+                this.Model.Title = "Arm Raise Exercise Duration Over Time";
+                this.DataContext = this;
+                this.Model.InvalidatePlot(true);
+            }
+            else
+            {
+                this.Model = null;
+            }
+
         }
 
         private void Click_Walk(object sender, RoutedEventArgs e)
         {
+            this.DataContext = null;
             //load walking exercise data
+            userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\WalkingReportData.csv");
+            if (File.Exists(userDataFile))
+            {
+                this.Model = OpenTimes(userDataFile);
+                this.Model.Title = "Walking Exercise Duration Over Time";
+                this.DataContext = this;
+                this.Model.InvalidatePlot(true);
+            }
+            else
+            {
+                this.Model = null;
+            }
         }
 
         private void Click_Sit(object sender, RoutedEventArgs e)
         {
             //load sitting and standing exercise data
+            this.DataContext = null;
+            //load walking exercise data
+            userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\SittingReportData.csv");
+            if (File.Exists(userDataFile))
+            {
+                this.Model = OpenTimes(userDataFile);
+                this.Model.Title = "Sitting Exercise Duration Over Time";
+                this.DataContext = this;
+                this.Model.InvalidatePlot(true);
+            }
+            else
+            {
+                this.Model = null;
+            }
         }
     }
 }
