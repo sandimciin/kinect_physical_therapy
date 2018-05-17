@@ -66,12 +66,27 @@
                 </Grid>
 
                 <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="Arm Raises" Click="Click_Arm" Grid.Column="0" FontSize="20" Width="400" HorizontalAlignment="Left" Background="Orange" Foreground="White"/>
+                    <Button Content="Walking" Click="Click_Walk" Grid.Column="1" FontSize="20" Width="400" HorizontalAlignment="Center" Background="Orange" Foreground="White"/>
+                    <Button Content="Sitting and Standing" Click="Click_Sit" Grid.Column="2" FontSize="20" Width="400" HorizontalAlignment="Right" Background="Orange" Foreground="White"/>
+                    
+
+
+
+                    <!--
                     <StackPanel Orientation="Horizontal">
                         
                         <Button Content="Arm Raises" Click="Click_Arm" FontSize="20" Width="400" HorizontalAlignment="Left" Background="Orange" Foreground="White"/>
                         <Button Content="Walking" Click="Click_Walk" FontSize="20" Width="400" HorizontalAlignment="Center" Background="Orange" Foreground="White"/>
                         <Button Content="Sitting and Standing" Click="Click_Sit" FontSize="20" Width="400" HorizontalAlignment="Right" Background="Orange" Foreground="White"/>
                     </StackPanel>
+                    -->
                 </Grid>
 
             </Grid>
