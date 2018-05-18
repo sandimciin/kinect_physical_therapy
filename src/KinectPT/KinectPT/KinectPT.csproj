@@ -188,6 +188,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="UserData\ArmRaisesReportData.csv" />
     <None Include="UserData\SittingReportData.csv" />
     <None Include="UserData\WalkingReportData.csv" />
   </ItemGroup>

@@ -236,7 +236,9 @@ namespace KinectPT
                                     System.IO.File.Copy(_recorder.Result, dialog.FileName);
                                 }
 
-                                string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
+                                Directory.Delete(_recorder.Folder, true);
+
+                            string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
                             // This text is added only once to the file.
                             if (!File.Exists(path))
                             {

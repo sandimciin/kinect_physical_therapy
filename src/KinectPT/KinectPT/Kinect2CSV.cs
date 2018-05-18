@@ -116,7 +116,7 @@ namespace KinectPT
                 }
             }
 
-            Directory.Delete(Folder, true);
+            //Directory.Delete(Folder, true);
         }
     }
 }

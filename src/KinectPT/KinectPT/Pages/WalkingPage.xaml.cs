@@ -167,6 +167,9 @@ namespace KinectPT
                                 System.IO.File.Copy(_recorder.Result, dialog.FileName);
                             }
 
+                            Directory.Delete(_recorder.Folder, true);
+
+
                             string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\WalkingReportData.csv");
                             // This text is added only once to the file.
                             if (!File.Exists(path))
