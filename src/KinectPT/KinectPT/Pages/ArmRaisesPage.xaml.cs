@@ -38,8 +38,9 @@ namespace KinectPT
         TimeSpan duration;
 
         bool onRightArmRaise = true;
-        int rcounter = 1;
-        int lcounter = 1;
+        int rcounter;
+        int lcounter;
+        int startreps;
         double userHeight = 0;
         int maxRightArmAngle = 0;
         int maxLeftArmAngle = 0;
@@ -60,6 +61,10 @@ namespace KinectPT
         public ArmRaisesPage()
         {
             InitializeComponent();
+
+            startreps = Int32.Parse(Application.Current.Properties["armReps"].ToString());
+            rcounter = startreps;
+            lcounter = startreps;
 
             _sensor = KinectSensor.GetDefault();
 
@@ -159,9 +164,9 @@ namespace KinectPT
 
 
 
-                        if (rcounter < 10 && onRightArmRaise)
+                        if (rcounter < startreps && onRightArmRaise)
                         {
-                            if(rcounter==9 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
+                            if(rcounter==startreps-1 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
                             {
                                 _recorder.Start();
                             }
@@ -173,7 +178,7 @@ namespace KinectPT
                                 // sessionData += "User Height: " + body.Height().ToString() + Environment.NewLine;
                             }
                         }
-                        else if (lcounter < 10 && !onRightArmRaise)
+                        else if (lcounter < startreps && !onRightArmRaise)
                         {
                             if (maxLeftArmAngle < (int)leftArmAngle.Angle)
                             {

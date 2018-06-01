@@ -40,7 +40,7 @@
                 <Border CornerRadius="6" BorderBrush="SlateGray" BorderThickness="15" >
                     <Button Foreground="White" Background="Orange" VerticalAlignment="Center" Height="300" Click="Click_Data">
                         <Button.Content>
-                            <TextBlock TextWrapping="Wrap" Text="Data Collection Settings" FontSize="50"/>
+                            <TextBlock TextWrapping="Wrap" Text="Settings" FontSize="50"/>
                         </Button.Content>
                     </Button>
                 </Border>

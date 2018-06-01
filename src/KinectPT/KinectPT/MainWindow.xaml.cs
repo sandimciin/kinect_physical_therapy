@@ -41,6 +41,8 @@ namespace KinectPT
             Application.Current.Properties["duration"] = 0.0;
             Application.Current.Properties["customFrequency"] = false;
             Application.Current.Properties["frequency"] = 0.0;  //frequency of recording
+            Application.Current.Properties["armReps"] = 10; //arm raises exercise repetitions
+            Application.Current.Properties["sittingReps"] = 10;
 
             _NavigationFrame.Navigate(new Home());
         }

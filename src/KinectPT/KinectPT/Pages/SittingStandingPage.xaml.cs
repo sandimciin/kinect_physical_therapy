@@ -38,6 +38,7 @@ namespace KinectPT
 
         bool begin = false;
         int sittingCounter = 10;
+        int startreps;
         int current = 1; //1=standing, 2=sitting
 
         JointType _start = JointType.ShoulderRight;
@@ -47,6 +48,9 @@ namespace KinectPT
         public SittingStandingPage()
         {
             InitializeComponent();
+
+            startreps = Int32.Parse(Application.Current.Properties["armReps"].ToString());
+            sittingCounter = startreps;
 
             _sensor = KinectSensor.GetDefault();
 
