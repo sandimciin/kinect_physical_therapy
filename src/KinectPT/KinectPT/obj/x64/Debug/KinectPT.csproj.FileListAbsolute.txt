@@ -88,11 +88,9 @@ Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.ex
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT.pdb
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\DataSettingsPage.g.cs
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\Pages\DataSettingsPage.baml
-C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\KinectPT.pdb
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Kinect2CSV.dll
-Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Vitruvius.dll
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.dll
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Tools.dll
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Wpf.Controls.dll
@@ -116,7 +114,6 @@ Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\Pages\Repor
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\Pages\SittingStandingPage.g.cs
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\Pages\WalkingPage.g.cs
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\App.g.cs
-Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT_MarkupCompile.cache
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\KinectPT_MarkupCompile.lref
 Z:\cs461\kinect_physical_therapy\src\KinectPT\KinectPT\obj\x64\Debug\MainWindow.baml

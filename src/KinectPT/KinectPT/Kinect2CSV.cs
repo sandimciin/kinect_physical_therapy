@@ -41,6 +41,7 @@ namespace KinectPT
             if (body == null || !body.IsTracked) return;
 
             TimeSpan elapsed = DateTime.Now - current;
+            //frequency based on settings
             TimeSpan frequency = new TimeSpan(0,0, Convert.ToInt32(Application.Current.Properties["frequency"].ToString()));
 
             //For every x seconds, do the following

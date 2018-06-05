@@ -11,12 +11,17 @@ namespace KinectPT
     class LeftArmRaise
     {
         readonly int WINDOW_SIZE = 50;
-
+        
+        /// The segments that form the current gesture.
         IGestureSegment[] _segments;
-
+        
+        /// The current gesture segment we are matching against.
         int _currentSegment = 0;
+        
+        /// The current frame.
         int _frameCount = 0;
-
+        
+        /// Occurs when a gesture is recognized.
         public event EventHandler GestureRecognized;
 
         public LeftArmRaise()
@@ -31,10 +36,8 @@ namespace KinectPT
                 LeftArmRaiseSegment1, LeftArmRaiseSegment2, LeftArmRaiseSegment3
             };
         }
-
-        /// <summary>
+        
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="skeleton">The skeleton data.</param>
         public void Update(Body skeleton)
         {
@@ -65,10 +68,8 @@ namespace KinectPT
                 _frameCount++;
             }
         }
-
-        /// <summary>
+        
         /// Resets the current gesture.
-        /// </summary>
         public void Reset()
         {
             _currentSegment = 0;

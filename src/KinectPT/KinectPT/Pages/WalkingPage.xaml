@@ -18,6 +18,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <!-- Back Button -->
             <Grid Grid.Column="0">
                 <Button Height="1080" Width="40" Foreground="White" Background="SlateGray" VerticalAlignment="Center" HorizontalAlignment="Left" Click="Click_Back">
                     <Button.Content>
@@ -36,15 +37,18 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+                <!-- Page title -->
                 <Grid Grid.Row="0">
                     <TextBlock x:Name="pageTitle" Text="Walking Exercise" FontSize="50"
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
                 </Grid>
 
                 <Grid Grid.Row="1">
+                    <!-- Kinect sensor camera feed -->
                     <controls:KinectViewer x:Name="viewer" />
                     <Viewbox>
                         <Canvas Width="1920" Height="1080">
+                            <!-- Displays instructions over Kinect feed -->
                             <TextBlock x:Name="Instructions" Text="Instructions" TextAlignment="Center" FontSize="70" Foreground="Red" TextWrapping="Wrap">
                             </TextBlock>
                         </Canvas>

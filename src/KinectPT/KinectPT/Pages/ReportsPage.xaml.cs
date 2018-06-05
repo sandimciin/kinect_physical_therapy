@@ -1,16 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 using OxyPlot;
@@ -29,15 +20,12 @@ namespace KinectPT
         public ReportsPage()
         {
             this.InitializeComponent();
-            //this.Model = CreateNormalDistributionModel();
-            //string userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ReportData.csv");
             userDataFile = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
-            if(File.Exists(userDataFile))
+            if (File.Exists(userDataFile))
             {
                 this.Model = OpenTimes(userDataFile);
             }
-            
-            //this.Model = OpenDoubles(userDataFile);
+
 
             this.DataContext = this;
         }
@@ -46,24 +34,12 @@ namespace KinectPT
         public PlotModel Model { get; set; }
         public string userDataFile { get; set; }
 
-        //private void OpenCsv_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var dlg = new OpenFileDialog();
-        //    dlg.Filter = ".csv files|*.csv";
-        //    dlg.DefaultExt = ".csv";
-        //    if (dlg.ShowDialog().Value)
-        //    {
-        //        vm.Open(dlg.FileName);
-        //    }
-        //}
 
         public PlotModel OpenDoubles(string file)
         {
             var doc = new CsvDocument();
             doc.Load(file);
-            var tmp = new PlotModel { Title = "Generated User Report" /*Path.GetFileNameWithoutExtension(file)*/ };
-            //tmp.LegendPosition = LegendPosition.RightTop;
-            //tmp.LegendPlacement = LegendPlacement.Outside;
+            var tmp = new PlotModel { Title = "Generated User Report" };
             tmp.IsLegendVisible = false;
             tmp.PlotMargins = new OxyThickness(50, 0, 0, 40);
             for (int i = 1; i < doc.Headers.Length; i++)
@@ -96,9 +72,7 @@ namespace KinectPT
         {
             var doc = new CsvDocument();
             doc.Load(file);
-            var tmp = new PlotModel { Title = "Exercise Duration Over Time" /*Path.GetFileNameWithoutExtension(file)*/ };
-            //tmp.LegendPosition = LegendPosition.RightTop;
-            //tmp.LegendPlacement = LegendPlacement.Outside;
+            var tmp = new PlotModel { Title = "Exercise Duration Over Time" };
             tmp.IsLegendVisible = false;
             tmp.PlotMargins = new OxyThickness(50, 0, 0, 40);
             for (int i = 1; i < doc.Headers.Length; i++)
@@ -137,8 +111,8 @@ namespace KinectPT
                 Position = AxisPosition.Left,
                 Title = doc.Headers[0],
                 TickStyle = TickStyle.Inside,
-              
-                
+
+
             });
             tmp.Axes.Add(new DateTimeAxis
             {

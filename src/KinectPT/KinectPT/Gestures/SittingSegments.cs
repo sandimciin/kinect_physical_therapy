@@ -8,19 +8,14 @@ using LightBuzz.Vitruvius;
 
 namespace KinectPT
 {
-    /// <summary>
     /// The first part of a <see cref="Sitting"/> gesture.
-    /// </summary>
     public class SittingSegment1 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
         {
-
             // head above hips
             if (body.Joints[JointType.Head].Position.Y > body.Joints[JointType.HipLeft].Position.Y)
             {
@@ -39,20 +34,15 @@ namespace KinectPT
             return GesturePartResult.Failed;
         }
     }
-
-    /// <summary>
-    /// The first part of a <see cref="Sitting"/> gesture.
-    /// </summary>
+    
+    /// The second part of a <see cref="Sitting"/> gesture.
     public class SittingSegment2 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
         {
-
             // head above hips
             if (body.Joints[JointType.Head].Position.Y > body.Joints[JointType.HipLeft].Position.Y)
             {
@@ -71,20 +61,15 @@ namespace KinectPT
             return GesturePartResult.Failed;
         }
     }
-
-    /// <summary>
-    /// The first part of a <see cref="Sitting"/> gesture.
-    /// </summary>
+    
+    /// The third part of a <see cref="Sitting"/> gesture.
     public class SittingSegment3 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
         {
-
             // head above hips
             if (body.Joints[JointType.Head].Position.Y > body.Joints[JointType.HipLeft].Position.Y)
             {

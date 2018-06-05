@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KinectPT
 {
@@ -25,23 +14,25 @@ namespace KinectPT
             InitializeComponent();
         }
 
+        //Event handler for clicking Arm Raises menu option
         private void Click_ArmRaises(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ArmRaisesPage());
-
-
         }
 
+        //Event handler for clicking Walking menu option
         private void Click_Walking(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new WalkingPage());
         }
 
+        //Event handler for clicking Sitting and Standing menu option
         private void Click_SittingStanding(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SittingStandingPage());
         }
 
+        //Event handler for clicking Back button
         private void Click_Back(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

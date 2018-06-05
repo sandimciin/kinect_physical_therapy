@@ -9,37 +9,8 @@
         Title="MainWindow" Height="350" Width="525" 
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
+    <!-- pages contained in KinectRegion to allow hand gesture cursor movement -->
     <k:KinectRegion x:Name="kinectRegion">
         <Frame x:Name="_NavigationFrame" NavigationUIVisibility="Hidden" />
-       <!-- <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock x:Name="pageTitle" Text="Kinect Physical Therapy" Margin="0 10 0 10" FontSize="40"/>
-
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*" />
-                    <ColumnDefinition Width="0.25*" />
-                    <ColumnDefinition Width="0.25*" />
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10 0 0 0">
-                    <Button Content="Exercises" Click="Click_Exercises"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
-                    <Button Content="Reports" />
-                </StackPanel>
-
-                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 0 0 0">
-                    <Button Content="Data Collection Settings" />
-                </StackPanel>
-
-            </Grid>
-
-        </Grid>-->
     </k:KinectRegion>
 </Window>

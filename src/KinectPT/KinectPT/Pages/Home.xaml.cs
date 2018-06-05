@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KinectPT
 {
@@ -24,18 +13,22 @@ namespace KinectPT
         {
             InitializeComponent();
         }
+
+        //Event handler for clicking Exercises menu option
         private void Click_Exercises(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ExerciseOptions());
 
         }
 
+        //Event handler for clicking Reports menu option
         private void Click_Reports(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ReportsPage());
 
         }
 
+        //Event handler for clicking Settings menu option
         private void Click_Data(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DataSettingsPage());

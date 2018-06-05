@@ -8,19 +8,14 @@ using LightBuzz.Vitruvius;
 
 namespace KinectPT
 {
-    /// <summary>
     /// The first part of a <see cref="RightArmRaise"/> gesture.
-    /// </summary>
     public class RightArmRaiseSegment1 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
         {
-
             // right hand in front of right elbow
             if (body.Joints[JointType.HandRight].Position.Z < body.Joints[JointType.ElbowRight].Position.Z)
             {
@@ -39,15 +34,11 @@ namespace KinectPT
             return GesturePartResult.Failed;
         }
     }
-
-    /// <summary>
-    /// The second part of a <see cref="GestureType.SwipeUp"/> gesture.
-    /// </summary>
+    
+    /// The second part of a <see cref="RightArmRaise"/> gesture.
     public class RightArmRaiseSegment2 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
@@ -70,15 +61,11 @@ namespace KinectPT
             return GesturePartResult.Failed;
         }
     }
-
-    /// <summary>
-    /// The third part of a <see cref="GestureType.SwipeUp"/> gesture.
-    /// </summary>
+    
+    /// The third part of a <see cref="RightArmRaise"/> gesture.
     public class RightArmRaiseSegment3 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
@@ -96,12 +83,8 @@ namespace KinectPT
                     }
                     return GesturePartResult.Undetermined;
                 }
-
-                // Debug.WriteLine("GesturePart 2 - right hand below shoulder height but above hip height - FAIL");
                 return GesturePartResult.Failed;
             }
-
-            // Debug.WriteLine("GesturePart 2 - Right hand in front of right Shoulder - FAIL");
             return GesturePartResult.Failed;
         }
     }

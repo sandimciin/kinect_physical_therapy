@@ -107,7 +107,6 @@
     <Compile Include="Gestures\RightArmRaiseSegments.cs" />
     <Compile Include="Gestures\Sitting.cs" />
     <Compile Include="Gestures\SittingSegments.cs" />
-    <Compile Include="Globals.cs" />
     <Compile Include="HandPointer\HandInScreenEngagementModel.cs" />
     <Compile Include="Kinect2CSV.cs" />
     <Compile Include="MainWindow.xaml.cs">

@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-//using System.Windows.Shapes;
 using LightBuzz.Vitruvius;
-using LightBuzz.Kinect2CSV;
 using Microsoft.Kinect;
 using System.Diagnostics;
 using Microsoft.Win32;
@@ -29,9 +19,8 @@ namespace KinectPT
         KinectSensor _sensor;
         MultiSourceFrameReader _reader;
         PlayersController _userReporter;
-        RightArmRaise _gesture;
-        LeftArmRaise _gesture2;
-        //KinectCSVManager _recorder = null;
+        RightArmRaise _gesture;  //right arm raise
+        LeftArmRaise _gesture2;  //left arm raise
         Kinect2CSV _recorder = null;
         Stopwatch _timer;
         DateTime startTime = new DateTime();
@@ -41,11 +30,7 @@ namespace KinectPT
         int rcounter;
         int lcounter;
         int startreps;
-        double userHeight = 0;
-        int maxRightArmAngle = 0;
-        int maxLeftArmAngle = 0;
         string sessionData = "";
-        bool recording = false;
 
         /* Angle Calculation for the right arm */
         JointType _startRight = JointType.ShoulderRight;
@@ -62,6 +47,7 @@ namespace KinectPT
         {
             InitializeComponent();
 
+            //Set exercise repetitions based on settings or default (10)
             startreps = Int32.Parse(Application.Current.Properties["armReps"].ToString());
             rcounter = startreps;
             lcounter = startreps;
@@ -86,7 +72,6 @@ namespace KinectPT
                 _gesture2 = new LeftArmRaise();
                 _gesture2.GestureRecognized += Gesture2_GestureRecognized;
 
-                //_recorder = new KinectCSVManager();
                 _recorder = new Kinect2CSV();
 
                 _timer = new Stopwatch();
@@ -105,12 +90,6 @@ namespace KinectPT
                 _reader.Dispose();
             }
 
-            /*
-            if (_sensor != null)
-            {
-                _sensor.Close();
-            }
-            */
         }
 
 
@@ -145,46 +124,20 @@ namespace KinectPT
                     if (body != null)
                     {
                         viewer.DrawBody(body, 15, Brushes.White, 8, Brushes.Aqua);
-                        // Gather the uesr's height at the beginning of the exercise
-                        userHeight = body.Height();
                         // Draw the Arm Angles
                         rightArmAngle.Update(body.Joints[_startRight], body.Joints[_centerRight], body.Joints[_endRight], 100);
                         leftArmAngle.Update(body.Joints[_startLeft], body.Joints[_centerLeft], body.Joints[_endLeft], 100);
 
 
-                        // Update the corresponding armAngle value to the screen
-                        if (onRightArmRaise)
-                        {
-                            tblAngle.Text = ((int)rightArmAngle.Angle).ToString();
-                        }
-                        else
-                        {
-                            tblAngle.Text = ((int)leftArmAngle.Angle).ToString();
-                        }
-
-
 
                         if (rcounter < startreps && onRightArmRaise)
                         {
-                            if(rcounter==startreps-1 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
+                            //If data recording set to begin at exercise start, start recording after first rep
+                            if (rcounter == startreps - 1 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
                             {
                                 _recorder.Start();
                             }
 
-                            if (maxRightArmAngle < (int)rightArmAngle.Angle)
-                            {
-                                maxRightArmAngle = (int)rightArmAngle.Angle;
-                                // sessionData += "Max Angle on Right Arm Raise: " + maxRightArmAngle.ToString() + Environment.NewLine;
-                                // sessionData += "User Height: " + body.Height().ToString() + Environment.NewLine;
-                            }
-                        }
-                        else if (lcounter < startreps && !onRightArmRaise)
-                        {
-                            if (maxLeftArmAngle < (int)leftArmAngle.Angle)
-                            {
-                                maxLeftArmAngle = (int)leftArmAngle.Angle;
-                                // sessionData += "Max Angle on Left Arm Raise: " + maxLeftArmAngle.ToString() + Environment.NewLine;
-                            }
                         }
 
                         _gesture.Update(body);
@@ -197,13 +150,12 @@ namespace KinectPT
                             DateTime current = DateTime.Now;
                             TimeSpan elapsed = current - startTime;
 
+                            //Stop recording if duration is not default (0) and reached duration
                             if (Convert.ToInt32(Application.Current.Properties["duration"].ToString()) > 0)
                             {
                                 if (elapsed >= duration)
                                 {
-                                    //_recorder.Stop();
                                     _recorder.IsRecording = false;
-                                    recording = false;
                                 }
                             }
                         }
@@ -212,42 +164,50 @@ namespace KinectPT
                         if (onRightArmRaise)
                         {
                             Instructions.Text = "Raise your right arm above your head";
+                            //Display remaining repititions
                             ArmRaiseCount.Text = rcounter.ToString();
+                            //Display arm angle value
+                            tblAngle.Text = ((int)rightArmAngle.Angle).ToString();
                         }
                         else
                         {
+                            //Update instructions
                             Instructions.Text = "Raise your left arm above your head";
+                            //Display arm angle value
                             pageTitle.Text = "Left Arm Angle:";
+                            tblAngle.Text = ((int)leftArmAngle.Angle).ToString();
+                            //Display remaining repetitions
                             ArmRaiseCount.Text = lcounter.ToString();
                         }
-                        if (lcounter == 0)
+                        if (lcounter == 0)  //end of exercise. Save node data
                         {
                             Instructions.Text = "You have completed this exercise!";
-                            
-                                _recorder.Stop();
 
-                                _timer.Stop();
+                            _recorder.Stop();
+
+                            _timer.Stop();
 
 
-                                SaveFileDialog dialog = new SaveFileDialog
-                                {
-                                    Filter = "Excel files|*.csv"
-                                };
+                            SaveFileDialog dialog = new SaveFileDialog
+                            {
+                                Filter = "Excel files|*.csv"
+                            };
 
-                                dialog.ShowDialog();
+                            dialog.ShowDialog();
 
-                                if (!string.IsNullOrWhiteSpace(dialog.FileName))
-                                {
-                                    System.IO.File.Copy(_recorder.Result, dialog.FileName);
-                                }
+                            if (!string.IsNullOrWhiteSpace(dialog.FileName))
+                            {
+                                System.IO.File.Copy(_recorder.Result, dialog.FileName);
+                            }
 
-                                Directory.Delete(_recorder.Folder, true);
+                            Directory.Delete(_recorder.Folder, true);
 
+                            //Write data for report generation
                             string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
                             // This text is added only once to the file.
                             if (!File.Exists(path))
                             {
-                                // Create a file to write to.
+                                // Record duration and date of exercise
                                 using (StreamWriter sw = File.CreateText(path))
                                 {
                                     sw.WriteLine("ExerciseDuration,Date");
@@ -285,7 +245,6 @@ namespace KinectPT
 
         void Gesture_GestureRecognized(object sender, EventArgs e)
         {
-            //tblGesture.Text = "RightArmRaise Detected!";
             Instructions.Text = "Lower your right arm";
             rcounter--;
             if (rcounter == 0)
@@ -296,27 +255,28 @@ namespace KinectPT
 
         void Gesture2_GestureRecognized(object sender, EventArgs e)
         {
-            //tblGesture.Text = "LeftArmRaise Detected!";
             Instructions.Text = "Lower your left arm";
             lcounter--;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            //Begin node data recording based on settings
             if (Application.Current.Properties["beginAtExerciseStart"].ToString() == "False")
             {
                 _recorder.Start();
             }
             _timer.Start();
-            recording = true;
 
             startTime = DateTime.Now;
+            //Set duration of data recording based on settings
             if (Application.Current.Properties["durationUnit"].ToString() == "seconds")
             {
                 duration = new TimeSpan(0, 0, Convert.ToInt32(Application.Current.Properties["duration"].ToString()));
             }
         }
 
+        //Event handler for clicking Back button
         private void Click_Back(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

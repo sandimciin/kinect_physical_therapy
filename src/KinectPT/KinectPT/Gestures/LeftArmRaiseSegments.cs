@@ -8,14 +8,10 @@ using LightBuzz.Vitruvius;
 
 namespace KinectPT
 {
-    /// <summary>
     /// The first part of a <see cref="LeftArmRaise"/> gesture.
-    /// </summary>
     public class LeftArmRaiseSegment1 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
@@ -39,15 +35,11 @@ namespace KinectPT
             return GesturePartResult.Failed;
         }
     }
-
-    /// <summary>
-    /// The second part of a <see cref="GestureType.SwipeUp"/> gesture.
-    /// </summary>
+    
+    /// The second part of a <see cref="LeftArmRaise"/> gesture.
     public class LeftArmRaiseSegment2 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
@@ -70,15 +62,11 @@ namespace KinectPT
             return GesturePartResult.Failed;
         }
     }
-
-    /// <summary>
-    /// The third part of a <see cref="GestureType.SwipeUp"/> gesture.
-    /// </summary>
+    
+    /// The third part of a <see cref="LeftArmRaise"/> gesture.
     public class LeftArmRaiseSegment3 : IGestureSegment
     {
-        /// <summary>
         /// Updates the current gesture.
-        /// </summary>
         /// <param name="body">The body.</param>
         /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
         public GesturePartResult Update(Body body)
@@ -96,12 +84,8 @@ namespace KinectPT
                     }
                     return GesturePartResult.Undetermined;
                 }
-
-                // Debug.WriteLine("GesturePart 2 - left hand below shoulder height but above hip height - FAIL");
                 return GesturePartResult.Failed;
             }
-
-            // Debug.WriteLine("GesturePart 2 - left hand in front of left shoulder - FAIL");
             return GesturePartResult.Failed;
         }
     }

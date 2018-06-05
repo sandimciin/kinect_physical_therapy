@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using LightBuzz.Vitruvius;
 using Microsoft.Kinect;
-using LightBuzz.Kinect2CSV;
 using Microsoft.Win32;
 using System.IO;
 using System.Diagnostics;
@@ -71,13 +61,6 @@ namespace KinectPT
             {
                 _reader.Dispose();
             }
-
-            /*
-            if (_sensor != null)
-            {
-                _sensor.Close();
-            }
-            */
         }
 
 
@@ -121,6 +104,7 @@ namespace KinectPT
                         DateTime currentT = DateTime.Now;
                         TimeSpan elapsed = currentT - startTime;
 
+                        //Stop recording if duration is not default (0) and reached duration
                         if (Convert.ToInt32(Application.Current.Properties["duration"].ToString()) > 0)
                         {
                             if (elapsed >= duration)
@@ -129,6 +113,7 @@ namespace KinectPT
                             }
                         }
 
+                        //Update instructions when user reaches edge of frame
                         if (clippedEdges.HasFlag(FrameEdges.Left))
                         {
                             Instructions.Text = "Turn right and walk";
@@ -147,7 +132,7 @@ namespace KinectPT
                             }
                             current = 2;
                         }
-                        if (laps == 3)
+                        if (laps == 3)  //end of exercise. Save node data
                         {
                             Instructions.Text = "You have completed this exercise!";
 
@@ -169,12 +154,12 @@ namespace KinectPT
 
                             Directory.Delete(_recorder.Folder, true);
 
-
+                            //Write data for report generation
                             string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\WalkingReportData.csv");
                             // This text is added only once to the file.
                             if (!File.Exists(path))
                             {
-                                // Create a file to write to.
+                                // Record duration and date of exercise
                                 using (StreamWriter sw = File.CreateText(path))
                                 {
                                     sw.WriteLine("ExerciseDuration,Date");
@@ -211,16 +196,18 @@ namespace KinectPT
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            _recorder.Start();
+            _recorder.Start();  //recording for walking exercise always begins at window open
             Instructions.Text = "Make sure your whole body is visible, then turn right and walk";
             _timer.Start();
             startTime = DateTime.Now;
+            //Set duration of data recording based on settings
             if (Application.Current.Properties["durationUnit"].ToString() == "seconds")
             {
                 duration = new TimeSpan(0, 0, Convert.ToInt32(Application.Current.Properties["duration"].ToString()));
             }
         }
 
+        //Event handler for clicking Back button
         private void Click_Back(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

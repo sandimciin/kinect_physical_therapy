@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Globalization;
 
 namespace KinectPT
 {
@@ -24,60 +12,35 @@ namespace KinectPT
         public DataSettingsPage()
         {
             InitializeComponent();
-
-            //exerciseStart.Text = Application.Current.Properties["beginAtExerciseStart"].ToString();
         }
 
+        //Event handler for clicking Back button
         private void Click_Back(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
+        //Event handler for selecting duration unit
         void durationSelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             string selected = durationBox.SelectedValue.ToString();
             Application.Current.Properties["durationUnit"] = selected.Substring(38, 7);
-            
+
         }
 
+        //Event handler for selecting begin at window open
         private void RadioButton1_Checked(object sender, RoutedEventArgs e)
         {
             Application.Current.Properties["beginAtExerciseStart"] = false;
 
         }
 
+        //Event handler for selecting begin at exercise start
         private void RadioButton2_Checked(object sender, RoutedEventArgs e)
         {
             Application.Current.Properties["beginAtExerciseStart"] = true;
         }
     }
 
-    public class EnumMatchToBooleanConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType,
-                              object parameter, CultureInfo culture)
-        {
-            if (value == null || parameter == null)
-                return false;
-
-            string checkValue = value.ToString();
-            string targetValue = parameter.ToString();
-            return checkValue.Equals(targetValue,
-                     StringComparison.InvariantCultureIgnoreCase);
-        }
-
-        public object ConvertBack(object value, Type targetType,
-                                  object parameter, CultureInfo culture)
-        {
-            if (value == null || parameter == null)
-                return null;
-
-            bool useValue = (bool)value;
-            string targetValue = parameter.ToString();
-            if (useValue)
-                return Enum.Parse(targetType, targetValue);
-
-            return null;
-        }
-    }
+   
 }
