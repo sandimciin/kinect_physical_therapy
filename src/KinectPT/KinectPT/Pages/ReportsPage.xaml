@@ -9,13 +9,16 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ReportsPage">
 
+    <!-- Main Grid for Reports Page-->
     <Grid>
         <Grid>
+            <!-- Grid Definition Setup -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
+            <!-- Navigation Bar (Consists of a vertically spanning 'Back' button -->
             <Grid Grid.Column="0">
                 <Button Height="1080" Width="40" Foreground="White" Background="SlateGray" VerticalAlignment="Center" HorizontalAlignment="Left" Click="Click_Back">
                     <Button.Content>
@@ -28,6 +31,7 @@
                 </Button>
             </Grid>
 
+            <!-- Inner Grid Definition Setup -->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -40,55 +44,24 @@
                     <TextBlock x:Name="pageTitle" Text="Reports" FontSize="60" HorizontalAlignment="Center" Margin="0 10 0 10"/>
                 </Grid>
 
-                <!--<Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*" />
-                <ColumnDefinition Width="0.25*" />
-                <ColumnDefinition Width="0.25*" />
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="textBox" Height="248" TextWrapping="Wrap" Text="Date of Exercise: 03-10-2018&#xD;&#xA;&#xD;&#xA;Total Time of Exercise: 00:02:12&#xD;&#xA;&#xD;&#xA;Max Exercise Angle:  130 degrees &#xD;&#xA;&#xD;&#xA;Height of User: 1.8 meters&#xD;&#xA;&#xD;&#xA;" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="20"/>
-        </Grid>-->
-
-                <!--<Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*" />
-                <ColumnDefinition Width="0.25*" />
-                <ColumnDefinition Width="0.25*" />
-            </Grid.ColumnDefinitions>
-            <oxy:Plot Title="{Binding Title}">
-                <oxy:Plot.Series>
-                    <oxy:LineSeries ItemsSource="{Binding Points}"/>
-                </oxy:Plot.Series>
-            </oxy:Plot>
-        </Grid>-->
+                <!-- Bind the Model for OxyPlot-->
+                
                 <Grid Grid.Row="1">
                     <oxy:PlotView x:Name="Plot1" Model="{Binding Model}"/>
                 </Grid>
 
+                <!-- Bottom of page Grid for navigation between reports for every type of exercise -->
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-
                     <Button Content="Arm Raises" Click="Click_Arm" Grid.Column="0" FontSize="20" Width="400" HorizontalAlignment="Left" Background="Orange" Foreground="White"/>
                     <Button Content="Walking" Click="Click_Walk" Grid.Column="1" FontSize="20" Width="400" HorizontalAlignment="Center" Background="Orange" Foreground="White"/>
                     <Button Content="Sitting and Standing" Click="Click_Sit" Grid.Column="2" FontSize="20" Width="400" HorizontalAlignment="Right" Background="Orange" Foreground="White"/>
-                    
 
-
-
-                    <!--
-                    <StackPanel Orientation="Horizontal">
-                        
-                        <Button Content="Arm Raises" Click="Click_Arm" FontSize="20" Width="400" HorizontalAlignment="Left" Background="Orange" Foreground="White"/>
-                        <Button Content="Walking" Click="Click_Walk" FontSize="20" Width="400" HorizontalAlignment="Center" Background="Orange" Foreground="White"/>
-                        <Button Content="Sitting and Standing" Click="Click_Sit" FontSize="20" Width="400" HorizontalAlignment="Right" Background="Orange" Foreground="White"/>
-                    </StackPanel>
-                    -->
                 </Grid>
-
             </Grid>
         </Grid>
     </Grid>
