@@ -1,4 +1,4 @@
-LATEX	= /usr/local/apps/tex_live/current/bin/x86_64-linux/latex 
+LATEX	= /usr/local/apps/tex_live/current/bin/x86_64-linux/pdflatex 
 BIBTEX	= bibtex
 DVIPS	= dvips
 DVIPDF  = dvipdft
@@ -24,9 +24,16 @@ $(TRG): %.dvi: %.tex *.bib $(EXAMPLES)
 $(PSF):%.ps: %.dvi
 	$(DVIPS) -R -Poutline -t letter $< -o $@
 
-$(PDF): %.pdf: %.ps
+#$(PDF): %.pdf: %.ps
 #	$(DVIPDF) -o $@ $<
-	ps2pdf $<
+#	ps2pdf $<
+
+$(PDF): %.pdf: %.tex *.bib
+#	$(DVIPDF) -o $@ $<
+	$(LATEX) $<
+	$(BIBTEX) $(<:%.tex=%)
+	$(LATEX) $<
+	$(LATEX) $<
 
 show: $(TRG)
 	@for i in $(TRG) ; do $(XDVI) $$i & done
