@@ -130,41 +130,74 @@ The importance of this project was to demonstrate a proof of concept that helps 
 
 \subsection{Team Members}
 The two members of the development team for this project were Louis Leon and San Dim Ciin, two senior Computer Science students at Oregon State University. They both held the role as lead developers for this project. Each team member had large tasks in all the components of the project which ranged from building the user interface to automating the report generation process. The project's client, Dr. Kilinc supervised the project's direction and progress. He provided feedback at various stages of the development process and requested features that could serve as additions to the project overall. 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%  REQUIREMENTS DOCUMENT  %%%%%%%%%%%%%%%%%%%%%
 \section{Requirements}
-*Insert Requirements Document Here*
 \includepdf[pages=-, pagecommand={}]{requiredDocuments/Requirements}  
+
 \subsection{Requirement Changes}
 *Add (your client should have okay'd): What new requirements were added? What existing requirements were changed? What existing requirements were deleted? Why?* 
 \subsection{Final Project Timeline}
 *Add: Final Gantt Chart as a record of what happened when.* 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%  DESIGN DOCUMENT  %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Design}
-*Insert Design Document Here*
 \includepdf[pages=-, pagecommand={}]{requiredDocuments/DesignDocument}  
 \cite{KinectDevelop}
+
 \subsection{Design Changes}
 *Add (your client should have okay'd): What design aspects were changed, deleted or added? Why?*
 
-
+%%%%%%%%%%%%%%%%%%%%%%  TECHNOLOGY REVIEW DOCUMENTS  %%%%%%%%%%%%%%%%%%
 \section{Technology Review}
-*Insert Tech Review Document Here*
-
+\includepdf[pages=-, pagecommand={}]{requiredDocuments/leonl_techReview}
+\includepdf[pages=-, pagecommand={}]{requiredDocuments/dimc_techReview}
+%%%%%%%%%%%%%%%%%%%%%%%%%%  TEAM WEEKLY BLOGS  %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Team Blog}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%  FINAL EXPO POSTER  %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Final Poster}
 \includepdf[pages=-, pagecommand={},landscape=true]{requiredDocuments/FinalPoster}  
+%%%%%%%%%%%%%%%%%%%%%%%%  PROJECT DOCUMENTATION  %%%%%%%%%%%%%%%%%%%%%%
 \section{Project Documentation}
+\subsection{Structure and Operation}
+The directory structure of the project itself includes separate directories for Gestures, Navigation Pages, User Data, Exercise Pages, and Libraries. 
+
+The user interface consists of a main navigation page which allows the user to choose one of three of the following tiles or pages to navigate to: Exercises, Reports, and Settings. Each page has several components and libraries that correspond to it. 
+
+Each exercise option has a dedicated .cs file where the exercise is defined and a corresponding .xaml file for the graphics display. In the exercise files, the Kinect Sensor is initialized along with the exercise gestures, node recorder, and timer. With the use of an open source Kinect library, Vitruvius, the setup for the sensor is greatly simplified. 
+
+The Reports page within the main navigation screen houses the report generation logic. Using a plotting library called OxyPlot, each CSV file containing the user's exercise data for every completed exercise session is processed and plotted onto the display.
+
 \subsection{Installation and Building}
 
 \subsection{System Requirements}
-
+\textbf{Operating System Requirements}
+\begin{itemize}
+    \item Windows 8 (64-bit) or above
+    \item Windows 8.1 (64-bit) or above
+    \item Windows Embedded Standard 8 (64-bit)
+    \item Windows Embedded Standard 8.1 (64-bit)
+\end{itemize}
+\textbf{Hardware Requirements}
+\begin{itemize}
+    \item 64-bit (x64) processor
+    \item 4 GB Memory (or more)
+    \item Physical dual-core 3.1  GHz (2 logical cores per physical) or faster processor
+    \item USB 3.0 controller dedicated to the Kinect for Windows v2 Sensor
+    \item A Microsoft Kinect v2 Sensor, which includes a power hub and USB cabling
+\end{itemize}
+\textbf{Runtime Requirements}
+\begin{itemize}
+    \item .NET Framework 4.0
+    \item Kinect v2 SDK
+    \item DirectX 11
+\end{itemize}
 \subsection{User Guide}
-
+%%%%%%%%%%%%%%%%%%%%%%%  RECOMMENDED RESOURCES  %%%%%%%%%%%%%%%%%%%%%%%
 \section{Recommended Technical Resources}
 \subsection{Useful Websites}
 
+%%%%%%%%%%%%%%%%%%%%  CONCLUSIONS AND REFLECTIONS  %%%%%%%%%%%%%%%%%%%%
 \section{Conclusions and Reflections}
 \begin{flushleft}
 {\large\textbf{Louis Leon}\par}
@@ -183,7 +216,7 @@ The two members of the development team for this project were Louis Leon and San
 \end{flushleft}
 
 \begin{flushleft}
-{\large\textbf{San Dim}\par}
+{\large\textbf{San Dim Ciin}\par}
 \textbf{What technical information did you learn?}\par
 
 \textbf{What non-technical information did you learn?}\par
@@ -197,6 +230,7 @@ The two members of the development team for this project were Louis Leon and San
 \textbf{If you could do it all over, what would you do differently?}\par
 
 \end{flushleft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%  APPENDIX I  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Appendix I: Essential Code Listings}
 \begin{figure}[H]
@@ -252,10 +286,10 @@ The two members of the development team for this project were Louis Leon and San
 \end{lstlisting}
 \caption{Report Generation with OxyPlot}
 \end{figure}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  APPENDIX II  %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendix II: Related Project Information}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BIBLIOGRAPHY  %%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{ieeetr}
 \bibliography{FinalReport}
 \end{document}
