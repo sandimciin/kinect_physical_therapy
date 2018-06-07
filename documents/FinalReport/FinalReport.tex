@@ -1,22 +1,26 @@
 \documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
-\usepackage{graphicx}
-\usepackage{pgfgantt}
 \usepackage{url}
-\usepackage{setspace}
 \usepackage{tabu}
-\usepackage{geometry}
-\usepackage{listings} % code listings
-\usepackage{color} % colors for code listings
+\usepackage{color}    % colors for code listings
 \usepackage{float}
 \usepackage{caption}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{listings} % code listings
+\usepackage{pdfpages} % for inserting pdfs into LateX
+\usepackage{pgfgantt}
+\usepackage{setspace}
+
 \graphicspath{{images/}}
 \geometry{textheight=9.5in, textwidth=7in, margin=0.75in}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code listing options %
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-\lstset{ %
+\lstset{ 
   backgroundcolor=\color{white},   % choose the background color
   basicstyle=\footnotesize,        % size of fonts used for the code
   breaklines=true,                 % automatic line breaking only at whitespace
@@ -39,7 +43,7 @@
   identifierstyle=\color{blue},
   stringstyle=\color{orange},
 }
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 1. Fill in these details
 \def \CapstoneTeamName{     TeamName}
 \def \CapstoneTeamNumber{       24}
@@ -64,7 +68,7 @@
 % 3. If the document is not to be signed, uncomment the RENEWcommand below
 \renewcommand{\NameSigPair}[1]{#1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \begin{titlepage}
     \pagenumbering{gobble}
@@ -125,7 +129,7 @@ The Kinect Based Physical Therapy project was requested by the OSU Healthcare Sy
 The importance of this project was to demonstrate a proof of concept that helps people with neurodegenerative conditions such as Parkinson's Disease get access to physical therapy remotely without the need for in-person therapy sessions. Access to physical therapy clinics is problematic due to physical disability that inhibits traveling and can be costly for patients. Non-wearable sensor-based solutions have the potential to reduce the number of in-person visits and the long-distance traveling that is required. 
 
 \subsection{Team Members}
-The two members of the development team for this project were Louis Leon and San Dim Ciin, two senior Computer Science students at Oregon State University. They both held the role as lead developers for this project. The project's client, Dr. Kilinc supervised the project's direction and progress. 
+The two members of the development team for this project were Louis Leon and San Dim Ciin, two senior Computer Science students at Oregon State University. They both held the role as lead developers for this project. Each team member had large tasks in all the components of the project which ranged from building the user interface to automating the report generation process. The project's client, Dr. Kilinc supervised the project's direction and progress. He provided feedback at various stages of the development process and requested features that could serve as additions to the project overall. 
 
 \section{Requirements}
 *Insert Requirements Document Here*
@@ -137,6 +141,7 @@ The two members of the development team for this project were Louis Leon and San
 
 \section{Design}
 *Insert Design Document Here*
+\includepdf[pages=-, pagecommand={}]{requiredDocuments/DesignDocument}  
 \cite{KinectDevelop}
 \subsection{Design Changes}
 *Add (your client should have okay'd): What design aspects were changed, deleted or added? Why?*
