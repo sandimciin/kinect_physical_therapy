@@ -27,6 +27,7 @@ namespace KinectPT
             if (File.Exists(userDataFile))
             {
                 this.Model = OpenTimes(userDataFile);
+                this.Model.Title = "Arm Raise Exercise Duration Over Time";
             }
             this.DataContext = this;
         }

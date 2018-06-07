@@ -25,6 +25,10 @@ namespace KinectPT
 
         DateTime current;
 
+        TimeSpan frequency;  //frequency is limited by the speed of the Kinect sensor.
+                                //it may not be accurate to .5 seconds or less
+                                //if frequency is set lower than sensor speed, it will just record node data when it is received
+
         public void Start()
         {
             IsRecording = true;
@@ -42,7 +46,16 @@ namespace KinectPT
 
             TimeSpan elapsed = DateTime.Now - current;
             //frequency based on settings
-            TimeSpan frequency = new TimeSpan(0,0, Convert.ToInt32(Application.Current.Properties["frequency"].ToString()));
+            float seconds = float.Parse(Application.Current.Properties["frequency"].ToString());
+            if (Math.Floor(seconds)==seconds)  //if no decimals
+            {
+                frequency = new TimeSpan(0, 0, Convert.ToInt32(seconds));
+            }
+            else
+            {
+                //convert to miliseconds
+                frequency = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(1000*seconds));
+            }
 
             //For every x seconds, do the following
             if (elapsed >= frequency)
@@ -117,7 +130,7 @@ namespace KinectPT
                 }
             }
 
-            //Directory.Delete(Folder, true);
+            Directory.Delete(Folder, true);
         }
     }
 }

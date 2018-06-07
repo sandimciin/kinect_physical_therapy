@@ -2,7 +2,6 @@ C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Kinect
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\KinectPT.exe
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\KinectPT.pdb
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Kinect2CSV.dll
-C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\LightBuzz.Vitruvius.dll
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.dll
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Tools.dll
 C:\Users\San Dim\Documents\Classes\CS 461\KinectPT\KinectPT\bin\x64\Debug\Microsoft.Kinect.Wpf.Controls.dll

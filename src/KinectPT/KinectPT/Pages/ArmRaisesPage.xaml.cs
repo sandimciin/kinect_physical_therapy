@@ -30,7 +30,7 @@ namespace KinectPT
         int rcounter;
         int lcounter;
         int startreps;
-        string sessionData = "";
+        bool dataSaved = false;
 
         /* Angle Calculation for the right arm */
         JointType _startRight = JointType.ShoulderRight;
@@ -133,7 +133,7 @@ namespace KinectPT
                         if (rcounter < startreps && onRightArmRaise)
                         {
                             //If data recording set to begin at exercise start, start recording after first rep
-                            if (rcounter == startreps - 1 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True")
+                            if (rcounter == startreps - 1 && Application.Current.Properties["beginAtExerciseStart"].ToString() == "True" && !dataSaved && !_recorder.IsRecording)
                             {
                                 _recorder.Start();
                             }
@@ -151,7 +151,7 @@ namespace KinectPT
                             TimeSpan elapsed = current - startTime;
 
                             //Stop recording if duration is not default (0) and reached duration
-                            if (Convert.ToInt32(Application.Current.Properties["duration"].ToString()) > 0)
+                            if (Application.Current.Properties["duration"].ToString() != "0")
                             {
                                 if (elapsed >= duration)
                                 {
@@ -183,46 +183,46 @@ namespace KinectPT
                         {
                             Instructions.Text = "You have completed this exercise!";
 
-                            _recorder.Stop();
-
                             _timer.Stop();
 
-
-                            SaveFileDialog dialog = new SaveFileDialog
+                            if (!dataSaved)
                             {
-                                Filter = "Excel files|*.csv"
-                            };
-
-                            dialog.ShowDialog();
-
-                            if (!string.IsNullOrWhiteSpace(dialog.FileName))
-                            {
-                                System.IO.File.Copy(_recorder.Result, dialog.FileName);
-                            }
-
-                            Directory.Delete(_recorder.Folder, true);
-
-                            //Write data for report generation
-                            string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
-                            // This text is added only once to the file.
-                            if (!File.Exists(path))
-                            {
-                                // Record duration and date of exercise
-                                using (StreamWriter sw = File.CreateText(path))
+                                _recorder.Stop();
+                                SaveFileDialog dialog = new SaveFileDialog
                                 {
-                                    sw.WriteLine("ExerciseDuration,Date");
-                                    sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
-                                }
-                            }
+                                    Filter = "Excel files|*.csv"
+                                };
 
-                            // This text is always added, making the file longer over time
-                            // if it is not deleted.
-                            else
-                            {
-                                using (StreamWriter sw = File.AppendText(path))
+                                dialog.ShowDialog();
+
+                                if (!string.IsNullOrWhiteSpace(dialog.FileName))
                                 {
-                                    sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
+                                    System.IO.File.Copy(_recorder.Result, dialog.FileName,true);
                                 }
+
+                                //Write data for report generation
+                                string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\UserData\ArmRaisesReportData.csv");
+                                // This text is added only once to the file.
+                                if (!File.Exists(path))
+                                {
+                                    // Record duration and date of exercise
+                                    using (StreamWriter sw = File.CreateText(path))
+                                    {
+                                        sw.WriteLine("ExerciseDuration,Date");
+                                        sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
+                                    }
+                                }
+
+                                // This text is always added, making the file longer over time
+                                // if it is not deleted.
+                                else
+                                {
+                                    using (StreamWriter sw = File.AppendText(path))
+                                    {
+                                        sw.WriteLine(_timer.Elapsed.ToString() + "," + DateTime.Today.ToString("d"));
+                                    }
+                                }
+                                dataSaved = true;
                             }
                         }
                     }
@@ -272,7 +272,28 @@ namespace KinectPT
             //Set duration of data recording based on settings
             if (Application.Current.Properties["durationUnit"].ToString() == "seconds")
             {
-                duration = new TimeSpan(0, 0, Convert.ToInt32(Application.Current.Properties["duration"].ToString()));
+                float seconds = float.Parse(Application.Current.Properties["duration"].ToString());
+                if(seconds == Math.Floor(seconds)) //if no decimals
+                {
+                    duration = new TimeSpan(0, 0, Convert.ToInt32(seconds));
+                }
+                else
+                {
+                    duration = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(1000 * seconds));  //convert to milliseconds
+                }
+                
+            }
+            else  //duration in minutes
+            {
+                float minutes = float.Parse(Application.Current.Properties["duration"].ToString());
+                if(minutes == Math.Floor(minutes))  //if no decimals
+                {
+                    duration = new TimeSpan(0, Convert.ToInt32(minutes), 0);
+                }
+                else
+                {
+                    duration = new TimeSpan(0, 0, Convert.ToInt32(60 *minutes));
+                }
             }
         }
 
