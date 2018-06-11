@@ -120,7 +120,7 @@
 The purpose of the Kinect Based Physical Therapy Solution project is to provide a solution for physical therapy patients diagnosed with Parkinson's disease to perform in-home therapy exercises. This solution will not only allow for an interactive way of completing a patient's required home therapy but will provide a way for their physical therapist to track their progress and monitor their exercises.
 
 \section{Goals}
-Our project will have a simple UI that can be easily navigated by a user with Parkinson's Disease. From the UI, the user will be able to select the option that allows them to select and do the available exercises. Our goal is to have two different exercises available to the user to choose from. One of our stretch goals is to be able to have a physical therapist prescribe exercises and specify frequency. The program will guide the user through these exercises using text and verbal instructions. One of our stretch goals is to implement visual (graphical) cues (over-laying their body on the camera feed) to the user to guide them through exercises. As the user performs exercises, their node data will be collected to be sent to their physical therapist as a .csv file, and it will be used for report generation. We will define the exercise's correct movements and compare them to the user's node data. This is how we will analyze the data to determine user accuracy for report generation. Another option the user will be able to select is report generation. This will display the user's performance data in graphs and charts, showing their progress with the exercises over time. 
+Our project will have a simple UI that can be easily navigated by a user with Parkinson's Disease. From the UI, the user will be able to select the option that allows them to select and do the available exercises. Our goal is to have two different exercises available to the user to choose from. One of our stretch goals is to be able to have a physical therapist prescribe exercises and specify frequency. The program will guide the user through these exercises using text and verbal instructions. One of our stretch goals is to implement visual (graphical) cues (over-laying their body on the camera feed) to the user to guide them through exercises. As the user performs exercises, their node data will be collected to be sent to their physical therapist as a .csv file, and it will be used for report generation. We will define the exercise's correct movements and compare them to the user's node data. This is how we will analyze the data to determine user accuracy for report generation. Another option the user will be able to select is report generation. This will display the user's performance data in graphs and charts, showing their progress with the exercises over time \cite{csvFile, Gestures}. 
 
 \section{Project Introduction}
 \subsection{Project Information}
@@ -142,15 +142,12 @@ The two members of the development team for this project were Louis Leon and San
 %%%%%%%%%%%%%%%%%%%%%%%%%%  DESIGN DOCUMENT  %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Design}
 \includepdf[pages=-, pagecommand={}]{requiredDocuments/DesignDocument}  
-\cite{KinectDevelop}
 
 \subsection{Design Changes}
 *Add (your client should have okay'd): What design aspects were changed, deleted or added? Why?*
 
 %%%%%%%%%%%%%%%%%%%%%%  TECHNOLOGY REVIEW DOCUMENTS  %%%%%%%%%%%%%%%%%%
 \section{Technology Review}
-*Insert Tech Review Document Here*
-
 \includepdf[pages=-, pagecommand={}]{requiredDocuments/leonl_techReview}
 \includepdf[pages=-, pagecommand={}]{requiredDocuments/dimc_techReview}
 %%%%%%%%%%%%%%%%%%%%%%%%%%  TEAM WEEKLY BLOGS  %%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,7 +165,7 @@ The user interface consists of a main navigation page which allows the user to c
 
 Each exercise option has a dedicated .cs file where the exercise is defined and a corresponding .xaml file for the graphics display. In the exercise files, the Kinect Sensor is initialized along with the exercise gestures, node recorder, and timer. With the use of an open source Kinect library, Vitruvius, the setup for the sensor is greatly simplified. 
 
-The Reports page within the main navigation screen houses the report generation logic. Using a plotting library called OxyPlot, each CSV file containing the user's exercise data for every completed exercise session is processed and plotted onto the display.
+The Reports page within the main navigation screen houses the report generation logic. Using a plotting library called OxyPlot, each CSV file containing the user's exercise data for every completed exercise session is processed and plotted onto the display \cite{Vitruvius, KinectDevelop, csvFile}.
 
 \subsection{Installation and Building}
 
@@ -178,7 +175,7 @@ The Reports page within the main navigation screen houses the report generation 
     \item Windows 8 (64-bit) or above
     \item Windows 8.1 (64-bit) or above
     \item Windows Embedded Standard 8 (64-bit)
-    \item Windows Embedded Standard 8.1 (64-bit)
+    \item Windows Embedded Standard 8.1 (64-bit) \cite{KinectConstraints}
 \end{itemize}
 \textbf{Hardware Requirements}
 \begin{itemize}
@@ -186,7 +183,7 @@ The Reports page within the main navigation screen houses the report generation 
     \item 4 GB Memory (or more)
     \item Physical dual-core 3.1  GHz (2 logical cores per physical) or faster processor
     \item USB 3.0 controller dedicated to the Kinect for Windows v2 Sensor
-    \item A Microsoft Kinect v2 Sensor, which includes a power hub and USB cabling
+    \item A Microsoft Kinect v2 Sensor, which includes a power hub and USB cabling \cite{KinectDevelop,KinectConstraints}
 \end{itemize}
 \textbf{Runtime Requirements}
 \begin{itemize}
@@ -204,7 +201,7 @@ The Reports page within the main navigation screen houses the report generation 
 \begin{flushleft}
 {\large\textbf{Louis Leon}\par}
 \textbf{What technical information did you learn?}\par
-From working on this capstone project, I have learned a lot about programming in the C\# language and using the Kinect SDK to write code that interfaces with the Kinect Sensor architecture. I also learned about using native .NET Framework libraries to access system file paths in order to read and write to files that were essential for the project. I learned more about the Kinect Sensor than I had expected and learned to appreciate the potential of the applications that can be made possible using such a piece of technology. Learning how to develop custom gestures for the Microsoft Kinect was one of my favorite parts of the project. 
+From working on this capstone project, I have learned a lot about programming in the C\# language and using the Kinect SDK to write code that interfaces with the Kinect Sensor architecture. I also learned about using native .NET Framework libraries to access system file paths in order to read and write to files that were essential for the project. I learned more about the Kinect Sensor than I had expected and learned to appreciate the potential of the applications that can be made possible using such a piece of technology. Learning how to develop custom gestures for the Microsoft Kinect was one of my favorite parts of the project \cite{KinectDevelop}. 
 
 \textbf{What non-technical information did you learn?}\par
 With the non-technical side of the project, I learned more about neurodegenerative diseases and Parkinson's disease and how they affect the human body as well as why we need certain technologies to help those who suffer from those types of diseases. I learned how physical therapy is used with someone who has Parkinson's disease and what symptoms to look for in a patient. I also gained some experience about what it was like to work on a project with a small team and a client who was expecting and requesting certain requirements of us.
