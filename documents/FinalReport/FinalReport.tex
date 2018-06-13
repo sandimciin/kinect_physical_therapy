@@ -352,11 +352,81 @@ If I could do it all over, I would begin development much sooner. This would hav
             return tmp;
         }
 \end{lstlisting}
-\caption{Report Generation with OxyPlot}
+\caption{Report Generation with OxyPlot.}
 \end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  APPENDIX II  %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Appendix II: Related Project Information}
 
+\begin{figure}[H]
+\begin{lstlisting}[language=C, style=customc]
+ /// The first part of a <see cref="LeftArmRaise"/> gesture.
+    public class LeftArmRaiseSegment1 : IGestureSegment
+    {
+        /// Updates the current gesture.
+        /// <param name="body">The body.</param>
+        /// <returns>A GesturePartResult based on whether the gesture part has been completed.</returns>
+        public GesturePartResult Update(Body body)
+        {
+
+            // left hand in front of left elbow
+            if (body.Joints[JointType.HandLeft].Position.Z < body.Joints[JointType.ElbowLeft].Position.Z)
+            {
+                // left hand below shoulder height but above hip height
+                if (body.Joints[JointType.HandLeft].Position.Y < body.Joints[JointType.Head].Position.Y && body.Joints[JointType.HandLeft].Position.Y > body.Joints[JointType.SpineBase].Position.Y)
+                {
+                    // left hand left of left shoulder
+                    if (body.Joints[JointType.HandLeft].Position.X < body.Joints[JointType.ShoulderLeft].Position.X)
+                    {
+                        return GesturePartResult.Succeeded;
+                    }
+                    return GesturePartResult.Undetermined;
+                }
+                return GesturePartResult.Failed;
+            }
+            return GesturePartResult.Failed;
+        }
+    }
+\end{lstlisting}
+\caption{Building a custom left arm raise gesture.}
+\end{figure}
+
+\begin{figure}[H]
+\begin{lstlisting}[language=C, style=customc]
+public ArmRaisesPage()
+{
+  InitializeComponent();
+
+  //Set exercise repetitions based on settings or default (10)
+  startreps = Int32.Parse(Application.Current.Properties["armReps"].ToString());
+  rcounter = startreps;
+  lcounter = startreps;
+
+  _sensor = KinectSensor.GetDefault();
+
+  if (_sensor != null)
+  {
+    _sensor.Open();
+
+    _reader = _sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color | FrameSourceTypes.Depth | FrameSourceTypes.Infrared | FrameSourceTypes.Body);
+    _reader.MultiSourceFrameArrived += Reader_MultiSourceFrameArrived;
+
+    _userReporter = new PlayersController();
+    _userReporter.BodyEntered += UserReporter_BodyEntered;
+    _userReporter.BodyLeft += UserReporter_BodyLeft;
+    _userReporter.Start();
+
+    _gesture = new RightArmRaise();
+    _gesture.GestureRecognized += Gesture_GestureRecognized;
+
+    _gesture2 = new LeftArmRaise();
+    _gesture2.GestureRecognized += Gesture2_GestureRecognized;
+
+    _recorder = new Kinect2CSV();
+
+    _timer = new Stopwatch();
+  }
+}
+\end{lstlisting}
+\caption{Initializing the arm raises gesture.}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BIBLIOGRAPHY  %%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{ieeetr}
 \bibliography{FinalReport}
